@@ -14,10 +14,20 @@ public class Photo {
     private String author;
     private String Feedback;
     private String comment;
-    private String soAwesome;
-    private String great;
+    private String date;
+    private Integer like;
+
 
     public Photo() {
+    }
+
+    public Photo(Integer id, String author, String feedback, String comment, String date, Integer like) {
+        this.id = id;
+        this.author = author;
+        Feedback = feedback;
+        this.comment = comment;
+        this.date = date;
+        this.like = like;
     }
 
     public Integer getId() {
@@ -52,21 +62,19 @@ public class Photo {
         this.comment = comment;
     }
 
-    public String getSoAwesome() {
-        return soAwesome;
+    public String getDate() {
+        return date;
     }
 
-    public void setSoAwesome(String soAwesome) {
-        this.soAwesome = soAwesome;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getGreat() {
-        return great;
+    public Integer getLike() {
+        return like;
     }
 
-    public void setGreat(String great) {
-        this.great = great;
+    public void setLike(Integer like) {
+        this.like = like;
     }
-
-
 }

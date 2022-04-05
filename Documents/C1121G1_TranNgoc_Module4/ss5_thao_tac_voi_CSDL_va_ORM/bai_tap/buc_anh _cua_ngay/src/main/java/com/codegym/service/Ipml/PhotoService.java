@@ -16,6 +16,7 @@ public class PhotoService implements IPhotoService {
 
     @Override
     public List<Photo> findAll() {
+
         return photoRepository.findAll();
     }
 }
