@@ -1,15 +1,17 @@
-package com.codegym.service.impl;
+package com.codegym.cms.config.service.impl;
 
-import com.codegym.model.Customer;
-import com.codegym.ripository.ICustomerRipository;
+import com.codegym.cms.config.model.Customer;
+import com.codegym.cms.config.repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class CustomerService implements ICustomerRipository {
+@Service
+public class CustomerService implements ICustomerRepository {
 
     @Autowired
-    private ICustomerRipository customerRepository;
+    private ICustomerRepository customerRepository;
 
     @Override
     public List<Customer> findAll() {
@@ -19,6 +21,11 @@ public class CustomerService implements ICustomerRipository {
     @Override
     public Customer findById(Long id) {
         return customerRepository.findById(id);
+    }
+
+    @Override
+    public void save(Object o) {
+
     }
 
     @Override

@@ -1,8 +1,8 @@
-package com.codegym.service;
+package com.codegym.cms.config.repository;
 
 import java.util.List;
 
-public interface IGeneralService<T>{
+public interface IGeneralRepository<T> {
     List<T> findAll();
 
     T findById(Long id);

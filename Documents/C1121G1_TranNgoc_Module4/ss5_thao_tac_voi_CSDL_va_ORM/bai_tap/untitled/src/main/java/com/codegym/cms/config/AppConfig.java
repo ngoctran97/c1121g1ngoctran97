@@ -1,9 +1,8 @@
-package com.codegym.config;
+package com.codegym.cms.config;
 
-import com.codegym.repository.CustomerRepository;
-import com.codegym.repository.ICustomerRepository;
-import com.codegym.service.CustomerService;
-import com.codegym.service.ICustomerService;
+
+import com.codegym.cms.config.repository.ICustomerRepository;
+import com.codegym.cms.config.repository.Impl.CustomerRepository;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -119,8 +118,8 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     }
 
     @Bean
-    public ICustomerService customerService() {
+    public ICus customerService() {
         return new CustomerService();
     }
-    
+
 }
