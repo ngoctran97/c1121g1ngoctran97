@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("home")
+@RequestMapping("/home")
 public class PhotoController {
 
     @Autowired
@@ -23,7 +23,5 @@ public class PhotoController {
         model.addAttribute("photoList",photoList);
         return "home";
     }
-
-
 
 }

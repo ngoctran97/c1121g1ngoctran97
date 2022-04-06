@@ -35,12 +35,21 @@
         <td th:text="${row.getTieuDe()}"></td>
         <td th:text="${row.getTacGia()}"></td>
         <td th:text="${row.getTomTat()}"></td>
+        <td th:text="${row.getNoiDung()}"></td>
         <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}">edit</a></td>
         <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}">delete</a></td>
-        <td><a th:href="@{/blog/{id}/view(id=${row.getId()})}">view</a></td>
+        <td><a th:href="@{/blog/{id}/view(id=${row.getId})}">view</a></td>
     </tr>
     </tbody>
 </table>
 <footer th:replace="/layout :: footer"></footer>
+<div>
+    <a th:if ="${blogList.hasPrevious()}"
+       th:href="@{blog/list(page=${blogList.number -1}, keyword=${keywordValue})}">previous</a>
+    <span th:text="${blogList.number +1}"></span>/
+    <span th:text="${blogList.totalPages}"></span>
+    <a th:if ="${blogList.hasNext()}"
+       th:href="@{blog/list(page=${blogList.number +1}, keyword=${keywordValue})}">Next</a>
+</div>
 </body>
 </html>

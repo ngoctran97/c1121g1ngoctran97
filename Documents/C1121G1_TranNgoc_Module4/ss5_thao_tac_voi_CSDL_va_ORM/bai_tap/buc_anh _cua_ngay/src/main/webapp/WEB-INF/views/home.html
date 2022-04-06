@@ -1,52 +1,64 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<img id="img-of-the-day" height="500" width="500">
-<form action="photo/create" method="post" th:object="${photoList}">
-    <tr>
+<h1 id="title" style="text-align: center;"></h1><br><br>
+<img id="img-of-the-day"><br><br>
+
+<form action="/photo/create" method="post" th:object="${photoList}">
+    <select>
+        <option th:value="1">1</option>
+        <option th:value="2">2</option>
+        <option th:value="3">3</option>
+        <option th:value="4">4</option>
+        <option th:value="5">5</option>
+    </select><br><br>
+    <tr><th>Author:</th></tr><br>
+    <input th:field="*{author}"><br><br>
+    <th>Feedback:</th>
+    <textarea id="explanation" cols="200" rows="5" th:field="*{feedback}"></textarea><br><br>
+    <button>Comment:</button>
+</form>
+<table>
+    <tr th:each="comment,loop : ${comment}">
         <td>
-            <select>
-                <option th:value="1">1</option>
-                <option th:value="2">2</option>
-                <option th:value="3">3</option>
-                <option th:value="4">4</option>
-            </select>
+            <div style="margin-bottom: 20px;">
+                <p style="margin-bottom: 10px;width: 100%;border: none;"
+                   th:text="${photo.feedback}"></p>
+                <div style="display: flex;flex-direction: row-reverse;align-content: stretch;justify-content: flex-end;">
+                    <p style="border: none;max-width: 30px;text-align: center;margin-left: 10px; "
+                       th:text="${photo.feedback}"></p>
+                    <a th:href="@{/comment/like(idLike=${photo.id})}" class="fa fa-thumbs-up"></a>
+                </div>
+            </div>
         </td>
     </tr>
-    <br><br>
-    <tr><th>Author:</th></tr><br>
-    <tr><td><input type="text"></tr>
-    <br><br>
-    <th>Feedback:</th>
-    <br>
-    <td><input type="text"><br>
-        <input type="submit" value="Comment">
-    </td><br>
-    <hr>
-
-
-
-</form>
+</table>
 
 
 </body>
+
 <script>
-    let query = 'https://api.nasa.gov/planetary/apod?api_key=gStJ8PIuneHi4mviy838BWXl8TYoXZM0MQvhRM5J';
+    let query = 'https://api.nasa.gov/planetary/apod?api_key=CxMdZosxYBxoefp1VifWkWTFqJBKBVKJcCmGK6mF';
     let request = new XMLHttpRequest();
-    let srcUrl = "";
     request.open('GET', query);
     request.onload = function () {
         if (request.status === 200) {
             let response = JSON.parse(request.responseText);
-            srcUrl = response.url;
             document.getElementById('img-of-the-day').setAttribute('src', response.url);
-            document.getElementById("pictureUrl").value = srcUrl;
+            document.getElementById('title').innerText = response.title;
         }
     };
     request.send();
+
+    function myFunction(x) {
+        x.classList.toggle("fa-thumbs-down");
+    }
 </script>
 </html>
