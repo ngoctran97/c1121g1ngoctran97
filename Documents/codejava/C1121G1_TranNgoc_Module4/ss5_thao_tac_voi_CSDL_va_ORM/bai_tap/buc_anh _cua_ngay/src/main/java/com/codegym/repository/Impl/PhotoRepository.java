@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -21,6 +22,33 @@ public class PhotoRepository implements IPhotoRepository {
         EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
         entityTransaction.begin();
         BaseRepository.entityManager.persist(photo);
+        entityTransaction.commit();
+    }
+
+    @Override
+    public Object findById(int id) {
+        List<Photo> photoList = new ArrayList<>();
+        for (Photo photo : photoList) {
+            if (photo.getId() == id) {
+                return photoList.get(id);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void update(Integer id, Photo photo) {
+        EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
+        entityTransaction.begin();
+        BaseRepository.entityManager.merge(photo);
+        entityTransaction.commit();
+    }
+
+    @Override
+    public void delete(Integer id) {
+        EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
+        entityTransaction.begin();
+        BaseRepository.entityManager.remove(this.findById(id));
         entityTransaction.commit();
     }
 }

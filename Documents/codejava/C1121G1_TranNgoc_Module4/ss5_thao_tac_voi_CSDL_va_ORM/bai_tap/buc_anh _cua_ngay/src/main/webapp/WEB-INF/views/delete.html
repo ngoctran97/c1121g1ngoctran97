@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Delete Photo</h3>
+<p>
+    <a th:href="@{/photo}">
+        Back to photo list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/photo/delete}" th:object="${photo} "
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Author</label>
+            <input th:field="*{author}"/>
+        </div>
+        <div>
+            <label>Feedback</label>
+            <input type="text" th:field="*{feedback}"/>
+        </div>
+        <div>
+            <label>comment</label>
+            <input type="text" th:field="*{comment}"/>
+        </div>
+        <div>
+            <label>date</label>
+            <input type="text" th:field="*{date}"/>
+        </div>
+        <div>
+            <label>like</label>
+            <input type="text" th:field="*{like}"/>
+        </div>
+        <input type="submit" value="Remove"/>
+    </form>
+</div>
+
+</body>
+</html>

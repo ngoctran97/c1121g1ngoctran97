@@ -24,4 +24,19 @@ public class PhotoService implements IPhotoService {
     public void save(Photo photo) {
         photoRepository.save(photo);
     }
+
+    @Override
+    public Object findById(int id) {
+        return photoRepository.findById(id);
+    }
+
+    @Override
+    public void update(Integer id, Photo photo) {
+        photoRepository.update(id, photo);
+    }
+
+    @Override
+    public void remove(Integer id) {
+        photoRepository.delete(id);
+    }
 }

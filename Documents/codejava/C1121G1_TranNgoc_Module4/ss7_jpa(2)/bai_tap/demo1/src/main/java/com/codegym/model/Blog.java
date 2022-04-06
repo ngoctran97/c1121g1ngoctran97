@@ -14,6 +14,7 @@ public class Blog {
     private String tacGia;
     private String tomTat;
     private String noiDung;
+    private String category;
 
 
     public Blog() {
@@ -57,5 +58,13 @@ public class Blog {
 
     public void setNoiDung(String noiDung) {
         this.noiDung = noiDung;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
