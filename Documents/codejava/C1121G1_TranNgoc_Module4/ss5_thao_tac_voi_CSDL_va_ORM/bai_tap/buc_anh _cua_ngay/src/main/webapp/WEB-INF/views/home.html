@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="img-of-the-day" height="500" width="500">
+<form action="photo/save" method="post" th:object="${photoList}">
+    <tr>
+        <td>
+            <select>
+                <option th:value="1">1</option>
+                <option th:value="2">2</option>
+                <option th:value="3">3</option>
+                <option th:value="4">4</option>
+            </select>
+        </td>
+    </tr>
+    <br><br>
+    <tr><th>Author:</th></tr><br>
+    <tr><td><input type="text" th:object="author"></tr>
+    <br><br>
+    <th>Feedback:</th>
+    <td><input type="text"><br>
+        <input type="submit" value="Comment">
+    </td><br>
+    <th>like:</th>
+    <hr>
+
+
+</form>
+
+
+</body>
+<script>
+    let query = 'https://api.nasa.gov/planetary/apod?api_key=gStJ8PIuneHi4mviy838BWXl8TYoXZM0MQvhRM5J';
+    let request = new XMLHttpRequest();
+    let srcUrl = "";
+    request.open('GET', query);
+    request.onload = function () {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            srcUrl = response.url;
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+            document.getElementById("pictureUrl").value = srcUrl;
+        }
+    };
+    request.send();
+</script>
+</html>

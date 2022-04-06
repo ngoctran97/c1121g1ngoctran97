@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Photo List</h3>
+<p>
+    <a th:href="@{/photo/create}">
+        ADD NEW PHOTO
+    </a>
+</p>
+<table id = "photo" border="1">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>author</th>
+        <th>Feedback</th>
+        <th>comment</th>
+        <th>date</th>
+        <th>like</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${photoList}">
+        <td th:text="${row.getId()}"></td>
+        <td th:text="${row.getAuthor()}"></td>
+        <td th:text="${row.getFeedback()}"></td>
+        <td th:text="${row.getComment()}"></td>
+        <td th:text="${row.getDate()}"></td>
+        <td th:text="${row.getLike()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
