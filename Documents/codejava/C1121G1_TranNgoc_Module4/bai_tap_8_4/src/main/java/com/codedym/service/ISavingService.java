@@ -16,4 +16,6 @@ public interface ISavingService {
     void update(Integer savingId, Saving saving);
 
     void save(Saving saving);
+
+    List<Saving> findAllByName(String ten);
 }

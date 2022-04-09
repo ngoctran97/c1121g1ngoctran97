@@ -40,5 +40,10 @@ public class SavingService implements ISavingService {
         savingRepositoRy.save(saving);
     }
 
+    @Override
+    public List<Saving> findAllByName(String ten) {
+        return this.savingRepositoRy.findAllByName(ten);
+    }
+
 
 }

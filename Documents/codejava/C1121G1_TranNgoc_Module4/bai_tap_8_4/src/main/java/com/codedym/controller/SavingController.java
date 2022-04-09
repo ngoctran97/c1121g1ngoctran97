@@ -100,6 +100,12 @@ public class SavingController {
         }
     }
 
-    
+    @GetMapping(value = "/search")
+    public String search(Model model,
+                         @RequestParam Optional<String> name){
+        String ten = name.orElse("");
+        List<Saving> savingList = savingService.findAllByName(ten);
+        model.addAttribute("savingList",savingList);
+        return "saving/index";
 
 }
