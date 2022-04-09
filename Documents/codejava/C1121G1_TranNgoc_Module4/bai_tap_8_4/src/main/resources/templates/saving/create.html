@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Add saving</h3>
+<p>
+    <a th:href="@{/saving}">
+        Back to saving list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/saving/save}" th:object="${savingDto} "
+          method="POST" novalidate="novalidate">
+<!--        <input type="hidden" th:field="*{savingId}"/>-->
+        <div>
+            <label>Ngày Gửi</label>
+            <input type="date" th:field="*{timeToStart}"/>
+        </div>
+        <div>
+            <label>Kỳ Hạn</label>
+            <input type="text" th:field="*{term}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></h6></div>
+        </div>
+        <div>
+            <label>Số Tiền Gửi</label>
+            <input type="text" th:field="*{deposits}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('deposits')}" th:errors="*{deposits}"></h6></div>
+        </div>
+        <div>
+            <label>Ten khach hang</label>
+            <select th:field="*{customer}">
+                <option th:each ="item:${customer}"
+                        th:value="${item.getCustomerId()}"
+                        th:text="${item.getName()}">
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+</body>
+</html>

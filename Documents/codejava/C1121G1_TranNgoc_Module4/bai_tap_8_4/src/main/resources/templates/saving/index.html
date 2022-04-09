@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+</head>
+<body>
+<h3>Customer List</h3>
+<p>
+    <a th:href="@{/saving/create}">
+        ADD NEW CUSTOMER
+    </a>
+</p>
+<form action="/customer/search" method="post" align="left">
+  <button type="submit">Search</button>
+  <input type="text" name="name" placeholder="name customer" >
+</form>
+<a th:href="@{/customer}">
+    Back to product list
+</a>
+
+<table id = "customers" border="1">
+    <thead>
+    <tr>
+<!--        <th>Stt</th>-->
+        <th>Mã Số Sổ</th>
+        <th>Ngày Gửi</th>
+        <th>Kỳ Hạng</th>
+        <th>Số Tiền Gửi</th>
+        <th>Tên Khách Hàng</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="saving : ${savings}">
+<!--        <td th:text="${loop.count}"></td>-->
+        <td th:text="${saving.savingId}"></td>
+        <td th:text="${saving.timeToStart}"></td>
+        <td th:text="${saving.term}"></td>
+        <td th:text="${saving.deposits}"></td>
+        <td th:if="${saving.customer}" th:text="${saving.customer.name}"></td>
+        <td th:unless="${saving.customer}"></td>
+        <td><a th:href="@{/saving/{savingId}/edit(savingId=${saving.getSavingId()})}">edit</a></td>
+        <td><a th:href="@{/saving/{savingId}/delete(savingId=${saving.getSavingId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div>-->
+<!--    <a th:if ="${savings.hasPrevious()}"-->
+<!--       th:href="@{/saving/list(page=${savings.number -1}, keyword=${keywordValues})}">previous</a>-->
+<!--    <span th:text="${savings.number +1}"></span>/-->
+<!--    <span th:text="${savings.totalPages}"></span>-->
+<!--    <a th:if ="${savings.hasNext()}"-->
+<!--       th:href="@{/saving/list(page=${savings.number + 1}, keyword=${keywordValues})}">Next</a>-->
+<!--</div>-->
+</body>
+</html>

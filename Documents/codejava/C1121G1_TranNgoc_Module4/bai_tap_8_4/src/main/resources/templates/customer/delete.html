@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Delete Customer</h3>
+<p>
+    <a th:href="@{/customer}">
+        Back to Customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customer/delete}" th:object="${customer} "
+          method="POST" novalidate="novalidate">
+        <div >
+            <label>Mã khách Hàng</label>
+            <input  type="text" readonly style="background-color: blue"
+                    id="customer-id" name="customer_id" th:field="*{customerId}">
+        </div>
+        <div>
+            <label>Tên khách hàng</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <input type="submit" value="Remove"/>
+    </form>
+</div>
+</body>
+</html>
