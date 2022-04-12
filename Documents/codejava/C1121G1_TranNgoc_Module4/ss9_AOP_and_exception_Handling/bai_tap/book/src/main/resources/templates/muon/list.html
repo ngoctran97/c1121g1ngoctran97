@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/muon/layout :: head"></head>
+<body>
+<h3>Danh sach muon sach</h3>
+
+<table id="muon" border="1">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Ma Muon Sach</th>
+        <th>Ngay muon</th>
+        <th>Ngay tra</th>
+        <th>Trang thai</th>
+        <th>Ten hoc sinh</th>
+        <th>Ten sach</th>
+        <th>Tra sach</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="muon,loop : ${muonList}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${muon.maMuonSach}"></td>
+        <td th:text="${muon.ngayMuon}"></td>
+        <td th:text="${muon.ngayTra}"></td>
+        <td th:text="${muon.trangThai}"></td>
+        <td th:if="${muon.hocSinh}" th:text="${muon.hocSinh.hoTen}"></td>
+        <td th:if="${muon.sach}" th:text="${muon.sach.tenSach}"></td>
+        <td>Tra sach</td>
+<!--        <td><a th:href="@{/saving/{savingId}/edit(savingId=${saving.getSavingId()})}">Tra sach</a></td>-->
+
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/muon/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/muon/layout :: head"></head>
+<body>
+<h3>Danh sach sach</h3>
+
+<table id="muon" border="1" >
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Ma sach</th>
+        <th>Ten sach</th>
+        <th>Tac gia</th>
+        <th>So luong</th>
+        <th>Mo ta</th>
+        <th>Muon</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sach,loop : ${sachList}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${sach.maSach}"></td>
+        <td th:text="${sach.tenSach}"></td>
+        <td th:text="${sach.tacGia}"></td>
+        <td th:text="${sach.soLuong}"></td>
+        <td th:text="${sach.moTa}"></td>
+        <td><a th:href="@{/muon/create/{id}(id=${sach.id})}">Muon</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/muon/layout :: footer"></footer>
+</body>
+</html>

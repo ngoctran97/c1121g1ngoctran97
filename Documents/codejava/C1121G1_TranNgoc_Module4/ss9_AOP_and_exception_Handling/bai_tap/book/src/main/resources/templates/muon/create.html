@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/muon/layout :: head"></head>
+<body>
+<h3>Muon sach</h3>
+<div id="form">
+    <form th:action="@{/muon/save/{id}(id=${sach.id})}" th:object="${muon} "
+          method="POST" novalidate="novalidate">
+        <!--        <input type="hidden" th:field="*{savingId}"/>-->
+        <div>
+            <label>Ma muon sach</label>
+            <input type="text" th:field="*{maMuonSach}"/>
+        </div>
+        <div>
+            <label>Ngay muon</label>
+            <input type="date" th:field="*{ngayMuon}"/>
+        </div>
+        <div>
+            <label>Ngay tra</label>
+            <input type="date" th:field="*{ngayTra}"/>
+        </div>
+        <div>
+            <label>Trang thai</label>
+            <input type="text" th:field="*{trangThai}"/>
+        </div>
+        <div>
+            <label>Ten hoc sinh</label>
+            <select th:field="*{hocSinh}">
+                <option th:each="item:${hocSinhList}"
+                        th:value="${item.id}"
+                        th:text="${item.hoTen}">
+                </option>
+            </select>
+        </div>
+<!--        <div>-->
+<!--            <label>Ten sach</label>-->
+<!--            <p th:field="*{sach}" th:text="${sach.tenSach}">-->
+<!--            </p>-->
+<!--        </div>-->
+
+                <div>
+                    <label>ten sach</label>
+                    <input type="text" th:value="${sach.tenSach}"/>
+<!--                    <input  type="hidden" th:field="*{sach}"/>-->
+                </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/muon/layout :: footer"></footer>
+</body>
+</html>
