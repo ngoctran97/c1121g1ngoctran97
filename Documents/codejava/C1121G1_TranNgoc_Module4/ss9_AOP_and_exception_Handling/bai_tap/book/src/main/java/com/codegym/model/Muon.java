@@ -87,5 +87,18 @@ public class Muon {
     public void setNgayTra(String ngayTra) {
         this.ngayTra = ngayTra;
     }
+
+    @Override
+    public String toString() {
+        return "Muon{" +
+                "id=" + id +
+                ", maMuonSach='" + maMuonSach + '\'' +
+                ", sach=" + sach +
+                ", hocSinh=" + hocSinh +
+                ", trangThai=" + trangThai +
+                ", ngayMuon='" + ngayMuon + '\'' +
+                ", ngayTra='" + ngayTra + '\'' +
+                '}';
+    }
 }
 

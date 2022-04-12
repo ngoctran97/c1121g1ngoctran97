@@ -54,6 +54,24 @@ public class MuonController {
         return "redirect:/muon";
     }
 
+    @GetMapping(value = "/detaiil")
+    public  String godetailMuon(@RequestParam Integer id,
+                                Model model) throws Exception {
+        Muon muon = this.muonService.findById(id);
+
+        if(muon == null){
+            throw  new Exception();
+        }
+        model.addAttribute("muon",muon);
+        return "muon/detail_muon";
+
+    }
+
+    @ExceptionHandler(Exception.class)
+    public  String goError(){
+        return "muon/error";
+    }
+
 
 
 

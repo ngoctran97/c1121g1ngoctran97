@@ -22,4 +22,9 @@ public class MuonService implements IMuonService {
     public void save(Muon muon) {
         muonRepository.save(muon);
     }
+
+    @Override
+    public Muon findById(Integer id) {
+        return this.muonRepository.findById(id).orElse(null);
+    }
 }

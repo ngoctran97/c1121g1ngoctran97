@@ -76,4 +76,17 @@ public class Sach {
     public void setMuonList(List<Muon> muonList) {
         this.muonList = muonList;
     }
+
+    @Override
+    public String toString() {
+        return "Sach{" +
+                "id=" + id +
+                ", maSach='" + maSach + '\'' +
+                ", tenSach='" + tenSach + '\'' +
+                ", tacGia='" + tacGia + '\'' +
+                ", soLuong=" + soLuong +
+                ", moTa='" + moTa + '\'' +
+                ", muonList=" + muonList +
+                '}';
+    }
 }
