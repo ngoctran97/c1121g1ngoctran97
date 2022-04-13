@@ -31,7 +31,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row,rowStat : ${blogList}">
+    <tr th:each="row,rowStat : ${blogPage}">
         <td th:text="${row.getId()}"></td>
         <td th:text="${row.getCategory()}"></td>
         <td th:text="${row.getTacGia()}"></td>
@@ -45,12 +45,12 @@
 </table>
 <footer th:replace="/layout :: footer"></footer>
 <div>
-    <a th:if ="${blogList.hasPrevious()}"
-       th:href="@{blog/list(page=${blogList.number -1}, keyword=${keywordValue})}">previous</a>
-    <span th:text="${blogList.number +1}"></span>/
-    <span th:text="${blogList.totalPages}"></span>
-    <a th:if ="${blogList.hasNext()}"
-       th:href="@{blog/list(page=${blogList.number +1}, keyword=${keywordValue})}">Next</a>
+    <a th:if ="${blogPage.hasPrevious()}"
+       th:href="@{blog/list(page=${blogPage.number -1}, keyword=${keywordValue})}">previous</a>
+    <span th:text="${blogPage.number +1}"></span>/
+    <span th:text="${blogPage.totalPages}"></span>
+    <a th:if ="${blogPage.hasNext()}"
+       th:href="@{blog/list(page=${blogPage.number +1}, keyword=${keywordValue})}">Next</a>
 </div>
 </body>
 </html>

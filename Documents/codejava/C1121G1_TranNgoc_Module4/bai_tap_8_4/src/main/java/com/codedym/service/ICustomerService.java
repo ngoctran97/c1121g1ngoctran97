@@ -19,5 +19,5 @@ public interface ICustomerService {
 
     void save(Customer customer);
 
-    List<Customer> searchName(String name);
+//    List<Customer> searchName(String name);
 }

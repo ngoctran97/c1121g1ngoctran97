@@ -18,7 +18,6 @@ public class UserDto implements Validator {
     @NotEmpty
     @Size(min = 5, max = 45)
     private String lastnname;
-
     private String phonenumber;
     @Min(18)
     private String age;

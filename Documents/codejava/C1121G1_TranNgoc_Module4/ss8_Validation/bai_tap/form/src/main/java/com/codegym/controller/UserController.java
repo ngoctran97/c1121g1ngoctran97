@@ -48,7 +48,8 @@ public class UserController {
                              Model model){
         userDto.validate(userDto, bindingResult);
         if(bindingResult.hasFieldErrors()){
-            model.addAttribute("userList", this.userService.findAll());
+            model.addAttribute("userList",
+                    this.userService.findAll());
             return "index";
         }
         User user = new User();

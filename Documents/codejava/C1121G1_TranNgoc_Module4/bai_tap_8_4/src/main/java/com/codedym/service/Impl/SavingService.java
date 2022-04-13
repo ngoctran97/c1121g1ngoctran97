@@ -41,9 +41,19 @@ public class SavingService implements ISavingService {
     }
 
     @Override
-    public List<Saving> findAllByName(String ten) {
-        return this.savingRepositoRy.findAllByName(ten);
+    public void remove(Integer savingId) {
+        this.savingRepositoRy.deleteById(savingId);
     }
+
+    @Override
+    public List<Saving> findAllByName(String name) {
+        return savingRepositoRy.findAllByCustomer_name(name);
+    }
+
+//    @Override
+//    public List<Saving> findAllByName(String ten) {
+//        return this.savingRepositoRy.findAllByName(ten);
+//    }
 
 
 }

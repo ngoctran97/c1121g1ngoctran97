@@ -47,10 +47,10 @@ public class CustomerService implements ICustomerService {
         this.customerRepository.save(customer);
     }
 
-    @Override
-    public List<Customer> searchName(String name) {
-        return this.customerRepository.search(name);
-    }
+//    @Override
+//    public List<Customer> searchName(String name) {
+//        return this.customerRepository.search(name);
+//    }
 
 
 }

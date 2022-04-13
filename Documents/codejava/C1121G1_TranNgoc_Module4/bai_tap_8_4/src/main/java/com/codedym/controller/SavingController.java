@@ -100,12 +100,26 @@ public class SavingController {
         }
     }
 
-    @GetMapping(value = "/search")
-    public String search(Model model,
-                         @RequestParam Optional<String> name){
-        String ten = name.orElse("");
-        List<Saving> savingList = savingService.findAllByName(ten);
-        model.addAttribute("savingList",savingList);
-        return "saving/index";
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable int id, Model model) {
+        model.addAttribute("saving", savingService.findById(id));
+        List<Customer> customerList = this.customerService.findAll();
+        model.addAttribute("customerList",customerList);
+        return "saving/delete";
+    }
 
+    @PostMapping("/delete")
+    public String delete(Saving saving, RedirectAttributes redirect){
+        savingService.remove(saving.getSavingId());
+        redirect.addFlashAttribute("success", "Removed product successfully!");
+        return "redirect:/saving/list";
+
+    }
+
+    @PostMapping(value = "/search")
+    public String search(Model model, @RequestParam String name) {
+        List<Saving> savingList = savingService.findAllByName(name);
+        model.addAttribute("savingList", savingList);
+        return "saving/index";
+    }
 }

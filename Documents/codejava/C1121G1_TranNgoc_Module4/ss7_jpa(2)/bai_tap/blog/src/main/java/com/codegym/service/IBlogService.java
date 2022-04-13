@@ -17,5 +17,7 @@ public interface IBlogService {
 
     void update(Integer id, Blog blog);
 
+    Page<Blog> findAllByTacGia(String name, Pageable pageable);
+
 
 }

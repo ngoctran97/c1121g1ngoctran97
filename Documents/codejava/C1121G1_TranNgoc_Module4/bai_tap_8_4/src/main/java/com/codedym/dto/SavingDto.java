@@ -76,14 +76,14 @@ public class SavingDto implements Validator {
         SavingDto savingDto = (SavingDto) target;
         String startDate = savingDto.getTimeToStart();
 
-        if (startDate.matches("^\\d{4}[\\-\\/\\s]?((((0[13578])|(1[02]))[\\-\\/\\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\\-\\/\\s]?(([0-2][0-9])|(30)))|(02[\\-\\/\\s]?[0-2][0-9]))$")) {
+        if (timeToStart.matches("^\\d{4}[\\-\\/\\s]?((((0[13578])|(1[02]))[\\-\\/\\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\\-\\/\\s]?(([0-2][0-9])|(30)))|(02[\\-\\/\\s]?[0-2][0-9]))$")) {
 
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate now = LocalDate.now();
-            LocalDate date = LocalDate.parse(startDate, fmt);
+            LocalDate date = LocalDate.parse(timeToStart, fmt);
 
             if (date.isBefore(now)) {
-                errors.rejectValue("startDate", "createDate.before", "The date you entered is not valid");
+                errors.rejectValue("timeToStart", "createDate.before", "The date you entered is not valid");
             }
         }
 

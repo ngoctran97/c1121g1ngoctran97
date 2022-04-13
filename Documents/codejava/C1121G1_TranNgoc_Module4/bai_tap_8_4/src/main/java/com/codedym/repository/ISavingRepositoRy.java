@@ -8,5 +8,5 @@ import java.util.List;
 
 
 public interface ISavingRepositoRy extends JpaRepository<Saving, Integer> {
-    List<Saving> findAllByName(String ten);
+    List<Saving> findAllByCustomer_name(String name);
 }

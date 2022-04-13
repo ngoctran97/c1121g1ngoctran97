@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
-    List<Customer> search(String name);
+//    List<Customer> search(String name);
 }

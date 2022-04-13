@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Bolg List</h3>
+<p>
+    <a th:href="@{/blog/create}">
+        ADD NEW BLOG
+    </a>
+</p>
+<form action="/blog/search" method="post" align="left">
+    <button type="submit">Search</button>
+    <input type="text" name="name" placeholder="name blog" >
+</form>
+<a th:href="@{/templates/blog}">
+    Back to blog list
+</a>
+
+<table id = "customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tiêu đề</th>
+        <th>The</th>
+        <th>Tác gỉa</th>
+        <th>Tóm tắt</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${blogList}">
+        <td th:text="${row.getId()}"></td>
+        <td th:text="${row.getCategory()}"></td>
+        <td th:text="${row.getTacGia()}"></td>
+        <td th:text="${row.getTomTat()}"></td>
+        <td th:text="${row.getNoiDung()}"></td>
+        <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}">delete</a></td>
+        <td><a th:href="@{/blog/{id}/view(id=${row.getId})}">view</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+<div>
+    <a th:if ="${blogList.hasPrevious()}"
+       th:href="@{blog/list(page=${blogList.number -1}, keyword=${keywordValue})}">previous</a>
+    <span th:text="${blogList.number +1}"></span>/
+    <span th:text="${blogList.totalPages}"></span>
+    <a th:if ="${blogList.hasNext()}"
+       th:href="@{blog/list(page=${blogList.number +1}, keyword=${keywordValue})}">Next</a>
+</div>
+</body>
+</html>

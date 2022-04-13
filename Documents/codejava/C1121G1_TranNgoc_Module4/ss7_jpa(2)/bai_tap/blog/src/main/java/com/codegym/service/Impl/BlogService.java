@@ -16,6 +16,7 @@ public class BlogService implements IBlogService {
     @Autowired
     private IBlogRepository blogRepository;
 
+
     @Override
     public Page<Blog> findAll( Pageable pageable) {
         return blogRepository.findAll( pageable);
@@ -38,6 +39,12 @@ public class BlogService implements IBlogService {
 
     @Override
     public void update(Integer id, Blog blog) {
+
         this.blogRepository.save(blog);
+    }
+
+    @Override
+    public Page<Blog> findAllByTacGia(String name, Pageable pageable) {
+        return this.blogRepository.findAllByTacGia(name, pageable);
     }
 }

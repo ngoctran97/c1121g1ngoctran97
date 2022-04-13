@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+    <!-- First Photo Grid-->
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food" style="display: flex;flex-wrap: wrap;">
+        <div class="w3-quarter" th:each="row,rowStat : ${product}">
+            <img th:src="@{${row.photo}}" width="100px" height="100px" >
+            <h3 th:text="${row.name}"></h3>
+            <div class="cusdetail">
+                <label>Price:</label>
+                <label th:text="${row.price}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Description:</label>
+                <label th:text="${row.description}"></label>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -17,5 +17,9 @@ public interface ISavingService {
 
     void save(Saving saving);
 
-    List<Saving> findAllByName(String ten);
+    void remove(Integer savingId);
+
+    List<Saving> findAllByName(String name);
+
+//    List<Saving> findAllByName(String ten);
 }

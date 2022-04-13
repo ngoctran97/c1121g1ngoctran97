@@ -3,17 +3,17 @@
 <head >
 </head>
 <body>
-<h3>Customer List</h3>
+<h3>Saving List</h3>
 <p>
     <a th:href="@{/saving/create}">
-        ADD NEW CUSTOMER
+        ADD NEW SAVING
     </a>
 </p>
-<form action="/customer/search" method="post" align="left">
+<form action="/saving/search" method="post" align="left">
   <button type="submit">Search</button>
   <input type="text" name="name" placeholder="name customer" >
 </form>
-<a th:href="@{/customer}">
+<a th:href="@{/saving}">
     Back to product list
 </a>
 
