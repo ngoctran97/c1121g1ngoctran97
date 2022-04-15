@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/mdb.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-12">
+            <h2>Search blog</h2>
+            <input type="text" id="inputName" class="form-control"/>
+            <br>
+            <button id="btnCreate" type="button" class="btn btn-primary btn-block">
+                search
+            </button>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/mdb.min.js"></script>
+<script>
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "GET", //GET, DELETE, PUT...
+        url: "http://localhost:8080/blogRest",
+        success: function(resultSuccess){
+            let outHTML = "";
+
+            for (let classObj of resultSuccess) {
+                outHTML += `
+                        <option value="${classObj.id}">
+                            ${classObj.name}
+                        </option>
+                    `;
+            }
+
+            $("#selectClass").html(outHTML);
+        },
+        error: function(resultError) {
+
+        }
+    });
+</script>
+</body>
+</html>

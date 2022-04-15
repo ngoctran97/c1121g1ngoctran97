@@ -24,8 +24,6 @@ public class SachController {
     @Autowired
     private IHocSinhService hocSinhService;
 
-
-
     @GetMapping("")
     private String index(Model model){
         List<Sach> sachList = this.sachService.findAll();

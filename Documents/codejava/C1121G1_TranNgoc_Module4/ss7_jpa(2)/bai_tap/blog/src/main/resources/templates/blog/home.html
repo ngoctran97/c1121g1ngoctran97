@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<head th:replace="/blog/layout :: head">
 </head>
 <body>
 <h3>Bolg List</h3>
@@ -22,7 +22,7 @@
     <tr>
         <th>STT</th>
         <th>Tiêu đề</th>
-        <th>The</th>
+        <th>The loai</th>
         <th>Tác gỉa</th>
         <th>Tóm tắt</th>
         <th>Edit</th>
@@ -34,6 +34,7 @@
     <tr th:each="row,rowStat : ${blogPage}">
         <td th:text="${row.getId()}"></td>
         <td th:text="${row.getCategory()}"></td>
+        <td th:if="${row.category}" th:text="${row.category.theLoai}"></td>
         <td th:text="${row.getTacGia()}"></td>
         <td th:text="${row.getTomTat()}"></td>
         <td th:text="${row.getNoiDung()}"></td>
@@ -43,14 +44,14 @@
     </tr>
     </tbody>
 </table>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="/blog/layout :: footer"></footer>
 <div>
     <a th:if ="${blogPage.hasPrevious()}"
-       th:href="@{blog/list(page=${blogPage.number -1}, keyword=${keywordValue})}">previous</a>
+       th:href="@{/blog/list(page=${blogPage.number -1}, keyword=${keywordValue})}">previous</a>
     <span th:text="${blogPage.number +1}"></span>/
     <span th:text="${blogPage.totalPages}"></span>
     <a th:if ="${blogPage.hasNext()}"
-       th:href="@{blog/list(page=${blogPage.number +1}, keyword=${keywordValue})}">Next</a>
+       th:href="@{/blog/list(page=${blogPage.number +1}, keyword=${keywordValue})}">Next</a>
 </div>
 </body>
 </html>

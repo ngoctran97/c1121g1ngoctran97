@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head"></head>
+<head th:replace="/blog/layout :: head"></head>
 <body>
 <h3>Add Product</h3>
 <p>
@@ -12,6 +12,16 @@
     <form th:action="@{/blog/save}" th:object="${blog} "
           method="POST" novalidate="novalidate">
         <!--        <input type="hidden" th:field="*{id}"/>-->
+
+        <div>
+            <label>The loai</label>
+            <select th:field="*{category}">
+                <option th:each ="item:${category}"
+                        th:value="${item.getId()}"
+                        th:text="${item.getTheLoai()}">
+                </option>
+            </select>
+        </div>
         <div>
             <label>Tiêu đề:</label>
             <input type="text" th:field="*{tieuDe}"/>
@@ -28,9 +38,10 @@
             <label>Nội Dung</label>
             <input type="text" th:field="*{noiDung}"/>
         </div>
+
         <input type="submit" value="Save"/>
     </form>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="/blog/layout :: footer"></footer>
 </body>
 </html>

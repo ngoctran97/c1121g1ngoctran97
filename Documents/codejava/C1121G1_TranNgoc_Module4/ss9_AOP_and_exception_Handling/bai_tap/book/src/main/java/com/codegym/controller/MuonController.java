@@ -58,13 +58,11 @@ public class MuonController {
     public  String godetailMuon(@RequestParam Integer id,
                                 Model model) throws Exception {
         Muon muon = this.muonService.findById(id);
-
         if(muon == null){
             throw  new Exception();
         }
         model.addAttribute("muon",muon);
         return "muon/detail_muon";
-
     }
 
     @ExceptionHandler(Exception.class)

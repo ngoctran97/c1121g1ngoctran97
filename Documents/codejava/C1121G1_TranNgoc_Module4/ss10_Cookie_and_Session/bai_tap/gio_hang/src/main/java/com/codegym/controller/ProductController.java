@@ -48,8 +48,8 @@ public class ProductController {
         Optional<Product> product = productService.findById(id);
         model.addAttribute("product",product.get());
         return "view";
-
     }
+
     @GetMapping("delete/{id}")
     public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart) {
         Optional<Product> productOptional = productService.findById(id);

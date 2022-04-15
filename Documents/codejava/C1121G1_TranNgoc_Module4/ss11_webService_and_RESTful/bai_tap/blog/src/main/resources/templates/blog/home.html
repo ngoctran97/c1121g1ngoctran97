@@ -9,14 +9,15 @@
         ADD NEW BLOG
     </a>
 </p>
-<form action="/blog/search" method="post" align="left">
+
+<form action="/blog/search" method="get" align="left">
     <button type="submit">Search</button>
-    <input type="text" name="name" placeholder="name blog" >
+    <input type="text" name="keyword" placeholder="name blog" >
 </form>
+
 <a th:href="@{/templates/blog}">
     Back to blog list
 </a>
-
 <table id = "customers">
     <thead>
     <tr>
@@ -31,12 +32,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row,rowStat : ${blogPage}">
-        <td th:text="${row.getId()}"></td>
-        <td th:text="${row.getCategory()}"></td>
+    <tr th:each="row,loop : ${blogPage}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${row.tieuDe}"></td>
         <td th:if="${row.category}" th:text="${row.category.theLoai}"></td>
-        <td th:text="${row.getTacGia()}"></td>
-        <td th:text="${row.getTomTat()}"></td>
+        <td th:text="${row.tacGia}"></td>
+        <td th:text="${row.tomTat}"></td>
 <!--        <td th:text="${row.getNoiDung()}"></td>-->
         <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}">edit</a></td>
         <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}">delete</a></td>

@@ -26,8 +26,8 @@
         <td th:text="${muon.trangThai}"></td>
         <td th:if="${muon.hocSinh}" th:text="${muon.hocSinh.hoTen}"></td>
         <td th:if="${muon.sach}" th:text="${muon.sach.tenSach}"></td>
-        <td>Tra sach</td>
-<!--        <td><a th:href="@{/saving/{savingId}/edit(savingId=${saving.getSavingId()})}">Tra sach</a></td>-->
+        <td><a th:href="@{/muon/delete/{id}(id=${sach.id})}">Tra Sach</a></td>
+
 
     </tr>
     </tbody>

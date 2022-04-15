@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List student other</title>
+    <link rel="stylesheet" href="css/mdb.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-10">
+            <input class="form-control" type="text" id="keyword">
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-primary" id="btnSearch">Search</button>
+        </div>
+    </div>
+    <div class="row w-50 mx-auto">
+        <div class="col-lg-12">
+            <h2>List Blog</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Tieu de</th>
+                    <th scope="col">The Loai</th>
+                    <th scope="col">Tac Gia</th>
+                    <th scope="col">TonTac</th>
+                </tr>
+                </thead>
+                <tbody id="bodyStudent">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/mdb.min.js"></script>
+<script>
+    let keywordVal = $("#keyword").val();
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "GET", //GET, DELETE, PUT...
+        url: "http://localhost:8080/blogRest" + keywordVal,
+        success: function (resultSuccess) {
+            let blogPage = resultSuccess.content;
+            let outHTML = "";
+            for (let i = 0; i < blogPage.length; i++) {
+                outHTML += `
+                            <tr>
+                                <td>${i + 1}</td>
+                                <td>${blogPage[i].id}</td>
+                                <td>${blogPage[i].tieuDe}</td>
+                                <td>${blogPage[i].category == null ? 'None':blogPage[i].category.theLoai}</td>
+                                <td>${blogPage[i].tacGia}</td>
+                                <td>${blogPage[i].tomTat}</td>
+                            </tr>
+                        `;
+            }
+            console.log(outHTML);
+            $("#bodyStudent").html(outHTML);
+        },
+        error: function (resultError) {
+            alert("He thong dang bao tri");
+        }
+    });
+
+    $("#btnSearch").click(function () {
+        let keywordVal = $("#keyword").val();
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...
+            url: "http://localhost:8080/blogRest/search?keyword=" + keywordVal,
+            success: function (resultSuccess) {
+                let blogPage = resultSuccess.content;
+                let outHTML = "";
+                for (let i = 0; i < blogPage.length; i++) {
+                    outHTML += `
+                            <tr>
+                                <td>${i + 1}</td>
+                                <td>${blogPage[i].id}</td>
+                                <td>${blogPage[i].tieuDe}</td>
+                                // <td>${blogPage[i].category.theLoai}</td>
+                                <td>${blogPage[i].category == null ? 'None':blogPage[i].category.theLoai}</td>
+                                <td>${blogPage[i].tacGia}</td>
+                                <td>${blogPage[i].tomTat}</td>
+                            </tr>
+                        `;
+                }
+                console.log(outHTML);
+                $("#bodyStudent").html(outHTML);
+            },
+            error: function (resultError) {
+                alert("He thong dang bao tri");
+            }
+        });
+
+
+    });
+</script>
+</body>
+</html>

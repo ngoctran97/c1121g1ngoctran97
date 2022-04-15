@@ -12,13 +12,13 @@ public class Category {
     private String theLoai;
 
     @OneToMany(mappedBy = "category")
-    private List<Category> categoryList ;
+    private List<Blog> blogList ;
 
-    public Category(Integer id, String theLoai, List<Category> categoryList) {
-        this.id = id;
-        this.theLoai = theLoai;
-        this.categoryList = categoryList;
-    }
+//    public Category(Integer id, String theLoai, List<Category> categoryList) {
+//        this.id = id;
+//        this.theLoai = theLoai;
+//        this.categoryList = categoryList;
+//    }
 
     public Category() {
     }
@@ -39,11 +39,11 @@ public class Category {
         this.theLoai = theLoai;
     }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
+    public List<Blog> getBlogList() {
+        return blogList;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
     }
 }
