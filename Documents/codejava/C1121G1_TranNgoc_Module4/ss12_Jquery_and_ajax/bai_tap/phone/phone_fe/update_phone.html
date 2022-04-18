@@ -51,7 +51,7 @@
                                 <td>${smartphones[i].producer}</td>
                                 <td>${smartphones[i].model}</td>
                                 <td>${smartphones[i].price}</td>
-                                <td>${smartphones[i].tomTat}</td>
+                                 <td><a class="updatephone" th:href="${smartphones[i].id}">update</a></td>
                             </tr>
                         `;
             }
@@ -61,6 +61,50 @@
         error: function (resultError) {
             alert("He thong dang bao tri");
         }
+    });
+
+    $("#updatephone").click(function () {
+        let keywordVal = $("#keyword").val();
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...
+            url: "http://localhost:8080/smartphones/update?keyword=" + keywordVal,
+            success: function (resultSuccess) {
+                let blogPage = resultSuccess.content;
+                let outHTML = "";
+                for (let i = 0; i < blogPage.length; i++) {
+                    outHTML += `
+                            <tr>
+        <td>Model</td>
+        <td><input type="text" id="modelInput" th:value="${smartphone.model}"></td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td><input type="text" id="priceInput" th:value="${smartphone.price}"></td>
+    </tr>
+    <tr>
+        <td>Producer</td>
+        <td><input type="text" id="producerInput" th:value="${smartphone.producer}"></td>
+    </tr>
+    <tr>
+        <td><input type="hidden" id="idEdit" th:value="${smartphone.id}"></td>
+        <td>
+            <button id="editBtn">Edit</button>
+        </td>
+                        `;
+                }
+                console.log(outHTML);
+                $("#bodyStudent").html(outHTML);
+            },
+            error: function (resultError) {
+                alert("He thong dang bao tri");
+            }
+        });
+
+
     });
 
 

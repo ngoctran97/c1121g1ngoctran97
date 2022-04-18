@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@RestController
 @RequestMapping(value = "/blogRest")
 @CrossOrigin
 public class BlogRestController {
@@ -71,11 +71,6 @@ public class BlogRestController {
         Page<Blog> blogPage = this.blogService.findAllByTacGia(keywordValue, pageable);
         return new ResponseEntity<>(blogPage, HttpStatus.OK);
     }
-
-
-
-
-
 
 
 

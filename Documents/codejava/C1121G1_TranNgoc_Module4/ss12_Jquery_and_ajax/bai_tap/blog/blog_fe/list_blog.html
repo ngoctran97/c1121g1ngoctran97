@@ -34,30 +34,35 @@
                 </tbody>
             </table>
         </div>
+        <button class="btn btn-primary" id="load">Load more</button>
+
     </div>
+
 </div>
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/mdb.min.js"></script>
 <script>
     let keywordVal = $("#keyword").val();
+    let j = 0;
     $.ajax({
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         type: "GET", //GET, DELETE, PUT...
-        url: "http://localhost:8080/blogRest" + keywordVal,
+        url: "http://localhost:8080/blogRest?keyword=" + keywordVal,
         success: function (resultSuccess) {
             let blogPage = resultSuccess.content;
             let outHTML = "";
+            console.log("hiihi")
             for (let i = 0; i < blogPage.length; i++) {
                 outHTML += `
                             <tr>
                                 <td>${i + 1}</td>
                                 <td>${blogPage[i].id}</td>
                                 <td>${blogPage[i].tieuDe}</td>
-                                <td>${blogPage[i].category == null ? 'None':blogPage[i].category.theLoai}</td>
+                                <td>${blogPage[i].category == null ? 'None' : blogPage[i].category.theLoai}</td>
                                 <td>${blogPage[i].tacGia}</td>
                                 <td>${blogPage[i].tomTat}</td>
                             </tr>
@@ -70,7 +75,6 @@
             alert("He thong dang bao tri");
         }
     });
-
     $("#btnSearch").click(function () {
         let keywordVal = $("#keyword").val();
         $.ajax({
@@ -84,17 +88,19 @@
                 let blogPage = resultSuccess.content;
                 let outHTML = "";
                 for (let i = 0; i < blogPage.length; i++) {
+                    j++;
                     outHTML += `
                             <tr>
-                                <td>${i + 1}</td>
+                                <td>j</td>
                                 <td>${blogPage[i].id}</td>
                                 <td>${blogPage[i].tieuDe}</td>
                                 // <td>${blogPage[i].category.theLoai}</td>
-                                <td>${blogPage[i].category == null ? 'None':blogPage[i].category.theLoai}</td>
+                                <td>${blogPage[i].category == null ? 'None' : blogPage[i].category.theLoai}</td>
                                 <td>${blogPage[i].tacGia}</td>
                                 <td>${blogPage[i].tomTat}</td>
                             </tr>
                         `;
+
                 }
                 console.log(outHTML);
                 $("#bodyStudent").html(outHTML);
@@ -103,9 +109,50 @@
                 alert("He thong dang bao tri");
             }
         });
-
-
     });
+
+    let page = 0;
+    $("#load").click(function () {
+        page++;
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "GET", //GET, DELETE, PUT...
+            url: "http://localhost:8080/blogRest?page=" + page,
+            success: function (resultSuccess) {
+
+                let blogPage = resultSuccess.content;
+                if (blogPage.length == 0) {
+                    $("#load").hide();
+                } else {
+
+
+                    let outHTML = "";
+                    for (let i = 0; i < blogPage.length; i++) {
+                        outHTML += `
+                            <tr>
+                                <td>${2*page+i+1}</td>
+                                <td>${blogPage[i].id}</td>
+                                <td>${blogPage[i].tieuDe}</td>
+                                <td>${blogPage[i].category == null ? 'None' : blogPage[i].category.theLoai}</td>
+                                <td>${blogPage[i].tacGia}</td>
+                                <td>${blogPage[i].tomTat}</td>
+                            </tr>
+                        `;
+                        j++;
+                    }
+                    console.log(outHTML);
+                    $("#bodyStudent").append(outHTML);
+                }
+            },
+            error: function (resultError) {
+                alert("He thong dang bao tri");
+            }
+        });
+    });
+
 </script>
 </body>
 </html>
