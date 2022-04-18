@@ -3,9 +3,9 @@
 <head >
 </head>
 <body>
-<h3>Saving List</h3>
+<h3 th:text="#{saving.index.title}">Saving List</h3>
 <p>
-    <a th:href="@{/saving/create}">
+    <a th:href="@{/saving/create}" th:text="#{add.index.saving}">
         ADD NEW SAVING
     </a>
 </p>
@@ -13,21 +13,21 @@
   <button type="submit">Search</button>
   <input type="text" name="name" placeholder="name customer" >
 </form>
-<a th:href="@{/saving}">
-    Back to product list
+<a th:href="@{/saving}" th:text="#{back.index.saving}">
+    Back to saving list
 </a>
 
 <table id = "customers" border="1">
     <thead>
     <tr>
 <!--        <th>Stt</th>-->
-        <th>Mã Số Sổ</th>
-        <th>Ngày Gửi</th>
-        <th>Kỳ Hạng</th>
-        <th>Số Tiền Gửi</th>
-        <th>Tên Khách Hàng</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th th:text="#{id.saving}">Mã Số Sổ</th>
+        <th th:text="#{time}">Ngày Gửi</th>
+        <th th:text="#{period}">Kỳ Hạng</th>
+        <th th:text="#{money}">Số Tiền Gửi</th>
+        <th th:text="#{name.index.title}">Tên Khách Hàng</th>
+        <th th:text="#{edit.index.title}">Edit</th>
+        <th th:text="#{delete.index.title}">Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -39,8 +39,8 @@
         <td th:text="${saving.deposits}"></td>
         <td th:if="${saving.customer}" th:text="${saving.customer.name}"></td>
         <td th:unless="${saving.customer}"></td>
-        <td><a th:href="@{/saving/{savingId}/edit(savingId=${saving.getSavingId()})}">edit</a></td>
-        <td><a th:href="@{/saving/{savingId}/delete(savingId=${saving.getSavingId()})}">delete</a></td>
+        <td><a th:href="@{/saving/{savingId}/edit(savingId=${saving.getSavingId()})}" th:text="#{edit.index.title}">edit</a></td>
+        <td><a th:href="@{/saving/{savingId}/delete(savingId=${saving.getSavingId()})}" th:text="#{delete.index.title}">delete</a></td>
     </tr>
     </tbody>
 </table>
