@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Edit saving</h3>
+<p>
+    <a th:href="@{/saving}">
+        Back to saving list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/saving/update}" th:object="${savingDto} "
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Mã Số Sổ</label>
+            <input type="text" readonly style="background-color: blue"
+                   id="customer-id" name="customer_id" th:field="*{savingId}" value="savingId">
+        </div>
+        <div>
+            <label>Ngày bắt đầu</label>
+            <input type="date" th:field="*{timeToStart}" value="timeToStart"/>
+        </div>
+        <div>
+            <label>Kỳ hạn</label>
+            <input type="text" th:field="*{term}" value="term"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('term')}" th:errors="*{term}"></h6></div>
+        </div>
+        <div>
+            <label>Số tiền gửi</label>
+            <input type="text" th:field="*{deposits}" value="deposits"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('deposits')}" th:errors="*{deposits}"></h6></div>
+        </div>
+        <div>
+            <label>Ten khach hang</label>
+            <select th:field="*{customer.customerId}">
+                <option th:each="item : ${customerList}"
+                        th:value="${item.customerId}" th:text="${item.name}">
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Edit"/>
+    </form>
+</div>
+</body>
+</html>

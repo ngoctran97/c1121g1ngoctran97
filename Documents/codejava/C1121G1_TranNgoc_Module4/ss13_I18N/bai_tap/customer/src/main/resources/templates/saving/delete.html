@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Delete Saving</h3>
+<p>
+    <a th:href="@{/saving}">
+        Back to saving list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/saving/delete}" th:object="${saving} "
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{savingId}"/>
+        <div>
+            <label>Ngay bat dau</label>
+            <input type="text" th:field="*{timeToStart}"/>
+        </div>
+        <div>
+            <label>Ky han</label>
+            <input type="email" th:field="*{term}"/>
+        </div>
+        <div>
+            <label>so tien gui</label>
+            <input type="text" th:field="*{deposits}"/>
+        </div>
+        <div>
+            <label>Ten khach hang</label>
+            <select th:field="*{customer.customerId}">
+                <option th:each="item : ${customerList}"
+                        th:value="${item.customerId}" th:text="${item.name}">
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Remove"/>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+</head>
+<body>
+<h3 th:text="#{customer.index.title}"></h3>
+<p>
+  <a th:href="@{/customer/create}" th:text="#{add.index.title}">
+    ADD NEW CUSTOMER
+  </a>
+</p>
+<a th:href="@{/product}" th:text="#{back.index.title}">
+  Back to product list
+</a>
+
+<table id = "customers" border="1">
+  <thead>
+  <tr>
+    <th>Stt</th>
+    <th>Mã Khách Hàng</th>
+    <th>Tên Khách Hàng</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="row,loop : ${customerPage}">
+    <td th:text="${loop.count}"></td>
+    <td th:text="${row.getCustomerId()}"></td>
+    <td th:text="${row.getName()}"></td>
+    <td><a th:href="@{/customer/{customerId}/edit(customerId=${row.getCustomerId()})}">edit</a></td>
+    <td><a th:href="@{/customer/{customerId}/delete(customerId=${row.getCustomerId()})}">delete</a></td>
+  </tr>
+  </tbody>
+</table>
+
+<div>
+  <a th:if ="${customerPage.hasPrevious()}"
+     th:href="@{/customer/list(page=${customerPage.number -1}, keyword=${keywordValue})}">previous</a>
+  <span th:text="${customerPage.number +1}"></span>/
+  <span th:text="${customerPage.totalPages}"></span>
+  <a th:if ="${customerPage.hasNext()}"
+     th:href="@{/customer/list(page=${customerPage.number + 1}, keyword=${keywordValue})}">Next</a>
+</div>
+</body>
+</html>
