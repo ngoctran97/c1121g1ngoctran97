@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Add Customer</h3>
+<h3 th:text="#{add.index.title}">Add Customer</h3>
 <p>
-    <a th:href="@{/customer}">
+    <a th:href="@{/customer}" th:text="#{back.index.title}">
         Back to customer list
     </a>
 </p>

@@ -16,11 +16,11 @@
 <table id = "customers" border="1">
   <thead>
   <tr>
-    <th>Stt</th>
-    <th>Mã Khách Hàng</th>
-    <th>Tên Khách Hàng</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th th:text="#{no.index.title}">Stt</th>
+    <th th:text="#{id.index.title}">Mã Khách Hàng</th>
+    <th th:text="#{name.index.title}">Tên Khách Hàng</th>
+    <th th:text="#{edit.index.title}">Edit</th>
+    <th th:text="#{delete.index.title}">Delete</th>
   </tr>
   </thead>
   <tbody>
@@ -28,8 +28,8 @@
     <td th:text="${loop.count}"></td>
     <td th:text="${row.getCustomerId()}"></td>
     <td th:text="${row.getName()}"></td>
-    <td><a th:href="@{/customer/{customerId}/edit(customerId=${row.getCustomerId()})}">edit</a></td>
-    <td><a th:href="@{/customer/{customerId}/delete(customerId=${row.getCustomerId()})}">delete</a></td>
+    <td><a th:href="@{/customer/{customerId}/edit(customerId=${row.getCustomerId()})}" th:text="#{edit.index.title}">edit</a></td>
+    <td><a th:href="@{/customer/{customerId}/delete(customerId=${row.getCustomerId()})}" th:text="#{delete.index.title}">delete</a></td>
   </tr>
   </tbody>
 </table>
