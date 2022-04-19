@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="${title}"></title>
+</head>
+
+<body>
+
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<h2>Message : <span th:utext="${message}"></span></h2>
+
+<table id = "customers" border="1">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tiêu đề</th>
+        <th>The loai</th>
+        <th>Tác gỉa</th>
+        <th>Tóm tắt</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,loop : ${blogPage}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${row.tieuDe}"></td>
+        <td th:if="${row.category}" th:text="${row.category.theLoai}"></td>
+        <td th:text="${row.tacGia}"></td>
+        <td th:text="${row.tomTat}"></td>
+        <!--        <td th:text="${row.getNoiDung()}"></td>-->
+        <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}">delete</a></td>
+        <td><a th:href="@{/blog/{id}/view(id=${row.getId})}">view</a></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:if ="${blogPage.hasPrevious()}"
+       th:href="@{//list(page=${blogPage.number -1}, keyword=${keywordValue})}">previous</a>
+    <span th:text="${blogPage.number +1}"></span>/
+    <span th:text="${blogPage.totalPages}"></span>
+    <a th:if ="${blogPage.hasNext()}"
+       th:href="@{//list(page=${blogPage.number +1}, keyword=${keywordValue})}">Next</a>
+</div>
+</body>
+</html>
