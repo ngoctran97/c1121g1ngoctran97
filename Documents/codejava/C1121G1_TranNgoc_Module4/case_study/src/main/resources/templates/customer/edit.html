@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: head">
+</head>
+<body>
+<h3>Edit Customer</h3>
+<p>
+    <a th:href="@{/customer}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customer/update}" th:object="${customerDto} "
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Id</label>
+            <input type="text" readonly style="background-color: greenyellow"
+                   id="customer-id" name="customer_id" th:field="*{customerId}" value="customerId">
+        </div>
+        <div>
+            <label>Code</label>
+            <input type="text" th:field="*{customerCode}" value="customerCode"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}"></h6></div>
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{customerName}" value="customerName"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></h6></div>
+        </div>
+        <div>
+            <label>Birthday</label>
+            <input type="text" th:field="*{customerBirthday}" value="customerBirthday"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}"></h6></div>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="text" th:field="*{customerGender}" value="customerGender"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></h6></div>
+        </div>
+        <div>
+            <label>IdCard</label>
+            <input type="text" th:field="*{customerIdCard}" value="customerIdCard"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></h6></div>
+        </div>
+        <div>
+            <label>Phone</label>
+            <input type="text" th:field="*{customerPhone}" value="customerPhone"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></h6></div>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" th:field="*{customerEmail}" value="customerEmail"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></h6></div>
+        </div>
+        <div>
+            <label>Address</label>
+            <input type="text" th:field="*{customerAddress}" value="customerAddress"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}"></h6></div>
+        </div>
+        <div>
+            <label>CustomerType</label>
+            <select th:field="*{customerType.customerTypeId}">
+                <option th:each="item : ${customerTypeList}"
+                        th:value="${item.customerTypeId}" th:text="${item.customerTypeName}">
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Edit"/>
+    </form>
+</div>
+</body>
+</html>
