@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: head"></head>
+<body>
+<h3>Add Customer</h3>
+<p>
+    <a th:href="@{/service}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/service/save/__${serviceTypeId}__}" th:object="${serviceDto} "
+          method="POST" novalidate="novalidate">
+
+        <select th:field="*{serviceType}">
+            <option th:if="${itemp.serviceTypeId==serviceTypeId}" th:each="itemp : ${serviceType}"
+                    th:value="${itemp.serviceTypeId}" th:text="${itemp.serviceTypeName}">
+            </option>
+        </select>
+        <div>
+            <label>Code</label>
+            <input type="text" th:field="*{serviceCode}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('serviceCode')}" th:errors="*{serviceCode}"></h6></div>
+        </div>
+        <div>
+            <label>Ten dich vu</label>
+            <input type="text" th:field="*{serviceName}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('serviceName')}" th:errors="*{serviceName}"></h6></div>
+        </div>
+        <div>
+            <label>dien tich</label>
+            <input type="text" th:field="*{serviceArea}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('serviceArea')}" th:errors="*{serviceArea}"></h6></div>
+        </div>
+        <div>
+            <label>Tien dat coc</label>
+            <input type="text" th:field="*{serviceCost}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></h6></div>
+        </div>
+        <div>
+            <label>So luong toi da</label>
+            <input type="text" th:field="*{serviceMaxPeople}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></h6></div>
+
+        </div>
+        <div>
+            <label>Loai phong</label>
+            <input type="text" th:field="*{standardRoom}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></h6></div>
+        </div>
+        <div>
+            <label>DV di kem</label>
+            <input type="text" th:field="*{descriptionOtherConvenience}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('descriptionOtherConvenience')}" th:errors="*{descriptionOtherConvenience}"></h6></div>
+        </div>
+
+        <div th:if="${serviceTypeId==1}">
+            <label>Dien tich ho boi</label>
+            <input type="text" th:field="*{poolArea}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></h6></div>
+        </div>
+
+
+        <div th:if="${serviceTypeId==1||serviceTypeId==2}">
+            <label>So tang</label>
+            <input type="text" th:field="*{numberOfFloor}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('numberOfFloor')}" th:errors="*{numberOfFloor}"></h6></div>
+        </div>
+        <div>
+            <label>Kieu thue</label>
+            <select th:field="*{rentType}">
+                <option th:each ="item:${rentType}"
+                        th:value="${item.rentTypeId}"
+                        th:text="${item.rentTypeName}">
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout/layout :: footer"></footer>
+</body>
+</html>

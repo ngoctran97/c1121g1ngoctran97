@@ -1,30 +1,20 @@
 package com.codegym.model;
 
 public class AttachService {
-    private int attachServiceId;
+    private Integer attachServiceId;
     private String attachServiceName;
-    private double attachServiceCost;
+    private Double attachServiceCost;
     private String attachServiceUnit;
     private String attachServiceStatus;
 
     public AttachService() {
     }
 
-    public AttachService(int attachServiceId, String attachServiceName,
-                         double attachServiceCost, String attachServiceUnit,
-                         String attachServiceStatus) {
-        this.attachServiceId = attachServiceId;
-        this.attachServiceName = attachServiceName;
-        this.attachServiceCost = attachServiceCost;
-        this.attachServiceUnit = attachServiceUnit;
-        this.attachServiceStatus = attachServiceStatus;
-    }
-
-    public int getAttachServiceId() {
+    public Integer getAttachServiceId() {
         return attachServiceId;
     }
 
-    public void setAttachServiceId(int attachServiceId) {
+    public void setAttachServiceId(Integer attachServiceId) {
         this.attachServiceId = attachServiceId;
     }
 
@@ -36,11 +26,11 @@ public class AttachService {
         this.attachServiceName = attachServiceName;
     }
 
-    public double getAttachServiceCost() {
+    public Double getAttachServiceCost() {
         return attachServiceCost;
     }
 
-    public void setAttachServiceCost(double attachServiceCost) {
+    public void setAttachServiceCost(Double attachServiceCost) {
         this.attachServiceCost = attachServiceCost;
     }
 

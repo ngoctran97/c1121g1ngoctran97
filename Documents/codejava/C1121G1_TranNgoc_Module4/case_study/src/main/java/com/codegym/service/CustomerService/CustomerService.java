@@ -31,7 +31,7 @@ public class CustomerService implements ICustomerService{
 
     @Override
     public Page<Customer> findAll(String customerName, Pageable pageable) {
-        return customerRepository.findAllByCustomerNameContaining(customerName, pageable);
+        return customerRepository.findAllByCustomerNameContainingAndDeleteFlag(customerName,false, pageable);
     }
 
 

@@ -26,7 +26,7 @@ public class Employee {
 
 
     @ManyToOne
-    @JoinColumn(name = "division_id" , referencedColumnName = "educationDegreeId")
+    @JoinColumn(name = "division_id" , referencedColumnName = "divisionId")
     private Division division;
 
     @ManyToOne

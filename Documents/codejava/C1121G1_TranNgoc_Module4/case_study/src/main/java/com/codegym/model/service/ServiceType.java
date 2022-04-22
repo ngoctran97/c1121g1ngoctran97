@@ -1,22 +1,26 @@
 package com.codegym.model.service;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class ServiceType {
-    private int serviceTypeId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer serviceTypeId;
     private String serviceTypeName;
+
+    @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<Facility> serviceSet;
 
     public ServiceType() {
     }
 
-    public ServiceType(int serviceTypeId, String serviceTypeName) {
-        this.serviceTypeId = serviceTypeId;
-        this.serviceTypeName = serviceTypeName;
-    }
-
-    public int getServiceTypeId() {
+    public Integer getServiceTypeId() {
         return serviceTypeId;
     }
 
-    public void setServiceTypeId(int serviceTypeId) {
+    public void setServiceTypeId(Integer serviceTypeId) {
         this.serviceTypeId = serviceTypeId;
     }
 
@@ -26,5 +30,13 @@ public class ServiceType {
 
     public void setServiceTypeName(String serviceTypeName) {
         this.serviceTypeName = serviceTypeName;
+    }
+
+    public Set<Facility> getServiceSet() {
+        return serviceSet;
+    }
+
+    public void setServiceSet(Set<Facility> serviceSet) {
+        this.serviceSet = serviceSet;
     }
 }

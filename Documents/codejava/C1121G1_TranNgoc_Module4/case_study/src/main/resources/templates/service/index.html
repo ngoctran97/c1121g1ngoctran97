@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: head">
+</head>
+<body>
+<h3>Service List</h3>
+<div>
+    <a th:href="@{/service/create/{id}(id=1)}">
+        <input type="submit" value="Villa">
+    </a>
+    <a th:href="@{/service/create/{id}(id=2)}">
+        <input type="submit" value="Houne">
+    </a>
+    <a th:href="@{/service/create/{id}(id=3)}">
+        <input type="submit" value="Room">
+    </a>
+</div>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Area</th>
+        <th>Cost</th>
+        <th>MaxPeople</th>
+        <th>standardRoom</th>
+        <th>descriptionOtherConvenience</th>
+        <th>poolArea</th>
+        <th>numberOfFloor</th>
+        <th>rentType</th>
+        <th>serviceType</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="facility,loop :${servicePage}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${facility.serviceId}"></td>
+        <td th:text="${facility.serviceCode}"></td>
+        <td th:text="${facility.serviceName}"></td>
+        <td th:text="${facility.serviceArea}"></td>
+        <td th:text="${facility.serviceCost}"></td>
+        <td th:text="${facility.serviceMaxPeople}"></td>
+        <td th:text="${facility.standardRoom}"></td>
+        <td th:text="${facility.descriptionOtherConvenience}"></td>
+        <td th:text="${facility.poolArea}"></td>
+        <td th:text="${facility.numberOfFloor}"></td>
+        <td th:text="${facility.rentType.rentTypeName}"></td>
+<!--        <td th:text="${facility.serviceType.serviceTypeName}"></td>-->
+        <td th:if="${facility.serviceType}" th:text="${facility.serviceType.serviceTypeName}"></td>
+        <td th:unless="${facility.serviceType}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:if="${servicePage.hasPrevious()}"
+       th:href="@{/service/list(page=${servicePage.number -1}, keyword=${keywordValue})}">previous</a>
+    <span th:text="${servicePage.number +1}"></span>/
+    <span th:text="${servicePage.totalPages}"></span>
+    <a th:if="${servicePage.hasNext()}"
+       th:href="@{/service/list(page=${servicePage.number +1}, keyword=${keywordValue})}">Next</a>
+</div>
+
+</script>
+</body>
+</html>

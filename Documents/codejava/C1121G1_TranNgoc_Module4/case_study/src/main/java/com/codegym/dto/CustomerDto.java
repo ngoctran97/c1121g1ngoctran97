@@ -35,12 +35,14 @@ public class CustomerDto implements Validator {
     @Pattern(regexp = "[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)",message = "Please enter the correct format")
     private String customerEmail;
 
-    @NotBlank(message = "Phone can not empty")
+    @NotBlank(message = "Address can not empty")
     private String customerAddress;
 
     private CustomerType customerType;
+    private Boolean deleteFlag;
 
     public CustomerDto() {
+        setDeleteFlag(false);
     }
 
     public int getCustomerId() {
@@ -131,5 +133,13 @@ public class CustomerDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
 
+    }
+
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }

@@ -1,32 +1,23 @@
 package com.codegym.model;
 
 public class Contract {
-    private int contractId;
+    private Integer contractId;
     private String contractStartDate;
     private String contractEndDate;
-    private double contractDeposit;
-    private int employeeId;
-    private int customerId;
-    private int serviceId;
+    private Double contractDeposit;
+    private Integer employeeId;
+    private Integer customerId;
+    private Integer serviceId;
 
     public Contract() {
     }
 
-    public Contract(int contractId, String contractStartDate, String contractEndDate, double contractDeposit, int employeeId, int customerId, int serviceId) {
-        this.contractId = contractId;
-        this.contractStartDate = contractStartDate;
-        this.contractEndDate = contractEndDate;
-        this.contractDeposit = contractDeposit;
-        this.employeeId = employeeId;
-        this.customerId = customerId;
-        this.serviceId = serviceId;
-    }
 
-    public int getContractId() {
+    public Integer getContractId() {
         return contractId;
     }
 
-    public void setContractId(int contractId) {
+    public void setContractId(Integer contractId) {
         this.contractId = contractId;
     }
 
@@ -46,35 +37,35 @@ public class Contract {
         this.contractEndDate = contractEndDate;
     }
 
-    public double getContractDeposit() {
+    public Double getContractDeposit() {
         return contractDeposit;
     }
 
-    public void setContractDeposit(double contractDeposit) {
+    public void setContractDeposit(Double contractDeposit) {
         this.contractDeposit = contractDeposit;
     }
 
-    public int getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
 
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
-    public int getServiceId() {
+    public Integer getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
     }
 }

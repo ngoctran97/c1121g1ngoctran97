@@ -12,6 +12,7 @@ public class CustomerType {
 
     @OneToMany(mappedBy = "customerType", cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Customer> customerSet;
+
     public CustomerType() {
     }
 

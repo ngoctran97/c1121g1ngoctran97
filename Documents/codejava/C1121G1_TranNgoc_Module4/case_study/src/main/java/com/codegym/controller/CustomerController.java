@@ -1,8 +1,9 @@
-package com.codegym.controller.customerController;
+package com.codegym.controller;
 
 import com.codegym.dto.CustomerDto;
 import com.codegym.model.customer.Customer;
 import com.codegym.model.customer.CustomerType;
+import com.codegym.model.employee.Employee;
 import com.codegym.service.CustomerService.ICustomerService;
 import com.codegym.service.CustomerService.ICustomerTypeService;
 import org.springframework.beans.BeanUtils;
@@ -15,14 +16,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("customer")
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
@@ -41,8 +41,6 @@ public class CustomerController {
         model.addAttribute("keywordValue", keywordValue);
 
         return "customer/index";
-//        return "customer/abc";
-
     }
 
     @GetMapping("/create")
@@ -65,7 +63,6 @@ public class CustomerController {
             model.addAttribute("customerDto", customerDto);
             return "customer/create";
         }
-
         BeanUtils.copyProperties(customerDto, customer);
         customerService.save(customer);
         return "redirect:/customer/list";
@@ -99,12 +96,15 @@ public class CustomerController {
         return "redirect:/customer/list";
     }
 
-//    @PostMapping("/delete")
-//    public  String delete(@PathVariable Integer id, Model model,
-//                          Customer customer,RedirectAttributes redirectAttributes){
-//        model.addAttribute("customer",customerService);
-//        return null;
-//    }
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id-customer") Integer id){
+        Customer customer = customerService.findById(id);
+        if(customer != null){
+            customer.setDeleteFlag(true);
+            customerService.save(customer);
+        }
+        return "redirect:/customer/list";
+    }
 
 
 }

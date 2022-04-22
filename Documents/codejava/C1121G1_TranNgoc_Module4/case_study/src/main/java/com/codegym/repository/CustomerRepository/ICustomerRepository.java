@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
-    Page<Customer> findAllByCustomerNameContaining(String customerName, Pageable pageable);
+    Page<Customer> findAllByCustomerNameContainingAndDeleteFlag(String customerName, boolean deleteflag, Pageable pageable);
 
 }

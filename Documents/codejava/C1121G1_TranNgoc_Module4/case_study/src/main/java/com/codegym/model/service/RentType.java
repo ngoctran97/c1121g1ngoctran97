@@ -1,29 +1,27 @@
 package com.codegym.model.service;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class RentType {
-    private int rentTypeId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer rentTypeId;
     private String rentTypeName;
-    private double rentTypeCost;
+    private Double rentTypeCost;
+
+    @OneToMany(mappedBy = "rentType", cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<Facility> serviceSet;
 
     public RentType() {
     }
 
-    public RentType(int rentTypeId, String rentTypeName, double rentTypeCost) {
-        this.rentTypeId = rentTypeId;
-        this.rentTypeName = rentTypeName;
-        this.rentTypeCost = rentTypeCost;
-    }
-
-    public RentType(int rentTypeId, String rentTypeName) {
-        this.rentTypeId = rentTypeId;
-        this.rentTypeName = rentTypeName;
-    }
-
-    public int getRentTypeId() {
+    public Integer getRentTypeId() {
         return rentTypeId;
     }
 
-    public void setRentTypeId(int rentTypeId) {
+    public void setRentTypeId(Integer rentTypeId) {
         this.rentTypeId = rentTypeId;
     }
 
@@ -35,11 +33,19 @@ public class RentType {
         this.rentTypeName = rentTypeName;
     }
 
-    public double getRentTypeCost() {
+    public Double getRentTypeCost() {
         return rentTypeCost;
     }
 
-    public void setRentTypeCost(double rentTypeCost) {
+    public void setRentTypeCost(Double rentTypeCost) {
         this.rentTypeCost = rentTypeCost;
+    }
+
+    public Set<Facility> getServiceSet() {
+        return serviceSet;
+    }
+
+    public void setServiceSet(Set<Facility> serviceSet) {
+        this.serviceSet = serviceSet;
     }
 }

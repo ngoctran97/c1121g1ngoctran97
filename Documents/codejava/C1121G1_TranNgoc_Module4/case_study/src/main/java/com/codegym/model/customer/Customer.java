@@ -1,6 +1,7 @@
 package com.codegym.model.customer;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -15,12 +16,14 @@ public class Customer {
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
+    private Boolean deleteFlag;
 
     @ManyToOne()
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
 
     public Customer() {
+        setDeleteFlag(false);
     }
 
 
@@ -102,5 +105,13 @@ public class Customer {
 
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
+    }
+
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }

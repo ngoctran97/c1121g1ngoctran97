@@ -1,50 +1,43 @@
 package com.codegym.model;
 
 public class ContractDetail {
-    private int contractDetailId;
-    private int contractId;
-    private int contractServiceId;
-    private int quatity;
+    private Integer contractDetailId;
+    private Integer contractId;
+    private Integer contractServiceId;
+    private Integer quatity;
 
     public ContractDetail() {
     }
 
-    public ContractDetail(int contractDetailId, int contractId, int contractServiceId, int quatity) {
-        this.contractDetailId = contractDetailId;
-        this.contractId = contractId;
-        this.contractServiceId = contractServiceId;
-        this.quatity = quatity;
-    }
-
-    public int getContractDetailId() {
+    public Integer getContractDetailId() {
         return contractDetailId;
     }
 
-    public void setContractDetailId(int contractDetailId) {
+    public void setContractDetailId(Integer contractDetailId) {
         this.contractDetailId = contractDetailId;
     }
 
-    public int getContractId() {
+    public Integer getContractId() {
         return contractId;
     }
 
-    public void setContractId(int contractId) {
+    public void setContractId(Integer contractId) {
         this.contractId = contractId;
     }
 
-    public int getContractServiceId() {
+    public Integer getContractServiceId() {
         return contractServiceId;
     }
 
-    public void setContractServiceId(int contractServiceId) {
+    public void setContractServiceId(Integer contractServiceId) {
         this.contractServiceId = contractServiceId;
     }
 
-    public int getQuatity() {
+    public Integer getQuatity() {
         return quatity;
     }
 
-    public void setQuatity(int quatity) {
+    public void setQuatity(Integer quatity) {
         this.quatity = quatity;
     }
 }
