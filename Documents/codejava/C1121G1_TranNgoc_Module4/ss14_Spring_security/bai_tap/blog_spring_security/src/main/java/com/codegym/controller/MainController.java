@@ -38,14 +38,21 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(Model model, Principal principal) {
+    public String adminPage(Model model,
+                            Principal principal,
+                            @PageableDefault(value = 2) Pageable pageable,
+                            @RequestParam Optional<String> keyword) {
 
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
-
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
+        String keywordValue = keyword.orElse("");
+        Page<Blog> blogPage = this.blogService.findAll(pageable);
+        model.addAttribute("blogPage",blogPage);
+        model.addAttribute("keywordValue",keywordValue);
 
-        return "adminPage";
+//        return "adminPage";
+        return "blog/home";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
