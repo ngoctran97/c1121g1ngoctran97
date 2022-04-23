@@ -21,16 +21,16 @@
             <input type="date" th:field="*{contractEndDate}"/>
             <div><h6 style="color: red" th:if="${#fields.hasErrors('contractEndDate')}" th:errors="*{contractEndDate}"></h6></div>
         </div>
-<!--        <div>-->
-<!--            <label>contractDeposit</label>-->
-<!--            <input type="date" th:field="*{contractDeposit}"/>-->
-<!--            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractDeposit')}" th:errors="*{contractDeposit}"></h6></div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <label>contractTotalMoney</label>-->
-<!--            <input type="text" th:field="*{contractTotalMoney}"/>-->
-<!--            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractTotalMoney')}" th:errors="*{contractTotalMoney}"></h6></div>-->
-<!--        </div>-->
+        <div>
+            <label>contractDeposit</label>
+            <input type="date" th:field="*{contractDeposit}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractDeposit')}" th:errors="*{contractDeposit}"></h6></div>
+        </div>
+        <div>
+            <label>contractTotalMoney</label>
+            <input type="text" th:field="*{contractTotalMoney}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractTotalMoney')}" th:errors="*{contractTotalMoney}"></h6></div>
+        </div>
         <div>
             <label>employee</label>
             <select th:field="*{employee}">
