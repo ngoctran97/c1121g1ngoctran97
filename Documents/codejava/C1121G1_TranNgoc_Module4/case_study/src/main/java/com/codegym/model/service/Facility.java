@@ -1,12 +1,16 @@
 package com.codegym.model.service;
 
+import com.codegym.model.contract.Contract;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="service")
 public class Facility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer serviceId;
     private String serviceCode;
     private String serviceName;
@@ -24,8 +28,10 @@ public class Facility {
 
     @ManyToOne()
     @JoinColumn(name = "service_type_id", referencedColumnName = "serviceTypeId")
-
     private ServiceType serviceType;
+
+    @OneToMany(mappedBy = "facility")
+    private Set<Contract> contractSet;
 
     public Integer getServiceId() {
         return serviceId;

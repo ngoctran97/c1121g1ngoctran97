@@ -1,7 +1,9 @@
 package com.codegym.model.customer;
 
+import com.codegym.model.contract.Contract;
+
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -21,6 +23,9 @@ public class Customer {
     @ManyToOne()
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Contract> contractSet;
 
     public Customer() {
         setDeleteFlag(false);
@@ -99,6 +104,14 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
+
     public CustomerType getCustomerType() {
         return customerType;
     }
@@ -107,11 +120,11 @@ public class Customer {
         this.customerType = customerType;
     }
 
-    public Boolean getDeleteFlag() {
-        return deleteFlag;
+    public Set<Contract> getContractSet() {
+        return contractSet;
     }
 
-    public void setDeleteFlag(Boolean deleteFlag) {
-        this.deleteFlag = deleteFlag;
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
     }
 }

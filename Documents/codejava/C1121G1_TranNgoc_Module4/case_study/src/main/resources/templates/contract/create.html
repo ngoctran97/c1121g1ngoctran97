@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: head"></head>
+<body>
+<h3>Add Customer</h3>
+<p>
+    <a th:href="@{/customer}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/contract/save}" th:object="${contractDto} "
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>contractStartDate</label>
+            <input type="date" th:field="*{contractStartDate}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractStartDate')}" th:errors="*{contractStartDate}"></h6></div>
+        </div>
+        <div>
+            <label>contractEndDate</label>
+            <input type="date" th:field="*{contractEndDate}"/>
+            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractEndDate')}" th:errors="*{contractEndDate}"></h6></div>
+        </div>
+<!--        <div>-->
+<!--            <label>contractDeposit</label>-->
+<!--            <input type="date" th:field="*{contractDeposit}"/>-->
+<!--            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractDeposit')}" th:errors="*{contractDeposit}"></h6></div>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label>contractTotalMoney</label>-->
+<!--            <input type="text" th:field="*{contractTotalMoney}"/>-->
+<!--            <div><h6 style="color: red" th:if="${#fields.hasErrors('contractTotalMoney')}" th:errors="*{contractTotalMoney}"></h6></div>-->
+<!--        </div>-->
+        <div>
+            <label>employee</label>
+            <select th:field="*{employee}">
+                <option th:each ="item:${employees}"
+                        th:value="${item.employeeId}"
+                        th:text="${item.employeeName}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label>customer</label>
+            <select th:field="*{customer}">
+                <option th:each ="item:${customers}"
+                        th:value="${item.customerId}"
+                        th:text="${item.customerName}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label>facility</label>
+            <select th:field="*{facility}">
+                <option th:each ="item:${services}"
+                        th:value="${item.serviceId}"
+                        th:text="${item.serviceName}">
+                </option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout/layout :: footer"></footer>
+</body>
+</html>

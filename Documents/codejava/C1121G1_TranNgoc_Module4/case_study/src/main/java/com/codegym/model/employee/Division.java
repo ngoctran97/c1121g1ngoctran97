@@ -10,7 +10,7 @@ public class Division {
     private Integer divisionId;
     private String divisionName;
 
-    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL, orphanRemoval = true )
+    @OneToMany(mappedBy = "division")
     private Set<Employee> employeeSet;
 
     public Division() {

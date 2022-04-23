@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServiceService implements IServiceService {
 
@@ -19,6 +21,11 @@ public class ServiceService implements IServiceService {
     @Override
     public Page<Facility> findAll(Pageable pageable) {
         return serviceRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Facility> findAll() {
+        return serviceRepository.findAll();
     }
 
     @Override

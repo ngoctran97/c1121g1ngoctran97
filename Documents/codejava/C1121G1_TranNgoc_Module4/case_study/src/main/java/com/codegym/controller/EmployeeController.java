@@ -89,16 +89,16 @@ public class EmployeeController {
         return "redirect:/employee/list";
     }
 
-    @GetMapping("/update/{id}")
-    public  String updatefrom(@PathVariable Integer id, Model model){
-        EmployeeDto employeeDto = new EmployeeDto();
-        Employee employee = employeeService.findById(id);
-        List<Division> divisionList = divisionService.findAll();
-        model.addAttribute("divisionList",divisionList);
-        List<EducationDegree> educationDegreeList = educationDegreeService.findAll();
-        model.addAttribute("educationDegreeList",educationDegreeList);
-
-    }
+//    @GetMapping("/update/{id}")
+//    public  String updatefrom(@PathVariable Integer id, Model model){
+//        EmployeeDto employeeDto = new EmployeeDto();
+//        Employee employee = employeeService.findById(id);
+//        List<Division> divisionList = divisionService.findAll();
+//        model.addAttribute("divisionList",divisionList);
+//        List<EducationDegree> educationDegreeList = educationDegreeService.findAll();
+//        model.addAttribute("educationDegreeList",educationDegreeList);
+//
+//    }
 
 
 }

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: head">
+</head>
+<body>
+<h3>Contract List</h3>
+<p>
+    <a th:href="@{/contract/create}">
+        ADD NEW CONTRACTR
+    </a>
+</p>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Id</th>
+        <th>contractStartDate</th>
+        <th>contractEndDate</th>
+<!--        <th>contractDeposit</th>-->
+<!--        <th>contractTotalMoney</th>-->
+        <th>employee</th>
+        <th>customer</th>
+        <th>facility</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contract,loop :${contractPage}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${contract.contractId}"></td>
+        <td th:text="${contract.contractStartDate}"></td>
+        <td th:text="${contract.contractEndDate}"></td>
+<!--        <td th:text="${contract.contractTotalMoney}"></td>-->
+<!--        <td th:text="${contract.contractEndDate}"></td>-->
+        <td th:text="${contract.customer.customerName}"></td>
+        <td th:text="${contract.employee.employeeName}"></td>
+        <td th:text="${contract.facility.serviceName}"></td>
+<!--        <td th:if="${facility.serviceType}" th:text="${facility.serviceType.serviceTypeName}"></td>-->
+<!--        <td th:unless="${facility.serviceType}"></td>-->
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:if="${contractPage.hasPrevious()}"
+       th:href="@{/contract/list(page=${contractPage.number -1}, keyword=${keywordValue})}">previous</a>
+    <span th:text="${contractPage.number +1}"></span>/
+    <span th:text="${contractPage.totalPages}"></span>
+    <a th:if="${contractPage.hasNext()}"
+       th:href="@{/contract/list(page=${contractPage.number +1}, keyword=${keywordValue})}">Next</a>
+</div>
+
+</script>
+</body>
+</html>

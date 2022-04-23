@@ -19,7 +19,6 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Page<Employee> findAll(Pageable pageable) {
-
         return employeeRepository.findAll(pageable);
     }
 
@@ -31,6 +30,11 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public Employee findById(Integer id) {
         return employeeRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
     }
 
 

@@ -4,18 +4,33 @@ import com.codegym.model.employee.Employee;
 
 import javax.persistence.*;
 import java.util.Set;
+
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer usernameId;
+
     private String username;
     private String password;
 
     @OneToMany(mappedBy = "user")
     private Set<Employee> employeeSet;
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserRole> userRoleSet;
+
+
     public User() {
     }
+//
+//    public Integer getUsernameId() {
+//        return usernameId;
+//    }
+//
+//    public void setUsernameId(Integer usernameId) {
+//        this.usernameId = usernameId;
+//    }
 
     public String getUsername() {
         return username;
@@ -39,5 +54,13 @@ public class User {
 
     public void setEmployeeSet(Set<Employee> employeeSet) {
         this.employeeSet = employeeSet;
+    }
+
+    public Set<UserRole> getUserRoleSet() {
+        return userRoleSet;
+    }
+
+    public void setUserRoleSet(Set<UserRole> userRoleSet) {
+        this.userRoleSet = userRoleSet;
     }
 }

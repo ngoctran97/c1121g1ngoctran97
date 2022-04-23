@@ -1,8 +1,11 @@
 package com.codegym.model.employee;
 
+import com.codegym.model.contract.Contract;
 import com.codegym.model.user.User;
 
 import javax.persistence.*;
+import java.util.Set;
+
 @Entity
 public class Employee {
     @Id
@@ -15,6 +18,8 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
+
+
 
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
@@ -32,6 +37,9 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "username",referencedColumnName = "username")
     private User user;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Contract> contractSet;
 
     public Employee() {
     }
@@ -130,5 +138,13 @@ public class Employee {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Contract> getContractSet() {
+        return contractSet;
+    }
+
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
     }
 }

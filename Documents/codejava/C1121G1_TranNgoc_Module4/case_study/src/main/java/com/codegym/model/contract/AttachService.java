@@ -1,11 +1,21 @@
-package com.codegym.model;
+package com.codegym.model.contract;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class AttachService {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer attachServiceId;
     private String attachServiceName;
     private Double attachServiceCost;
     private String attachServiceUnit;
     private String attachServiceStatus;
+
+    @OneToMany(mappedBy = "attachService")
+    private Set<ContractDetail> contractDetailSet;
+
 
     public AttachService() {
     }
@@ -48,5 +58,13 @@ public class AttachService {
 
     public void setAttachServiceStatus(String attachServiceStatus) {
         this.attachServiceStatus = attachServiceStatus;
+    }
+
+    public Set<ContractDetail> getContractDetailSet() {
+        return contractDetailSet;
+    }
+
+    public void setContractDetailSet(Set<ContractDetail> contractDetailSet) {
+        this.contractDetailSet = contractDetailSet;
     }
 }

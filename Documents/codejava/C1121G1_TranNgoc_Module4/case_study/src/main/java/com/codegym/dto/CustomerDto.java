@@ -135,6 +135,7 @@ public class CustomerDto implements Validator {
 
     }
 
+
     public Boolean getDeleteFlag() {
         return deleteFlag;
     }

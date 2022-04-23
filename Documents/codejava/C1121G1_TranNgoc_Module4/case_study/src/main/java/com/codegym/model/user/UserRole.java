@@ -1,30 +1,46 @@
 package com.codegym.model.user;
 
-public class UserRole {
-    private int roleId;
-    private String username;
+import javax.persistence.*;
 
-    public UserRole(int roleId, String username) {
-        this.roleId = roleId;
-        this.username = username;
-    }
+@Entity
+public class UserRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userRoleId;
+
+    @ManyToOne
+    @JoinColumn(name = "username",referencedColumnName = "username")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id",referencedColumnName = "roleId")
+    private Role role;
+
 
     public UserRole() {
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Integer getUserRoleId() {
+        return userRoleId;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setUserRoleId(Integer userRoleId) {
+        this.userRoleId = userRoleId;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
