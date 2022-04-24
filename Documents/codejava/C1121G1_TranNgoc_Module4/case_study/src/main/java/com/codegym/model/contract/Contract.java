@@ -12,11 +12,10 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contractId;
-
     private String contractStartDate;
     private String contractEndDate;
-//    private Double contractDeposit;
-//    private Double contractTotalMoney;
+    private Double contractDeposit;
+    private Double contractTotalMoney;
 
     @OneToMany(mappedBy = "contract")
     private Set<ContractDetail> contractDetailSet;
@@ -60,21 +59,21 @@ public class Contract {
         this.contractEndDate = contractEndDate;
     }
 
-//    public Double getContractDeposit() {
-//        return contractDeposit;
-//    }
-//
-//    public void setContractDeposit(Double contractDeposit) {
-//        this.contractDeposit = contractDeposit;
-//    }
-//
-//    public Double getContractTotalMoney() {
-//        return contractTotalMoney;
-//    }
-//
-//    public void setContractTotalMoney(Double contractTotalMoney) {
-//        this.contractTotalMoney = contractTotalMoney;
-//    }
+    public Double getContractDeposit() {
+        return contractDeposit;
+    }
+
+    public void setContractDeposit(Double contractDeposit) {
+        this.contractDeposit = contractDeposit;
+    }
+
+    public Double getContractTotalMoney() {
+        return contractTotalMoney;
+    }
+
+    public void setContractTotalMoney(Double contractTotalMoney) {
+        this.contractTotalMoney = contractTotalMoney;
+    }
 
     public Set<ContractDetail> getContractDetailSet() {
         return contractDetailSet;

@@ -112,6 +112,7 @@
         <td>Model</td>
         <td>Price</td>
         <td>Delete</td>
+        <td>Edit</td>
     </tr>
     <th:block th:each="smartphone: ${smartphones}">
         <tr>
@@ -119,6 +120,7 @@
             <td th:text="${smartphone.model}"></td>
             <td th:text="${smartphone.price}"></td>
             <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a></td>
+            <td><a id="edit" th:href="@{/smartphones/edit(id = ${smartphone.getId()})}">Edit</a></td>
         </tr>
     </th:block>
 </table>

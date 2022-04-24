@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContractService implements IContractService {
 
@@ -17,6 +19,11 @@ public class ContractService implements IContractService {
     @Override
     public Page<Contract> findAll(String keywordValue, Pageable pageable) {
         return contractRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Contract> findAll() {
+        return contractRepository.findAll();
     }
 
     @Override

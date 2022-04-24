@@ -3,9 +3,10 @@ package com.codegym.controller;
 import com.codegym.dto.CustomerDto;
 import com.codegym.model.customer.Customer;
 import com.codegym.model.customer.CustomerType;
-import com.codegym.model.employee.Employee;
+import com.codegym.model.customer.CustomerUser;
 import com.codegym.service.CustomerService.ICustomerService;
 import com.codegym.service.CustomerService.ICustomerTypeService;
+import com.codegym.service.CustomerService.ICustomerUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +31,9 @@ public class CustomerController {
 
     @Autowired
     private ICustomerTypeService customerTypeService;
+
+    @Autowired
+    private ICustomerUserService customerUserService;
 
     @GetMapping(value = {"", "/list"})
     public String index(Model model,
@@ -106,5 +110,15 @@ public class CustomerController {
         return "redirect:/customer/list";
     }
 
+    @GetMapping(value = {"/customer_use_service_list"})
+    public String customerUserServiceList(Model model,
+                        @PageableDefault(value = 5) Pageable pageable,
+                        @RequestParam Optional<String> keyword) {
+        String keywordValue = keyword.orElse("");
+        Page<CustomerUser> customerUserPage = customerUserService.findAll(keywordValue,pageable);
+        model.addAttribute("customerUserPage", customerUserPage);
+        model.addAttribute("keywordValue", keywordValue);
 
+        return "customer/customer_use_list";
+    }
 }

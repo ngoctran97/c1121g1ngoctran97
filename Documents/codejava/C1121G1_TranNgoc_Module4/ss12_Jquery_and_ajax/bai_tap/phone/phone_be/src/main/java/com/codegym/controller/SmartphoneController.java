@@ -42,14 +42,21 @@ public class SmartphoneController {
         return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.NO_CONTENT);
     }
 
-    @PatchMapping("/update")
-    public ResponseEntity<Smartphone> updateSmartphone(@RequestParam Long id, @RequestBody Smartphone smartphone) {
-        Optional<Smartphone> smartphoneOptional = smartphoneService.findById(id);
-        if (!smartphoneOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        smartphone.setId(smartphoneOptional.get().getId());
-        return new ResponseEntity<>(smartphoneService.save(smartphone), HttpStatus.OK);
+    @GetMapping("/edit")
+    public ModelAndView showEditPage(@RequestParam Long id){
+        Smartphone smartPhone = this.smartphoneService.findById(id).orElse(null);
+        ModelAndView modelAndView = new ModelAndView("phones/edit");
+        modelAndView.addObject("smartPhone",smartPhone);
+        return modelAndView;
     }
 
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<Smartphone> editSmartPhone(@PathVariable Long id,@RequestBody Smartphone smartPhone){
+        Optional<Smartphone> smartPhoneOptional = smartphoneService.findById(id);
+        if (!smartPhoneOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        smartPhone.setId(smartPhoneOptional.get().getId());
+        return new ResponseEntity<>(smartphoneService.save(smartPhone), HttpStatus.OK);
+    }
 }

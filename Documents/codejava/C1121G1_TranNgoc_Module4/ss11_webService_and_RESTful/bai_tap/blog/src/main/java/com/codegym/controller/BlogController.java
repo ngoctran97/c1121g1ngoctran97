@@ -49,6 +49,7 @@ public class BlogController {
     @PostMapping("/save")
     public String save(Blog blog) {
         blogService.save(blog);
+
         return "redirect:/blog";
     }
 
@@ -57,6 +58,7 @@ public class BlogController {
         model.addAttribute("blog", blogService.findById(id));
         return "blog/edit";
     }
+
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable int id, Model model) {

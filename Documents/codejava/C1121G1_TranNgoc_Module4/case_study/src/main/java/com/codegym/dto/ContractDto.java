@@ -19,13 +19,13 @@ public class ContractDto implements Validator {
     @NotBlank(message = "Name can not empty")
     private String contractEndDate;
 
-//    @NotBlank(message = "Name can not empty")
-//    @Min(value = 0, message = "min = 0" )
-//    private Double contractDeposit;
-//
-//    @NotBlank(message = "Name can not empty")
-//    @Min(value = 0, message = "min = 0" )
-//    private Double contractTotalMoney;
+    @NotBlank(message = "Name can not empty")
+    @Min(value = 0, message = "min = 0" )
+    private Double contractDeposit;
+
+    @NotBlank(message = "Name can not empty")
+    @Min(value = 0, message = "min = 0" )
+    private Double contractTotalMoney;
 
     private Employee employee;
     private Customer customer;
@@ -58,21 +58,21 @@ public class ContractDto implements Validator {
         this.contractEndDate = contractEndDate;
     }
 
-//    public Double getContractDeposit() {
-//        return contractDeposit;
-//    }
-//
-//    public void setContractDeposit(Double contractDeposit) {
-//        this.contractDeposit = contractDeposit;
-//    }
-//
-//    public Double getContractTotalMoney() {
-//        return contractTotalMoney;
-//    }
-//
-//    public void setContractTotalMoney(Double contractTotalMoney) {
-//        this.contractTotalMoney = contractTotalMoney;
-//    }
+    public Double getContractDeposit() {
+        return contractDeposit;
+    }
+
+    public void setContractDeposit(Double contractDeposit) {
+        this.contractDeposit = contractDeposit;
+    }
+
+    public Double getContractTotalMoney() {
+        return contractTotalMoney;
+    }
+
+    public void setContractTotalMoney(Double contractTotalMoney) {
+        this.contractTotalMoney = contractTotalMoney;
+    }
 
     public Employee getEmployee() {
         return employee;

@@ -93,7 +93,6 @@ public class SavingController {
             model.addAttribute("customer", customerService.findAll());
             return "saving/edit";
         } else {
-
             this.savingService.save(saving);
             model.addAttribute("message", "successfully update");
             return "redirect:/saving/list";
