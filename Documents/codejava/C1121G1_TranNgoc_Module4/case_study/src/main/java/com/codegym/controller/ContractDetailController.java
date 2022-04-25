@@ -1,12 +1,9 @@
 package com.codegym.controller;
 
 import com.codegym.dto.ContractDetailDto;
-import com.codegym.dto.CustomerDto;
 import com.codegym.model.contract.AttachService;
 import com.codegym.model.contract.Contract;
 import com.codegym.model.contract.ContractDetail;
-import com.codegym.model.customer.Customer;
-import com.codegym.model.customer.CustomerType;
 import com.codegym.service.contractService.IAttachServiceService;
 import com.codegym.service.contractService.IContractDetailService;
 import com.codegym.service.contractService.IContractService;
@@ -50,6 +47,18 @@ public class ContractDetailController {
         return "contract_detail/index";
     }
 
+    @GetMapping(value = {"/customer_use_service_list","/lists"})
+    public String customerUserList(Model model,
+                                   @PageableDefault(value = 5) Pageable pageable,
+                                   @RequestParam("name") Optional<String> keyword){
+        String keywordValue = keyword.orElse("");
+        Page<ContractDetail> contractDetailPage = contractDetailService.findAll(keywordValue,pageable);
+        model.addAttribute("contractDetailPage", contractDetailPage);
+        model.addAttribute("keywordValue", keywordValue);
+
+        return "contract_detail/customer_use_list";
+    }
+
     @GetMapping("/create")
     public ModelAndView showForm() {
         ModelAndView modelAndView = new ModelAndView("contract_detail/create");
@@ -75,6 +84,7 @@ public class ContractDetailController {
         }
         ContractDetail contractDetail = new ContractDetail();
         BeanUtils.copyProperties(contractDetailDto, contractDetail);
+//        contractDetail.getContract().setContractTotalMoney();
         contractDetailService.save(contractDetail);
         return "redirect:/contract_detail/list";
     }

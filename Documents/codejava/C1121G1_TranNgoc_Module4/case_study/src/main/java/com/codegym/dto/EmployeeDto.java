@@ -21,15 +21,15 @@ public class EmployeeDto implements Validator {
     @NotBlank(message = "Birthday can not empty")
     private String employeeBirthday;
     @NotBlank(message = "Phone can not empty")
-    @Pattern(regexp = "^[0-9]{9}$",message = "employeeIdCard must have 9 numbers")
+    @Pattern(regexp = "^$|[0-9]{9}",message = "employeeIdCard must have 9 numbers")
     private String employeeIdCard;
     @Min(value = 0, message = "min = 0" )
     private double employeeSalary;
     @NotBlank(message = "Phone can not empty")
-    @Pattern(regexp = "^(09)[0-9]{8}$",message = "Phone number starting with 09 and 10 numbers")
+    @Pattern(regexp = "^$|(09)[0-9]{8}",message = "Phone number starting with 09 and 10 numbers")
     private String employeePhone;
     @NotBlank(message = "Email can not empty")
-    @Pattern(regexp = "[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)",message = "Please enter the correct format")
+    @Pattern(regexp = "^$|[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)",message = "Please enter the correct format")
     private String employeeEmail;
     @NotBlank(message = "Address can not empty")
     private String employeeAddress;

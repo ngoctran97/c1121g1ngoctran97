@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     private Integer contractDetailId;
     private Integer quatity;
 

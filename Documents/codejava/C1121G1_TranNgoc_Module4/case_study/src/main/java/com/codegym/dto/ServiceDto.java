@@ -4,7 +4,6 @@ import com.codegym.model.service.RentType;
 import com.codegym.model.service.ServiceType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -14,7 +13,7 @@ public class ServiceDto implements Validator {
     private Integer serviceId;
 
     @NotBlank(message = "Service code can not empty")
-    @Pattern(regexp = "(DV-)[0-9]{4}", message = "Service code must be in DV-XXXX format, where X is integer number.")
+    @Pattern(regexp = "^$|(DV-)[0-9]{4}", message = "Service code must be in DV-XXXX format, where X is integer number.")
     private String serviceCode;
 
     @NotBlank(message = "Name can not empty")

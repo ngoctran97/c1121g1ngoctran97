@@ -1,6 +1,8 @@
 package com.codegym.dto;
 
+import com.codegym.model.customer.Customer;
 import com.codegym.model.customer.CustomerType;
+import com.codegym.service.CustomerService.ICustomerService;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -11,7 +13,7 @@ public class CustomerDto implements Validator {
     private int customerId;
 
     @NotBlank(message = "Customer code can not empty")
-    @Pattern(regexp = "(KH-)[0-9]{4}", message = "Customer code must be in KH-XXXX format, where X is integer number.")
+    @Pattern(regexp = "^$|(KH-)[0-9]{4}", message = "Customer code must be in KH-XXXX format, where X is integer number.")
     private String customerCode;
 
     @NotBlank(message = "Name can not empty")
@@ -24,15 +26,15 @@ public class CustomerDto implements Validator {
     private String customerGender;
 
     @NotBlank(message = "Phone can not empty")
-    @Pattern(regexp = "^[0-9]{9}$",message = "customerIdCard must have 9 numbers")
+    @Pattern(regexp = "^$|[0-9]{9}", message = "customerIdCard must have 9 numbers")
     private String customerIdCard;
 
     @NotBlank(message = "Phone can not empty")
-    @Pattern(regexp = "^(09)[0-9]{8}$",message = "Phone number starting with 09 and 10 numbers")
+    @Pattern(regexp = "^$|(09)[0-9]{8}", message = "Phone number starting with 09 and 10 numbers")
     private String customerPhone;
 
     @NotBlank(message = "Email can not empty")
-    @Pattern(regexp = "[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)",message = "Please enter the correct format")
+    @Pattern(regexp = "^$|[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)", message = "Please enter the correct format")
     private String customerEmail;
 
     @NotBlank(message = "Address can not empty")
@@ -40,6 +42,17 @@ public class CustomerDto implements Validator {
 
     private CustomerType customerType;
     private Boolean deleteFlag;
+
+    private ICustomerService customerService;
+
+    public ICustomerService getCustomerService() {
+        return customerService;
+    }
+
+    public void setCustomerService(ICustomerService customerService) {
+        this.customerService = customerService;
+    }
+
 
     public CustomerDto() {
         setDeleteFlag(false);
@@ -132,7 +145,14 @@ public class CustomerDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        CustomerDto customerDto = (CustomerDto) target;
+        String currentCode = customerDto.getCustomerCode();
+        Customer customer = this.customerService.findByCode(currentCode);
+        if (customer != null) {
+            if (customer.getCustomerCode().equals(currentCode)) {
+                errors.rejectValue("customerCode", "", "Code bi trung");
+            }
+        }
     }
 
 

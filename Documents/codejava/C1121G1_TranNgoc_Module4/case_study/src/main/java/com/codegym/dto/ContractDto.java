@@ -5,10 +5,9 @@ import com.codegym.model.employee.Employee;
 import com.codegym.model.service.Facility;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class ContractDto implements Validator {
     private Integer contractId;
@@ -19,11 +18,11 @@ public class ContractDto implements Validator {
     @NotBlank(message = "Name can not empty")
     private String contractEndDate;
 
-    @NotBlank(message = "Name can not empty")
+    @NotNull(message = "Name can not empty")
     @Min(value = 0, message = "min = 0" )
     private Double contractDeposit;
 
-    @NotBlank(message = "Name can not empty")
+    @NotNull(message = "Name can not empty")
     @Min(value = 0, message = "min = 0" )
     private Double contractTotalMoney;
 

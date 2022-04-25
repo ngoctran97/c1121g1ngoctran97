@@ -1,17 +1,14 @@
 package com.codegym.controller;
 
 import com.codegym.dto.ContractDto;
-import com.codegym.dto.CustomerDto;
 import com.codegym.model.contract.Contract;
 import com.codegym.model.contract.ContractDetail;
 import com.codegym.model.customer.Customer;
-import com.codegym.model.customer.CustomerType;
 import com.codegym.model.employee.Employee;
 import com.codegym.model.service.Facility;
 import com.codegym.service.CustomerService.ICustomerService;
 import com.codegym.service.contractService.IContractDetailService;
 import com.codegym.service.contractService.IContractService;
-import com.codegym.service.contractService.Impl.ContractService;
 import com.codegym.service.employeeService.IEmployeeService;
 import com.codegym.service.serviceService.IServiceService;
 import org.springframework.beans.BeanUtils;
@@ -59,6 +56,7 @@ public class ContractController {
 
         return "contract/index";
     }
+
 
     @GetMapping("/create")
     public ModelAndView showForm() {

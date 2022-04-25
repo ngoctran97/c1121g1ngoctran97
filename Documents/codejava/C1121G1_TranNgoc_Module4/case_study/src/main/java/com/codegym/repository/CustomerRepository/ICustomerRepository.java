@@ -9,4 +9,5 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
     Page<Customer> findAllByCustomerNameContainingAndDeleteFlag(String customerName, boolean deleteflag, Pageable pageable);
 
+    Customer findByCustomerCode(String code);
 }

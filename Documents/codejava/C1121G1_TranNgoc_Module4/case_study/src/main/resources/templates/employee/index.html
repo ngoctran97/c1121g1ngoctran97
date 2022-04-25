@@ -57,10 +57,12 @@
             </button>
         </td>
         <td>
-            <a onclick="deleteCustomer($(this))" type="button" th:data-id="${employee.employeeId}"
-               th:data-name="${employee.employeeName}"
-               class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Delete
-            </a>
+            <button>
+                <a onclick="deleteCustomer($(this))" type="button" th:data-id="${employee.employeeId}"
+                   th:data-name="${employee.employeeName}"
+                   class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Delete
+                </a>
+            </button>
         </td>
     </tr>
     </tbody>

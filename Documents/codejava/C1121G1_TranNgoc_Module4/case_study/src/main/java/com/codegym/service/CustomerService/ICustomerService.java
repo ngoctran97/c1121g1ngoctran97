@@ -16,4 +16,6 @@ public interface ICustomerService {
     List<Customer> findAll();
 
     Page<Customer> findAll(String customerName, Pageable pageable);
+
+    Customer findByCode(String code);
 }

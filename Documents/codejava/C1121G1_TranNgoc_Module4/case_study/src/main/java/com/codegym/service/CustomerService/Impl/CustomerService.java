@@ -42,5 +42,10 @@ public class CustomerService implements ICustomerService {
         return customerRepository.findAllByCustomerNameContainingAndDeleteFlag(customerName,false, pageable);
     }
 
+    @Override
+    public Customer findByCode(String code) {
+        return customerRepository.findByCustomerCode(code);
+    }
+
 
 }

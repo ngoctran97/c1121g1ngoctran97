@@ -9,11 +9,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class ContractDetailDto implements Validator {
 
     private Integer contractDetailId;
-    @NotBlank(message = "Name can not empty")
+    @NotNull(message = "Name can not empty")
     @Min(value = 0, message = "min = 0" )
     private Integer quatity;
 

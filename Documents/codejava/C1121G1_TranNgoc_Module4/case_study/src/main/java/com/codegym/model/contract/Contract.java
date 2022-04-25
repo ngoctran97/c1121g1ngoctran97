@@ -32,6 +32,7 @@ public class Contract {
     @JoinColumn(name = "service_id",referencedColumnName = "serviceId")
     private Facility facility;
 
+
     public Contract() {
     }
 
