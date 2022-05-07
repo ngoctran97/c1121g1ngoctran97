@@ -27,78 +27,74 @@
 <div class=" col-4 mx-auto" >
     <form method="post">
         <div class="modal-body">
-            <div class="form-group mb-4" id="serviceCode">
+
+            <div class="form-group mb-4" id="customerCode">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="DV-0001"/>
-                    <label class="form-label" for="serviceCode">Mã dịch vụ<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="KH-0001"/>
+                    <label class="form-label" for="customerCode">Mã khách hàng<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
+
             <div class="form-group mb-4" id="serviceName">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="Villa"/>
-                    <label class="form-label" for="serviceName">Tên dịch vụ<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="Ngọc Trần"/>
+                    <label class="form-label" for="serviceName">Tên<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div class="form-group mb-4" id="serviceArea">
+            <div class="form-group mb-4" id="gender">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="500m2"/>
-                    <label class="form-label" for="serviceArea">Diện tích sử dụng<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="Nữ"/>
+                    <label class="form-label" for="gender">Giới tính<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div class="form-group mb-4" id="serviceCost">
+            <div class="form-group mb-4" id="dayOfBirth">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="500"/>
-                    <label class="form-label" for="serviceCost">Chi phí thuê<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="27/06/1997"/>
+                    <label class="form-label" for="dayOfBirth">Ngày sinh<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div class="form-group mb-4" id="serviceMaxPeople">
+            <div class="form-group mb-4" id="customerIdCard">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="12"/>
-                    <label class="form-label" for="serviceMaxPeople">Số lượng người tối đa<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="123456789"/>
+                    <label class="form-label" for="customerIdCard">CMND<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div id="standardRoom">
-                <label class="form-label" for="standardRoom">Tiêu chuẩn phòng<span class="text-danger">(*)</span></label>
-                <select class="form-control mb-4">
-                    <option>Diamond</option>
-                    <option>Diamond</option>
-                    <option>Diamond</option>
-                </select>
-            </div>
-            <div class="form-group mb-4" id="descritionOtherConvenience">
+            <div class="form-group mb-4" id="customerPhone">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="Suối nước nóng"/>
-                    <label class="form-label" for="descritionOtherConvenience">Mô tả tiện nghi khác<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="0987654321"/>
+                    <label class="form-label" for="customerPhone">Email<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div class="form-group mb-4" id="poolArea">
+            <div class="form-group mb-4" id="customerEmail">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="120m2"/>
-                    <label class="form-label" for="poolArea">Diện tích hồ bơi<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="ngoctran@gmail.com"/>
+                    <label class="form-label" for="customerEmail">Email<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div class="form-group mb-4" id="numberOdFloors">
+            <div class="form-group mb-4" id="customerAddress">
                 <div class="form-outline">
-                    <input type="text"  class="form-control" value="3"/>
-                    <label class="form-label" for="numberOdFloors">Số tầng<span class="text-danger">(*)</span></label>
+                    <input type="text"  class="form-control" value="Thừa Thiên Huế"/>
+                    <label class="form-label" for="customerAddress">Địa chỉ<span class="text-danger">(*)</span></label>
                 </div>
                 <small class="text-danger"></small>
             </div>
-            <div id="rentType">
-                <label class="form-label" for="rentType">Kiểu thuê<span class="text-danger">(*)</span></label>
-                <select class="form-control mb-4">
-                    <option>Year</option>
-                    <option>Month</option>
-                    <option>Day</option>
-                    <option>Hour</option>
-                </select>
+            <div class="form-group mb-4" id="customerTypeId">
+                <div class="form-outline">
+                    <label class="form-label" for="customerTypeId">Loại khach<span class="text-danger">(*)</span></label>
+                    <select id="customerType" class="form-control mb-4">
+                        <option selected>Diamond</option>
+                        <option>Silver</option>
+                        <option>Member</option>
+                    </select>
+                </div>
+                <small class="text-danger"></small>
             </div>
         </div>
         <div class="modal-footer">
