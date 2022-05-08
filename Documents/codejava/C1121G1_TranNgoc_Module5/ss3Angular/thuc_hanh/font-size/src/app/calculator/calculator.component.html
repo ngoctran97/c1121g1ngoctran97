@@ -1,0 +1,31 @@
+<fieldset>
+  <legend>Calculator</legend>
+  <table>
+    <tr>
+      <td>Num 1: </td>
+      <input type="number" [(ngModel)]="num1">
+    </tr>
+
+    <tr>
+      <td>Num 2: </td>
+      <input type="number" [(ngModel)]="num2">
+    </tr>
+
+    <tr>
+      <td>Operator: </td>
+      <td>
+        <select [(ngModel)]="calculator" (change)="calculate()" (click)="calculate()">
+          <option value="cong">Addition(+)</option>
+          <option value="tru">Subtraction(-)</option>
+          <option value="nhan">Multiplication(*)</option>
+          <option value="chia">Division(/)</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Result Division: </td>
+      <input type="text" [(ngModel)]="result">
+    </tr>
+
+  </table>
+</fieldset>
