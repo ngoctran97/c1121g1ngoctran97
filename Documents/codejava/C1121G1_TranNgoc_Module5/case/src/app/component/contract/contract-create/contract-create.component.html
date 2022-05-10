@@ -1,0 +1,56 @@
+<div class="text-center">
+  <p class="lead display-5">Thêm mới Hợp Đồng</p>
+</div>
+<div class=" col-4 mx-auto" >
+  <form method="post">
+    <div class="modal-body">
+      <div class="form-group mb-4" id="contractStartDate">
+        <label class="form-label" for="contractStartDate">Ngày bắt đầu<span class="text-danger">(*)</span></label>
+          <input type="date"  class="form-control"/>
+        <small class="text-danger"></small>
+      </div>
+      <div class="form-group mb-4" id="contractEndDate">
+        <label class="form-label" for="contractEndDate">Ngày kết thúc<span class="text-danger">(*)</span></label>
+          <input type="date"  class="form-control"/>
+        <small class="text-danger"></small>
+      </div>
+      <div class="form-group mb-4" id="contractDeposit">
+        <label class="form-label" for="contractDeposit">Tiền đặt cọc<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" />
+        <small class="text-danger"></small>
+      </div>
+      <div class="form-group mb-4" id="contractTotalMoney">
+        <label class="form-label" for="contractTotalMoney">Tổng tiền<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control"/>
+        <small class="text-danger"></small>
+      </div>
+      <div id="employee">
+        <label class="form-label" for="employee">Nhân viên<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4">
+          <option>Thanh Long</option>
+          <option>Duy Tuân</option>
+          <option>Đăng Khoa</option>
+        </select>
+      </div>
+      <div id="customer">
+        <label class="form-label" for="customer">Khách Hàng<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4">
+          <option>Ngọc Trần</option>
+          <option>Thảo Lê</option>
+          <option>Trọng Trần</option>
+        </select>
+      </div>
+      <div id="service">
+        <label class="form-label" for="service">Dịch vụ<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4">
+          <option>Villa</option>
+          <option>House</option>
+          <option>Room</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class="btn btn-success" value="Thêm mới"/>
+    </div>
+  </form>
+</div>
