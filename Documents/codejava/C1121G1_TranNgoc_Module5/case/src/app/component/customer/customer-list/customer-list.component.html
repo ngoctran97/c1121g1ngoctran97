@@ -91,6 +91,7 @@ background-image: linear-gradient(160deg, #0093E9 0%, #c2e1df 100%);">
 
 <div class="p-5"></div>
 <div class="text-center">
+  <app-customer-create (submit)="createStuden($event)"></app-customer-create>
   <p class="lead display-5">Danh sách khách hàng</p>
   <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" onclick="window.location.href='customer-create.html'">
     Thêm mới khách hàng
@@ -100,7 +101,6 @@ background-image: linear-gradient(160deg, #0093E9 0%, #c2e1df 100%);">
 <table class="table table-striped table-hover">
   <thead class="bg-light">
   <tr>
-    <th>STT</th>
     <th>Id</th>
     <th>Mã khách hàng</th>
     <th>Tên</th>
@@ -116,71 +116,17 @@ background-image: linear-gradient(160deg, #0093E9 0%, #c2e1df 100%);">
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>KH-0001</td>
-    <td>Ngọc Trần</td>
-    <td>Nữ</td>
-    <td>27/06/1997</td>
-    <td>123456789</td>
-    <td>0987654321</td>
-    <td>ngoctran@gmail.com</td>
-    <td>Thừa Thiên Huế</td>
-    <td>Diamond</td>
-    <td>
-      <button>
-        <a
-          class="btn btn-warning">Sửa</a>
-      </button>
-    </td>
-    <td>
-      <button>
-        <a onclick="deleteCustomer($(this))" type="button"
-           class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Xoá
-        </a>
-      </button>
-    </td>
-  </tr>
-
-  <tr>
-    <td>2</td>
-    <td>2</td>
-    <td>KH-0002</td>
-    <td>Lê Thị Thanh Thảo</td>
-    <td>Nữ</td>
-    <td>27/06/2000</td>
-    <td>123456789</td>
-    <td>0987654321</td>
-    <td>thaole@gmail.com</td>
-    <td>Thừa Thiên Huế</td>
-    <td>Diamond</td>
-    <td>
-      <button>
-        <a
-          class="btn btn-warning">Sửa</a>
-      </button>
-    </td>
-    <td>
-      <button>
-        <a onclick="deleteCustomer($(this))" type="button"
-           class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Xoá
-        </a>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>3</td>
-    <td>KH-0003</td>
-    <td>Trọng Trần</td>
-    <td>Nam</td>
-    <td>27/06/1990</td>
-    <td>123123123</td>
-    <td>0987654321/td>
-    <td>trongtran@gmail.com</td>
-    <td>Thừa Thiên Huế</td>
-    <td>Diamond</td>
+  <tr *ngFor="let customer of customerList">
+    <td>{{customer.id}}</td>
+    <td>{{customer.customerCode}}</td>
+    <td>{{customer.customerName}}</td>
+    <td>{{customer.customerDateOfBirth}}</td>
+    <td>{{customer.customerGender}}</td>
+    <td>{{customer.customerIdCard}}</td>
+    <td>{{customer.customerPhone}}</td>
+    <td>{{customer.customerEmail}}</td>
+    <td>{{customer.customerAddress}}</td>
+    <td>{{customer.customerTypeId}}</td>
     <td>
       <button>
         <a
