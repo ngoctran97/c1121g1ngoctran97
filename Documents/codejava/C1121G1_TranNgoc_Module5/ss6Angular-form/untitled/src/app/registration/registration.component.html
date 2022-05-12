@@ -1,0 +1,54 @@
+<p>Form đăng ký</p>
+<form [formGroup]="registrationForm" (ngSubmit)="submitRegistration" novalidate>
+  <label>Email</label>
+  <input formControlName="email" name="email" type="text"><br>
+  <p style="color: red" *ngIf="( registrationForm.controls.email.hasError( 'required')&&
+(registrationForm.controls.email.touched|| registrationForm.controls.email.dirty))">Email không được để trống</p>
+
+  <p style="color: red" *ngIf="( registrationForm.controls.email.hasError( 'email')&&
+(registrationForm.controls.email.touched|| registrationForm.controls.email.dirty))">Email không  dung</p>
+
+
+  <label>password</label>
+  <input formControlName="password" name="password" type="password"><br>
+  <p style="color: red" *ngIf="( registrationForm.controls.password.hasError( 'required')&&
+(registrationForm.controls.password.touched|| registrationForm.controls.password.dirty))">password không được để trống</p>
+  <p style="color: red" *ngIf="( registrationForm.controls)"></p>
+
+  <label>confirmPassword</label>
+  <input formControlName="confirmPassword" name="confirmPassword" type="password"><br>
+  <p style="color: red" *ngIf="( registrationForm.controls.confirmPassword.hasError( 'required')&&
+(registrationForm.controls.confirmPassword.touched|| registrationForm.controls.confirmPassword.dirty))">confirmPassword không được để trống</p>
+
+  <label>country</label>
+  <input formControlName="country" name="country" type="text"><br>
+
+  <p style="color: red" *ngIf="( registrationForm.controls.country.hasError( 'required')&&
+(registrationForm.controls.country.touched|| registrationForm.controls.country.dirty))">country không được để trống</p>
+
+  <label>age</label>
+  <input formControlName="age" name="age" type="text"><br>
+  <p style="color: red" *ngIf="( registrationForm.controls.age.hasError( 'required')&&
+(registrationForm.controls.age.touched|| registrationForm.controls.age.dirty))">age không được để trống</p>
+  <p style="color: red" *ngIf="( registrationForm.controls.age.hasError( 'min')&&
+(registrationForm.controls.age.touched|| registrationForm.controls.age.dirty))">age không đuoc nho hon 18</p>
+
+  <label>gender</label>
+  <select  formControlName="gender" name="gender">
+    <option>Nam</option>
+    <option>Nữ</option>
+  </select>
+  <p style="color: red" *ngIf="( registrationForm.controls.gender.hasError( 'required')&&
+(registrationForm.controls.gender.touched|| registrationForm.controls.gender.dirty))">gender không được để trống</p>
+
+  <label>phone</label>
+  <input formControlName="phone" name="phone" type="text"><br>
+  <p style="color: red" *ngIf="( registrationForm.controls.phone.hasError( 'required')&&
+(registrationForm.controls.phone.touched|| registrationForm.controls.phone.dirty))">phone không được để trống</p>
+  <p style="color: red" *ngIf="( registrationForm.controls.phone.hasError( 'pattern')&&
+(registrationForm.controls.phone.touched|| registrationForm.controls.phone.dirty))">vd 0905666666</p>
+
+  <p>
+    <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
+  </p>
+</form>

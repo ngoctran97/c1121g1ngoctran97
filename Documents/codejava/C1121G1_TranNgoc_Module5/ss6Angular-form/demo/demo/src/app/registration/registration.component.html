@@ -1,0 +1,9 @@
+<p>Form đăng ký</p>
+<form formGroup="registrationFrom" (ngSubmit)="submitRegistration()">
+  <label>Email</label>
+  <input formControlName="email", name="email" type="text"><br>
+  <p style="color: red", *ngIf="( registrationForm.controls.email.hasError( 'required')&&
+(registrationForm.controls.email.touched|| registrationForm.controls.email.dirty))">Email không được để trống</p>;
+
+</form>
+

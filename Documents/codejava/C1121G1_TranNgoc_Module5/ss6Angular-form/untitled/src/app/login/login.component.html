@@ -1,0 +1,21 @@
+<p>Login</p>
+<form [formGroup]="loginForm" (ngSubmit)="submitLogin" novalidate>
+  <label>Email</label>
+  <input formControlName="email" name="email" type="text"><br>
+  <p style="color: red" *ngIf="( loginForm.controls.email.hasError( 'required')&&
+(loginForm.controls.email.touched|| loginForm.controls.email.dirty))">Email không được để trống</p>
+
+  <p style="color: red" *ngIf="( loginForm.controls.email.hasError( 'email')&&
+(loginForm.controls.email.touched|| loginForm.controls.email.dirty))">Email không  dung</p>
+
+
+  <label>password</label>
+  <input formControlName="password" name="password" type="password"><br>
+  <p style="color: red" *ngIf="( loginForm.controls.password.hasError( 'required')&&
+(loginForm.controls.password.touched|| loginForm.controls.password.dirty))">password không được để trống</p>
+  <p style="color: red" *ngIf="( loginForm.controls)"></p>
+
+  <p>
+    <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+  </p>
+</form>
