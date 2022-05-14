@@ -4,6 +4,13 @@
 <div class=" col-4 mx-auto" >
   <form [formGroup]="customerForm" (ngSubmit)="submitCustomer()" novalidate>
     <div class="modal-body">
+      <div class="form-group mb-4" id="id">
+        <label class="form-label" for="customerName">Id<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="id"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( customerForm.controls.id.hasError( 'required')&&
+(customerForm.controls.id.touched|| customerForm.controls.id.dirty))">không được để trống</p>
+      </div>
       <div class="form-group mb-4" id="customerCode">
         <label class="form-label" for="customerCode">Mã Khách Hàng<span class="text-danger">(*)</span></label>
         <input type="text"  class="form-control" formControlName="customerCode"/>
@@ -13,6 +20,7 @@
         <p style="color: red" *ngIf="( customerForm.controls.customerCode.hasError( 'pattern')&&
 (customerForm.controls.customerCode.touched|| customerForm.controls.customerCode.dirty))">Mã KH không đúng định dạng, vd:KH-XXXX, X là số</p>
       </div>
+
       <div class="form-group mb-4" id="customerName">
         <label class="form-label" for="customerName">Tên khach hang<span class="text-danger">(*)</span></label>
           <input type="text"  class="form-control" formControlName="customerName"/>
