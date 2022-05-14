@@ -10,6 +10,7 @@ import { ProductListComponent } from './angular-product-management/product/produ
 import { ProductCreateComponent } from './angular-product-management/product/product-create/product-create.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ProductEditComponent } from './angular-product-management/product/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './angular-product-management/product/product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductEditComponent } from './angular-product-management/product/produ
     YoutubePlayerComponent,
     ProductListComponent,
     ProductCreateComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
