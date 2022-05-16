@@ -1,0 +1,17 @@
+{
+  "todo": [
+    {
+      "id": 1,
+      "content": "Doc sach",
+      "complete": "true"
+    },{
+      "id": 2,
+      "content": "Hoc bai",
+      "complete": "true"
+    },{
+      "id": 1,
+      "content": "The duc",
+      "complete": "false"
+    }
+  ]
+}
