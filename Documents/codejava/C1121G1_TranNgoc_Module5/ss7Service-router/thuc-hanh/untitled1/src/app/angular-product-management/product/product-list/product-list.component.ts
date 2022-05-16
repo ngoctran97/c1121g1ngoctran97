@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import {Product} from '../../model/product';
+import {Route} from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,12 @@ export class ProductListComponent implements OnInit {
   }
 
   getAll() {
-    this.products = this.productService.getAll();
+ this.productService.getAll().subscribe( data => {
+   this.products = data;
+   console.log(data);
+ }, error => {
+   console.log(error);
+ });
   }
 
 }

@@ -3,7 +3,7 @@
   <table>
     <tr>
       <td>Mã sản phẩm:</td>
-      <td><input type="number" formControlName="id"></td>
+      <td><input type="number" formControlName="id" readOnly></td>
     </tr>
     <tr>
       <td>Tên sản phẩm:</td>
@@ -16,6 +16,12 @@
     <tr>
       <td>Mô tả về sản phẩm</td>
       <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td>The loai</td>
+      <td><select formControlName="category" [compareWith]="compareFn">
+        <option *ngFor="let category of categoryList" [ngValue]="category">{{category.name}}</option>
+      </select></td>
     </tr>
     <tr>
       <td></td>

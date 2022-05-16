@@ -49,7 +49,10 @@ import {ProductListComponent} from './angular-product-management/product/product
 import {ProductCreateComponent} from './angular-product-management/product/product-create/product-create.component';
 import {ProductEditComponent} from './angular-product-management/product/product-edit/product-edit.component';
 import {ProductDeleteComponent} from './angular-product-management/product/product-delete/product-delete.component';
-
+import {CategoryListComponent} from './angular-product-management/category/category-list/category-list.component';
+import {CategoryCreateComponent} from './angular-product-management/category/category-create/category-create.component';
+import {CategoryEditComponent} from './angular-product-management/category/category-edit/category-edit.component';
+import {CategoryDeleteComponent} from './angular-product-management/category/category-delete/category-delete.component';
 
 const routes: Routes = [{
   path: 'product/list',
@@ -63,7 +66,20 @@ const routes: Routes = [{
 }, {
   path: 'product/delete/:id',
   component: ProductDeleteComponent
-}];
+}, {
+  path: 'category/list',
+  component: CategoryListComponent
+}, {
+  path: 'category/create',
+  component: CategoryCreateComponent
+}, {
+  path: 'category/edit/:id',
+  component: CategoryEditComponent
+}, {
+  path: 'category/delete/:id',
+  component: CategoryDeleteComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

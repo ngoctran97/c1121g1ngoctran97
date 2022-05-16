@@ -11,6 +11,12 @@ import { ProductCreateComponent } from './angular-product-management/product/pro
 import {ReactiveFormsModule} from '@angular/forms';
 import { ProductEditComponent } from './angular-product-management/product/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './angular-product-management/product/product-delete/product-delete.component';
+import {SharedModule} from './angular-product-management/shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
+import { CategoryListComponent } from './angular-product-management/category/category-list/category-list.component';
+import { CategoryCreateComponent } from './angular-product-management/category/category-create/category-create.component';
+import { CategoryEditComponent } from './angular-product-management/category/category-edit/category-edit.component';
+import { CategoryDeleteComponent } from './angular-product-management/category/category-delete/category-delete.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +27,18 @@ import { ProductDeleteComponent } from './angular-product-management/product/pro
     ProductListComponent,
     ProductCreateComponent,
     ProductEditComponent,
-    ProductDeleteComponent
+    ProductDeleteComponent,
+    CategoryListComponent,
+    CategoryCreateComponent,
+    CategoryEditComponent,
+    CategoryDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

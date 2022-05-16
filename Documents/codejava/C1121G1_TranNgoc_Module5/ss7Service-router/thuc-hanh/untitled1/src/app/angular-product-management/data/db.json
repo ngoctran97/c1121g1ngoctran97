@@ -1,0 +1,38 @@
+{
+  "product": [
+    {
+      "id": 3,
+      "name": "Iphone3",
+      "price": 700,
+      "description": "new",
+      "category": {
+        "id": 1,
+        "name": "Phone"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Television 1",
+      "price": 10000,
+      "description": "New",
+      "category": {
+        "id": 2,
+        "name": "Television"
+      }
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Phone"
+    },
+    {
+      "id": 2,
+      "name": "Television"
+    },
+    {
+      "name": "Fridge",
+      "id": 3
+    }
+  ]
+}

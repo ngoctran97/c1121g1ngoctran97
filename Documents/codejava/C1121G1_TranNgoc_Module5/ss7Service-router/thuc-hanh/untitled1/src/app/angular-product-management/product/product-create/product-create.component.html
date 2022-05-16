@@ -18,6 +18,12 @@
       <td><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>The loai</td>
+      <select formControlName="category" [compareWith]="compareFn">
+        <option *ngFor="let temp of categoryList" [ngValue]="temp">{{temp.name}}</option>
+      </select>
+    </tr>
+    <tr>
       <td></td>
       <td><button>Tạo mới</button></td>
     </tr>
