@@ -15,6 +15,10 @@ import { ContractListComponent } from './component/contract/contract-list/contra
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
+import { ServiceEditHouneComponent } from './component/service/service-edit/service-edit-houne/service-edit-houne.component';
+import { ServiceCreateComponent } from './component/service/service-create/service-create-houne/service-create.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -28,12 +32,15 @@ import {AppRoutingModule} from './app-routing.module';
     CustomerEditComponent,
     CustomerCreateComponent,
     ContractCreateComponent,
-    ContractListComponent
+    ContractListComponent,
+    ServiceEditHouneComponent,
+    ServiceCreateComponent
   ],
     imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule
+      BrowserModule,
+      AppRoutingModule,
+      ReactiveFormsModule,
+      HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

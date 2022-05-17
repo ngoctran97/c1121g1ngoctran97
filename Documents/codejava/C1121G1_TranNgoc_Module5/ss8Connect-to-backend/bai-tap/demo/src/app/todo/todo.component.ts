@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from '../todo';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {TodoService} from '../service/todo.service';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 let _id = 1;
 
@@ -12,8 +15,11 @@ let _id = 1;
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   content = new FormControl();
+  todo: any;
+  url = 'http://localhost:3000/todo';
 
-  constructor() {
+  constructor(private todoService: TodoService,
+              private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -34,5 +40,18 @@ export class TodoComponent implements OnInit {
       this.todos.push(todo);
       this.content.reset();
     }
+  }
+
+  deleteTodo(id: number) {
+    this.todoService.deleteTodo(id).subscribe(() => {
+      console.log('success!');
+      this.getAll();
+    }, errors => {
+      console.log(errors);
+    });
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get<any>(this.url);
   }
 }

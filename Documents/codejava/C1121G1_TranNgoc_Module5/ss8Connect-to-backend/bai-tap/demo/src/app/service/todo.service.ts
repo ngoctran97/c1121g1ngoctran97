@@ -7,11 +7,17 @@ import {Todo} from '../todo';
   providedIn: 'root'
 })
 export class TodoService {
+  url = 'http://localhost:3000/todo';
+  private http: any;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  // getAll(): Observable<Todo[]> {
-  //   return this.httpClient.get<Todo[]>(API_URL + '/todoList');
-  // }
+  getAll(): Observable<Todo[]> {
+    return this.httpClient.get<Todo[]>(this.url );
+  }
+
+  deleteTodo(id: number): Observable<Todo[]> {
+    return this.httpClient.get<Todo[]>(this.url);
+  }
 }

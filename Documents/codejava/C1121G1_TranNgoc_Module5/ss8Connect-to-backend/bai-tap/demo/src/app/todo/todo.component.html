@@ -9,5 +9,6 @@
         *ngFor="let todo of todos; index as i">
       {{todo.content}}
     </li>
+    <a style="color:blueviolet" (click)="deleteTodo(todo.id)">Delete</a>
   </ul>
 </div>

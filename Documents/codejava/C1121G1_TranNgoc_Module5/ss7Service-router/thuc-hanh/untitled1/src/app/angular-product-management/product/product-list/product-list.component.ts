@@ -19,12 +19,12 @@ export class ProductListComponent implements OnInit {
   }
 
   getAll() {
- this.productService.getAll().subscribe( data => {
-   this.products = data;
-   console.log(data);
- }, error => {
-   console.log(error);
- });
+    this.productService.getAll().subscribe(data => {
+      this.products = data;
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

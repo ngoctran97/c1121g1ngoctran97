@@ -5,6 +5,8 @@ import {CustomerListComponent} from './component/customer/customer-list/customer
 import {ContractListComponent} from './component/contract/contract-list/contract-list.component';
 import {ServiceListComponent} from './component/service/service-list/service-list.component';
 import {CustomerCreateComponent} from './component/customer/customer-create/customer-create.component';
+import {CustomerEditComponent} from './component/customer/customer-edit/customer-edit.component';
+import {ServiceCreateVillaComponent} from './component/service/service-create/service-create-villa/service-create-villa.component';
 
 
 
@@ -23,6 +25,12 @@ const routes: Routes = [{
 }, {
   path: 'create',
   component: CustomerCreateComponent
+}, {
+  path: 'customer/edit/:id',
+  component: CustomerEditComponent
+}, {
+  path: 'service/create',
+  component: ServiceCreateVillaComponent
 }
 ];
 

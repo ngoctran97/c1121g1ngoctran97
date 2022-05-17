@@ -53,36 +53,13 @@ import {CategoryListComponent} from './angular-product-management/category/categ
 import {CategoryCreateComponent} from './angular-product-management/category/category-create/category-create.component';
 import {CategoryEditComponent} from './angular-product-management/category/category-edit/category-edit.component';
 import {CategoryDeleteComponent} from './angular-product-management/category/category-delete/category-delete.component';
+import {AngularProductManagementModule} from './angular-product-management/angular-product-management.module';
 
-const routes: Routes = [{
-  path: 'product/list',
-  component: ProductListComponent
-}, {
-  path: 'product/create',
-  component: ProductCreateComponent
-}, {
-  path: 'product/edit/:id',
-  component: ProductEditComponent
-}, {
-  path: 'product/delete/:id',
-  component: ProductDeleteComponent
-}, {
-  path: 'category/list',
-  component: CategoryListComponent
-}, {
-  path: 'category/create',
-  component: CategoryCreateComponent
-}, {
-  path: 'category/edit/:id',
-  component: CategoryEditComponent
-}, {
-  path: 'category/delete/:id',
-  component: CategoryDeleteComponent
-}
+const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), AngularProductManagementModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

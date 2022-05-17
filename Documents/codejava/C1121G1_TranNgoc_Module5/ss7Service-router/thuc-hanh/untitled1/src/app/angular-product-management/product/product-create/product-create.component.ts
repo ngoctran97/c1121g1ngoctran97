@@ -17,8 +17,7 @@ export class ProductCreateComponent implements OnInit {
     price: new FormControl(),
     description: new FormControl(),
     category: new FormControl()
-  })
-  ;
+  });
   categoryList: Category[] = [];
   compareFn(t1: Category, t2: Category): boolean {
     return t1 && t2 ? t1.id === t2.id : t1 === t2;

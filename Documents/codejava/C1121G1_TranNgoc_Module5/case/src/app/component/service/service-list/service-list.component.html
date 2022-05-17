@@ -1,8 +1,16 @@
 <div class="text-center">
   <p class="lead display-5">Danh sách Dịch vụ</p>
-  <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" onclick="window.location.href='customer-create.html'">
-    Thêm mới dịch vụ
-  </button>
+  <div>
+    <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" routerLink="/service/create">
+      Thêm mới dịch vụ villa
+    </button>
+    <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" onclick="window.location.href='customer-create.html'">
+      Thêm mới dịch vụ houne
+    </button>
+    <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" onclick="window.location.href='customer-create.html'">
+      Thêm mới dịch vụ Room
+    </button>
+  </div>
 </div>
 <div class="p-2"></div>
 
@@ -25,8 +33,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let service of serviceList">
-    <td>{{service.id}}</td>
+  <tr *ngFor="let service of serviceList, index as i">
+    <td>{{i + 1}}</td>
     <td>{{service.serviceCode}}</td>
     <td>{{service.serviceName}}</td>
     <td>{{service.serviceArea}}</td>

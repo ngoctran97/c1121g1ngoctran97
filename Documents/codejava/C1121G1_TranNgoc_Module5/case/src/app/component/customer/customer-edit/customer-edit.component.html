@@ -3,54 +3,52 @@
 </div>
 
 <div class=" col-4 mx-auto" >
-  <form method="post">
+  <form [formGroup]="customerForm" (ngSubmit)="updateCustomer(id)">
     <div class="modal-body">
-
       <div class="form-group mb-4" id="customerCode">
         <label class="form-label" for="customerCode">Mã khách hàng<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="KH-0001"/>
+          <input type="text"  class="form-control" formControlName="customerCode"/>
         <small class="text-danger"></small>
       </div>
-
-      <div class="form-group mb-4" id="serviceName">
-        <label class="form-label" for="serviceName">Tên<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="Ngọc Trần"/>
+      <div class="form-group mb-4" id="customerName">
+        <label class="form-label" for="customerName">Tên<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="customerName" />
         <small class="text-danger"></small>
       </div>
-      <div class="form-group mb-4" id="gender">
-        <label class="form-label" for="gender">Giới tính<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="Nữ"/>
+      <div class="form-group mb-4" id="customerDateOfBirth">
+        <label class="form-label" for="customerDateOfBirth">Ngày sinh<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="customerDateOfBirth"/>
         <small class="text-danger"></small>
       </div>
-      <div class="form-group mb-4" id="dayOfBirth">
-        <label class="form-label" for="dayOfBirth">Ngày sinh<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="27/06/1997"/>
+      <div class="form-group mb-4" id="customerGender">
+        <label class="form-label" for="customerGender">Giới tính<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="customerGender"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="customerIdCard">
         <label class="form-label" for="customerIdCard">CMND<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="123456789"/>
+          <input type="text"  class="form-control" formControlName="customerIdCard"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="customerPhone">
         <label class="form-label" for="customerPhone">Email<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="0987654321"/>
+          <input type="text"  class="form-control" formControlName="customerPhone"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="customerEmail">
         <label class="form-label" for="customerEmail">Email<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="ngoctran@gmail.com"/>
+          <input type="text"  class="form-control" formControlName="customerEmail"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="customerAddress">
         <label class="form-label" for="customerAddress">Địa chỉ<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="Thừa Thiên Huế"/>
+          <input type="text"  class="form-control" formControlName="customerAddress"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="customerTypeId">
           <label class="form-label" for="customerTypeId">Loại khach<span class="text-danger">(*)</span></label>
-          <select id="customerType" class="form-control mb-4">
-            <option selected>Diamond</option>
+          <select id="customerType" class="form-control mb-4" formControlName="customerTypeId">
+            <option>Diamond</option>
             <option>Silver</option>
             <option>Member</option>
           </select>

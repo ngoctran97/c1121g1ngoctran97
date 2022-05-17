@@ -1,0 +1,41 @@
+{
+  "service": [
+    {
+      "id": 1,
+      "serviceCode": "DV-0001",
+      "serviceName": "Villa Beach Front",
+      "serviceArea": 2500,
+      "serviceCost": 1000000,
+      "serviceMaxPeople": 12,
+      "standardRoom": "vip",
+      "descritionOtherConvenience": "Có hồ bơi",
+      "poolArea": "500",
+      "numberOdFloors": "4",
+      "rentType": "day"
+    },{
+      "id": 2,
+      "serviceCode": "DV-0002",
+      "serviceName": "House Beach Front",
+      "serviceArea": 500,
+      "serviceCost": 1000000,
+      "serviceMaxPeople": 12,
+      "standardRoom": "vip",
+      "descritionOtherConvenience": "Có hồ bơi",
+      "poolArea": "null",
+      "numberOdFloors": "5",
+      "rentType": "day"
+    },{
+      "id": 3,
+      "serviceCode": "DV-0003",
+      "serviceName": "Room Beach Front",
+      "serviceArea": 500,
+      "serviceCost": 1000000,
+      "serviceMaxPeople": 12,
+      "standardRoom": "vip",
+      "descritionOtherConvenience": "Có hồ bơi",
+      "poolArea": "null",
+      "numberOdFloors": "null",
+      "rentType": "day"
+    }
+  ]
+}
