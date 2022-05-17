@@ -52,9 +52,9 @@ export class CustomerService {
     }
   }
 
-  deleteCustomer(customeerId: number){
+  deleteCustomer(customerId: number){
     this.customerList = this.customerList.filter(customer => {
-      return customer.id !== customeerId;
+      return customer.id !== customerId;
     });
   }
 

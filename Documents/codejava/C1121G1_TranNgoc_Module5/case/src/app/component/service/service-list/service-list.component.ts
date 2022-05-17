@@ -9,6 +9,9 @@ import {ServiceService} from '../../../service/service.service';
 })
 export class ServiceListComponent implements OnInit {
   serviceList: Service[] = [];
+  private serviceIdDelete: number;
+  private serviceCodeDelete: string;
+  private serviceNameDelete: string;
 
   constructor(private serviceService: ServiceService) {
   }
@@ -24,5 +27,17 @@ export class ServiceListComponent implements OnInit {
       }, error => {
         alert('ok');
       });
+  }
+
+  sendServiceInfo(id: number, serviceCode: string, serviceName: string) {
+    this.serviceIdDelete = id;
+    this.serviceCodeDelete = serviceCode;
+    this.serviceNameDelete = serviceName;
+  }
+
+  deleteService(closeModal: HTMLButtonElement) {
+    this.serviceService.deleteService(this.serviceIdDelete);
+    closeModal.click();
+    this.getAll();
   }
 }

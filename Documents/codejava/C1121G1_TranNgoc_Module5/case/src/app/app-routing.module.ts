@@ -7,6 +7,7 @@ import {ServiceListComponent} from './component/service/service-list/service-lis
 import {CustomerCreateComponent} from './component/customer/customer-create/customer-create.component';
 import {CustomerEditComponent} from './component/customer/customer-edit/customer-edit.component';
 import {ServiceCreateVillaComponent} from './component/service/service-create/service-create-villa/service-create-villa.component';
+import {ServiceEditVillaComponent} from './component/service/service-edit/service-edit-villa/service-edit-villa.component';
 
 
 
@@ -31,6 +32,9 @@ const routes: Routes = [{
 }, {
   path: 'service/create',
   component: ServiceCreateVillaComponent
+}, {
+  path: 'service/edit/:id',
+  component: ServiceEditVillaComponent
 }
 ];
 

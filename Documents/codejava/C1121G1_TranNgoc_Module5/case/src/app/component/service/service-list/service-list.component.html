@@ -48,20 +48,37 @@
 
     <td>
       <button>
-        <a
-          class="btn btn-warning">Sửa</a>
+        <a class="btn btn-warning" [routerLink]="['/service/edit',service.id]">Sửa</a>
       </button>
     </td>
     <td>
       <button>
-        <a onclick="deleteCustomer($(this))" type="button"
-           class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Xoá
+        <a data-mdb-toggle="modal" data-mdb-target="#deleteModal"
+           class="btn btn-warning" data-toggle="modal" data-target="#customer-modal" (click)="sendServiceInfo(service.id, service.serviceCode, service.serviceName)">Xoá
         </a>
       </button>
     </td>
   </tr>
 
-
+<!--modal-->
+  <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <input type="hidden" name="idDelete" id="idDelete">
+        <div class="modal-header">
+          <h5 class="modal-title">Xác nhận xóa</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Bạn chắc chắn muốn xóa dich vu<span class="text-danger">{{serviceCodeDelete}}</span> ?</p>
+        </div>
+        <div class="modal-footer">
+          <button #closeModal type="button" class="btn btn-secondary" data-mdb-dismiss="modal" >Hủy</button>
+          <button type="button" class="btn btn-danger" id="delete_btn" (click)="deleteService(closeModal)"  >Đồng ý</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </table>
 <nav class="my-4" aria-label="...">
   <ul class="pagination pagination-circle justify-content-center">

@@ -3,36 +3,36 @@
 </div>
 
 <div class=" col-4 mx-auto" >
-  <form method="post">
+  <form [formGroup]="serviceForm" (ngSubmit)="updateService(id)" novalidate>
     <div class="modal-body">
       <div class="form-group mb-4" id="serviceCode">
         <label class="form-label" for="serviceCode">Mã dịch vụ<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="DV-0001"/>
+          <input type="text"  class="form-control" formControlName="serviceCode"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="serviceName">
         <label class="form-label" for="serviceName">Tên dịch vụ<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="Villa"/>
+          <input type="text"  class="form-control" formControlName="serviceName"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="serviceArea">
           <label class="form-label" for="serviceArea">Diện tích sử dụng<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="500m2"/>
+          <input type="text"  class="form-control" formControlName="serviceArea"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="serviceCost">
         <label class="form-label" for="serviceCost">Chi phí thuê<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="500"/>
+          <input type="text"  class="form-control" formControlName="serviceCode"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="serviceMaxPeople">
         <label class="form-label" for="serviceMaxPeople">Số lượng người tối đa<span class="text-danger">(*)</span></label>
-                  <input type="text"  class="form-control" value="12"/>
+                  <input type="text"  class="form-control" formControlName="serviceCost"/>
         <small class="text-danger"></small>
       </div>
       <div id="standardRoom">
         <label class="form-label" for="standardRoom">Tiêu chuẩn phòng<span class="text-danger">(*)</span></label>
-        <select class="form-control mb-4">
+        <select class="form-control mb-4" formControlName="standardRoom">
           <option>Diamond</option>
           <option>Diamond</option>
           <option>Diamond</option>
@@ -40,22 +40,22 @@
       </div>
       <div class="form-group mb-4" id="descritionOtherConvenience">
           <label class="form-label" for="descritionOtherConvenience">Mô tả tiện nghi khác<span class="text-danger">(*)</span></label>
-        <input type="text"  class="form-control" value="Suối nước nóng"/>
+        <input type="text"  class="form-control" formControlName="descritionOtherConvenience"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="poolArea">
         <label class="form-label" for="poolArea">Diện tích hồ bơi<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="120m2"/>
+          <input type="text"  class="form-control" vformControlName="poolArea"/>
         <small class="text-danger"></small>
       </div>
       <div class="form-group mb-4" id="numberOdFloors">
         <label class="form-label" for="numberOdFloors">Số tầng<span class="text-danger">(*)</span></label>
-          <input type="text"  class="form-control" value="3"/>
+          <input type="text"  class="form-control" formControlName="numberOdFloors"/>
         <small class="text-danger"></small>
       </div>
       <div id="rentType">
         <label class="form-label" for="rentType">Kiểu thuê<span class="text-danger">(*)</span></label>
-        <select class="form-control mb-4">
+        <select class="form-control mb-4" formControlName="rentType">
           <option>Year</option>
           <option>Month</option>
           <option>Day</option>

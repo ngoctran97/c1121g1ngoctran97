@@ -2,7 +2,7 @@
   <p class="lead display-5">Thêm mới Villa</p>
 </div>
 <div class=" col-4 mx-auto" >
-  <form [formGroup]="serviceForm" (ngSubmit)="submitService()" novalidate>
+  <form [formGroup]="serviceForm" (ngSubmit)="submitService()">
     <!--        <div class="modal-header">-->
     <!--            <h5 class="modal-title">Thêm mới villa</h5>-->
     <!--        </div>-->
@@ -52,7 +52,7 @@
       </div>
       <div id="standardRoom">
         <label class="form-label" for="standardRoom">Tiêu chuẩn phòng<span class="text-danger">(*)</span></label>
-        <select class="form-control mb-4">
+        <select class="form-control mb-4" formControlName="standardRoom">
           <option>Diamond</option>
           <option>Diamond</option>
           <option>Diamond</option>
@@ -85,7 +85,7 @@
       </div>
       <div id="rentType">
         <label class="form-label" for="rentType">Kiểu thuê<span class="text-danger">(*)</span></label>
-        <select class="form-control mb-4">
+        <select class="form-control mb-4" formControlName="rentType">
           <option>Year</option>
           <option>Month</option>
           <option>Day</option>
@@ -94,7 +94,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <input type="submit" class="btn btn-success" value="Thêm mới"/>
+      <button class="btn btn-success" >Thêm mới</button>
     </div>
   </form>
 </div>
