@@ -1,0 +1,100 @@
+<div class="text-center">
+  <p class="lead display-5">Thêm mới Villa</p>
+</div>
+<div class=" col-4 mx-auto" >
+  <form [formGroup]="serviceForm" (ngSubmit)="submitService()">
+    <!--        <div class="modal-header">-->
+    <!--            <h5 class="modal-title">Thêm mới villa</h5>-->
+    <!--        </div>-->
+    <div class="modal-body">
+      <div class="form-group mb-4" id="serviceCode">
+        <label class="form-label" for="serviceCode">Mã dịch vụ<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="serviceCode"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceCode.hasError( 'required')&&
+(serviceForm.controls.serviceCode.touched|| serviceForm.controls.serviceCode.dirty))">Mã DV không được để trống</p>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceCode.hasError( 'pattern')&&
+(serviceForm.controls.serviceCode.touched|| serviceForm.controls.serviceCode.dirty))">Mã DV không đúng định dạng, vd:DV-XXXX, X là số</p>
+      </div>
+      <div class="form-group mb-4" id="serviceName">
+          <label class="form-label" for="serviceName">Tên dịch vụ<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="serviceName"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceName.hasError( 'required')&&
+(serviceForm.controls.serviceName.touched|| serviceForm.controls.serviceName.dirty))">không được để trống</p>
+      </div>
+      <div class="form-group mb-4" id="serviceArea">
+          <label class="form-label" for="serviceArea">Diện tích sử dụng<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="serviceArea"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceArea.hasError( 'required')&&
+(serviceForm.controls.serviceArea.touched|| serviceForm.controls.serviceArea.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceArea.hasError( 'min')&&
+(serviceForm.controls.serviceArea.touched|| serviceForm.controls.serviceArea.dirty))">min = 0</p>
+      </div>
+      <div class="form-group mb-4" id="serviceCost">
+        <label class="form-label" for="serviceCost">Chi phí thuê<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="serviceCost"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceCost.hasError( 'required')&&
+(serviceForm.controls.serviceCost.touched|| serviceForm.controls.serviceCost.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceCost.hasError( 'min')&&
+(serviceForm.controls.serviceCost.touched|| serviceForm.controls.serviceCost.dirty))">min = 0</p>
+      </div>
+      <div class="form-group mb-4" id="serviceMaxPeople">
+        <label class="form-label" for="serviceMaxPeople">Số lượng người tối đa<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="serviceMaxPeople"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceMaxPeople.hasError( 'required')&&
+(serviceForm.controls.serviceMaxPeople.touched|| serviceForm.controls.serviceMaxPeople.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( serviceForm.controls.serviceMaxPeople.hasError( 'min')&&
+(serviceForm.controls.serviceMaxPeople.touched|| serviceForm.controls.serviceMaxPeople.dirty))">min = 0</p>
+      </div>
+      <div id="standardRoom">
+        <label class="form-label" for="standardRoom">Tiêu chuẩn phòng<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="standardRoom">
+          <option>Diamond</option>
+          <option>Diamond</option>
+          <option>Diamond</option>
+        </select>
+      </div>
+      <div class="form-group mb-4" id="descritionOtherConvenience">
+          <label class="form-label" for="descritionOtherConvenience">Mô tả tiện nghi khác<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="descritionOtherConvenience"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.descritionOtherConvenience.hasError( 'required')&&
+(serviceForm.controls.descritionOtherConvenience.touched|| serviceForm.controls.descritionOtherConvenience.dirty))">không được để trống</p>
+      </div>
+      <div class="form-group mb-4" id="poolArea">
+        <label class="form-label" for="poolArea">Diện tích hồ bơi<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="poolArea"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.poolArea.hasError( 'required')&&
+(serviceForm.controls.poolArea.touched|| serviceForm.controls.poolArea.dirty))">không được để trống</p>
+<!--        <p style="color: red" *ngIf="( serviceForm.controls.poolArea.hasError( 'pattern')&&-->
+<!--(serviceForm.controls.poolArea.touched|| serviceForm.controls.poolArea.dirty))">min = 0</p>-->
+      </div>
+      <div class="form-group mb-4" id="numberOdFloors">
+        <label class="form-label" for="numberOdFloors">Số tầng<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="numberOdFloors"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( serviceForm.controls.numberOdFloors.hasError( 'required')&&
+(serviceForm.controls.numberOdFloors.touched|| serviceForm.controls.numberOdFloors.dirty))">không được để trống</p>
+<!--        <p style="color: red" *ngIf="( serviceForm.controls.numberOdFloors.hasError( 'pattern')&&-->
+<!--(serviceForm.controls.numberOdFloors.touched|| serviceForm.controls.numberOdFloors.dirty))">min = 0</p>-->
+      </div>
+      <div id="rentType">
+        <label class="form-label" for="rentType">Kiểu thuê<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="rentType">
+          <option>Year</option>
+          <option>Month</option>
+          <option>Day</option>
+          <option>Hour</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" >Thêm mới</button>
+    </div>
+  </form>
+</div>

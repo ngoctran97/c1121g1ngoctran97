@@ -1,0 +1,83 @@
+<div class="container" id="ngoc-container">
+  <div class="text-center">
+    <p class="lead display-5">Danh sách khách hàng</p>
+    <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" routerLink="/create">
+      Thêm mới khách hàng
+    </button>
+  </div>
+  <div class="d-flex">
+    <input style="height: 30px" class="form-control me-2" #customerName type="text" placeholder="Tên khách hàng"
+           aria-label="Search"/>
+    <input style="height: 30px" class="form-control me-2" #customerCode type="text" placeholder="Max khách hàng"
+           aria-label="Search"/>
+    <button style="width: 20%; height: 30px" class="btn btn-outline-success my-2 my-sn-0" type="button"
+            (click)=search(customerName.value,customerCode.value)>Tìm Kiếm
+    </button>
+  </div>
+  <div class="p-2"></div>
+  <table class="table table-striped table-hover">
+    <thead class="bg-light">
+    <tr>
+      <th>Id</th>
+      <th>Mã khách hàng</th>
+      <th>Tên</th>
+      <th>Ngày sinh</th>
+      <th>Giới tính</th>
+      <th>CMND</th>
+      <th>Số điện thoại</th>
+      <th>Email</th>
+      <th>Địa chỉ</th>
+      <th>Loại</th>
+      <th>Chỉnh Sửa</th>
+      <th>Xoá</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customerList | paginate : {itemsPerPage : 2 , currentPage :p}, index as i">
+      <td>{{i + 1}}</td>
+      <td>{{customer.customerCode}}</td>
+      <td>{{customer.customerName}}</td>
+      <td>{{customer.customerDateOfBirth}}</td>
+      <td>{{customer.customerGender}}</td>
+      <td>{{customer.customerIdCard}}</td>
+      <td>{{customer.customerPhone}}</td>
+      <td>{{customer.customerEmail}}</td>
+      <td>{{customer.customerAddress}}</td>
+      <td>{{customer.customerTypeId}}</td>
+      <td>
+        <button>
+          <a [routerLink]="['/customer/edit',customer.id]"
+             class="btn btn-warning">Sửa</a>
+        </button>
+      </td>
+      <td>
+        <button>
+          <a data-mdb-toggle="modal" data-mdb-target="#deleteModal"
+             class="btn btn-warning" data-toggle="modal" data-target="#customer-modal" (click)="sendCustomerInfo(customer.id, customer.customerCode, customer.customerName)">Xoá
+          </a>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <input type="hidden" name="idDelete" id="idDelete">
+      <div class="modal-header">
+        <h5 class="modal-title">Xác nhận xóa</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn muốn xóa khách hàng <span class="text-danger">{{customerNameDelete}}
+        </span> có mã khách hàng là: <span class="text-danger">{{customerCodeDelete}}</span> ?</p>
+      </div>
+      <div class="modal-footer">
+        <button #closeModal type="button" class="btn btn-secondary" data-mdb-dismiss="modal" >Hủy</button>
+        <button type="button" class="btn btn-danger" id="delete_btn" (click)="deleteCustomer(closeModal)"  >Đồng ý</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,113 @@
+{
+  "service": [
+    {
+      "serviceCode": "DV-0005",
+      "serviceName": "Villa",
+      "serviceArea": "500",
+      "serviceCost": "5000",
+      "serviceMaxPeople": "12",
+      "standardRoom": "Diamond",
+      "descritionOtherConvenience": "tgrehd",
+      "poolArea": "200",
+      "numberOdFloors": "10",
+      "rentType": "Month",
+      "id": 13
+    },
+    {
+      "serviceCode": "DV-0007",
+      "serviceName": "House",
+      "serviceArea": "500",
+      "serviceCost": "50000",
+      "serviceMaxPeople": "10",
+      "standardRoom": "Diamond",
+      "descritionOtherConvenience": "cos tivi",
+      "numberOdFloors": "2",
+      "rentType": "Day",
+      "id": 14
+    },
+    {
+      "serviceCode": "DV-0006",
+      "serviceName": "Villa",
+      "serviceArea": "500",
+      "serviceCost": "50000",
+      "serviceMaxPeople": "6",
+      "standardRoom": "Diamond",
+      "descritionOtherConvenience": "suoi nc nong",
+      "poolArea": "1000",
+      "numberOdFloors": "3",
+      "rentType": "Hour",
+      "id": 15
+    },
+    {
+      "serviceCode": "DV-0009",
+      "serviceName": "Villa",
+      "serviceArea": "500",
+      "serviceCost": "5000",
+      "serviceMaxPeople": "12",
+      "standardRoom": "Diamond",
+      "descritionOtherConvenience": "ti vi",
+      "poolArea": "4000",
+      "numberOdFloors": "5",
+      "rentType": "Day",
+      "id": 16
+    }
+  ],
+  "contract": [
+    {
+      "id": 1,
+      "contractStartDate": "01-01-2022",
+      "contractEndDate": "02-02-2022",
+      "contractDeposit": 500,
+      "contractTotalMoney": 1000,
+      "employee": "Ngoc Tran",
+      "customer": "Khoa Pham",
+      "service": "villa"
+    },
+    {
+      "id": 2,
+      "contractStartDate": "05-01-2022",
+      "contractEndDate": "02-05-2022",
+      "contractDeposit": 500,
+      "contractTotalMoney": 1000,
+      "employee": "Ha Tran",
+      "customer": "Hong Pham",
+      "service": "House"
+    },
+    {
+      "contractStartDate": "2022-05-04",
+      "contractEndDate": "2022-05-19",
+      "contractDeposit": "5000",
+      "contractTotalMoney": "100000",
+      "employee": "Duy Tuân",
+      "customer": "Thảo Lê",
+      "service": "Room",
+      "id": 3
+    }
+  ],
+  "customer": [
+    {
+      "id": 2,
+      "customerCode": "KH-0002",
+      "customerName": "Trong Trần",
+      "customerDateOfBirth": "27/06/1990",
+      "customerGender": "Nam",
+      "customerIdCard": 123456789,
+      "customerPhone": "0987654321",
+      "customerEmail": "trongtran@gmail.com",
+      "customerAddress": "Thừa Thiên Huế",
+      "customerTypeId": "Diamond"
+    },
+    {
+      "customerCode": "KH-0007",
+      "customerName": "HoangTT",
+      "customerDateOfBirth": "2022-05-07",
+      "customerGender": "Nam",
+      "customerIdCard": "111111111",
+      "customerPhone": "+84999999999",
+      "customerEmail": "hoang@gmail.com",
+      "customerAddress": "Da nang",
+      "customerTypeId": "Silver",
+      "id": 3
+    }
+  ]
+}

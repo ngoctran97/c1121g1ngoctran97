@@ -1,0 +1,74 @@
+<div class="text-center">
+  <p class="lead display-5">Thêm mới Hợp Đồng</p>
+</div>
+<div class=" col-4 mx-auto" >
+  <form [formGroup]="contractForm" (ngSubmit)="submitContract()" novalidate>
+    <div class="modal-body">
+      <div class="form-group mb-4" id="contractStartDate">
+        <label class="form-label" for="contractStartDate">Ngày bắt đầu<span class="text-danger">(*)</span></label>
+          <input type="date"  class="form-control" formControlName="contractStartDate"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( contractForm.controls.contractStartDate.hasError( 'required')&&
+(contractForm.controls.contractStartDate.touched|| contractForm.controls.contractStartDate.dirty))">không được để trống</p>
+      </div>
+      <div class="form-group mb-4" id="contractEndDate">
+        <label class="form-label" for="contractEndDate">Ngày kết thúc<span class="text-danger">(*)</span></label>
+          <input type="date"  class="form-control" formControlName="contractEndDate"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( contractForm.controls.contractEndDate.hasError( 'required')&&
+(contractForm.controls.contractEndDate.touched|| contractForm.controls.contractEndDate.dirty))">không được để trống</p>
+      </div>
+      <div class="form-group mb-4" id="contractDeposit">
+        <label class="form-label" for="contractDeposit">Tiền đặt cọc<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="contractDeposit"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( contractForm.controls.contractDeposit.hasError( 'required')&&
+(contractForm.controls.contractDeposit.touched|| contractForm.controls.contractDeposit.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( contractForm.controls.contractDeposit.hasError( 'min')&&
+(contractForm.controls.contractDeposit.touched|| contractForm.controls.contractDeposit.dirty))">min = 0</p>
+      </div>
+      <div class="form-group mb-4" id="contractTotalMoney">
+        <label class="form-label" for="contractTotalMoney">Tổng tiền<span class="text-danger">(*)</span></label>
+          <input type="text"  class="form-control" formControlName="contractTotalMoney"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( contractForm.controls.contractTotalMoney.hasError( 'required')&&
+(contractForm.controls.contractTotalMoney.touched|| contractForm.controls.contractTotalMoney.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( contractForm.controls.contractDeposit.hasError( 'min')&&
+(contractForm.controls.contractTotalMoney.touched|| contractForm.controls.contractTotalMoney.dirty))">min = 0</p>
+      </div>
+      <div id="employee">
+        <label class="form-label" for="employee">Nhân viên<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="employee">
+          <option>Thanh Long</option>
+          <option>Duy Tuân</option>
+          <option>Đăng Khoa</option>
+        </select>
+        <p style="color: red" *ngIf="( contractForm.controls.employee.hasError( 'required')&&
+(contractForm.controls.employee.touched|| contractForm.controls.employee.dirty))">không được để trống</p>
+      </div>
+      <div id="customer">
+        <label class="form-label" for="customer">Khách Hàng<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="customer">
+          <option>Ngọc Trần</option>
+          <option>Thảo Lê</option>
+          <option>Trọng Trần</option>
+        </select>
+        <p style="color: red" *ngIf="( contractForm.controls.customer.hasError( 'required')&&
+(contractForm.controls.customer.touched|| contractForm.controls.customer.dirty))">không được để trống</p>
+      </div>
+      <div id="service">
+        <label class="form-label" for="service">Dịch vụ<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="service">
+          <option>Villa</option>
+          <option>House</option>
+          <option>Room</option>
+        </select>
+        <p style="color: red" *ngIf="( contractForm.controls.service.hasError( 'required')&&
+(contractForm.controls.service.touched|| contractForm.controls.service.dirty))">không được để trống</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class="btn btn-success" value="Thêm mới"/>
+    </div>
+  </form>
+</div>

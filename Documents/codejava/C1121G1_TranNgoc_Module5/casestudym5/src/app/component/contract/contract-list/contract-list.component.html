@@ -1,0 +1,36 @@
+<div class="text-center">
+  <p class="lead display-5">Danh sách Hợp đồng</p>
+  <button type="button" class="btn btn-outline-info" data-mdb-ripple-color="dark" routerLink="/contractCreate">
+    Thêm mới hợp đồng
+  </button>
+</div>
+<div class="p-2"></div>
+
+<table class="table table-striped table-hover">
+  <thead class="bg-light">
+  <tr>
+    <th>Id</th>
+    <th>Ngày bắt đầu</th>
+    <th>Ngày kết thúc</th>
+    <th>Tiền cọc</th>
+    <th>Tổng tiền</th>
+    <th>Nhân viên</th>
+    <th>Khách hàng</th>
+    <th>Dịch vụ</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contract of contractList | paginate : {itemsPerPage : 2 , currentPage :p}">
+    <td>{{contract.id}}</td>
+    <td>{{contract.contractStartDate}}</td>
+    <td>{{contract.contractEndDate}}</td>
+    <td>{{contract.contractDeposit}}</td>
+    <td>{{contract.contractTotalMoney}}</td>
+    <td>{{contract.employee}}</td>
+    <td>{{contract.customer}}</td>
+    <td>{{contract.service}}</td>
+  </tr>
+</table>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+
