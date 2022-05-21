@@ -1,6 +1,7 @@
 package com.codegym.model.user;
 
 import com.codegym.model.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,10 +14,10 @@ public class User {
 
     private String username;
     private String password;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private Set<Employee> employeeSet;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private Set<UserRole> userRoleSet;
 

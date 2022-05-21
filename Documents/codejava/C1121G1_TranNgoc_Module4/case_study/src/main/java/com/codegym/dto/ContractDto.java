@@ -8,16 +8,17 @@ import org.springframework.validation.Validator;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
-public class ContractDto implements Validator {
+public class ContractDto implements Validator{
     private Integer contractId;
 
     @NotBlank(message = "Name can not empty")
     private String contractStartDate;
-
     @NotBlank(message = "Name can not empty")
     private String contractEndDate;
-
     @NotNull(message = "Name can not empty")
     @Min(value = 0, message = "min = 0" )
     private Double contractDeposit;
@@ -104,6 +105,13 @@ public class ContractDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        ContractDto contractDto = (ContractDto) target;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startDate = LocalDate.parse(contractDto.getContractStartDate(),formatter);
+        LocalDate endDate = LocalDate.parse(contractDto.getContractEndDate(),formatter);
+        if(endDate.isBefore(startDate)){
+            errors.rejectValue("contractEndDate","","ngay ket thuc sau ngay bat dau");
+        }
 
     }
 }

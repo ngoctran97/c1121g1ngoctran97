@@ -1,5 +1,7 @@
 package com.codegym.model.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -9,7 +11,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
     private String rolename;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "role")
     private Set<UserRole> userRoleSet;
 

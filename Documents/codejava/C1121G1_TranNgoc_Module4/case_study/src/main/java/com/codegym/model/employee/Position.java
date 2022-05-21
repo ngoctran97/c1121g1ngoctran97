@@ -1,6 +1,7 @@
 package com.codegym.model.employee;
 
 import com.codegym.model.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,6 +12,7 @@ public class Position {
     private Integer positionId;
     private String positionName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "position", cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Employee> employeeSet;
 

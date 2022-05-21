@@ -37,5 +37,10 @@ public class EmployeeService implements IEmployeeService {
         return employeeRepository.findAll();
     }
 
+    @Override
+    public Page<Employee> findAll(String employeeName, Pageable pageable) {
+        return employeeRepository.findAllByEmployeeNameContainingAndDeleteFlag(employeeName,false, pageable);
+    }
+
 
 }

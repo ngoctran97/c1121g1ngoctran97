@@ -25,7 +25,7 @@ public class CustomerDto implements Validator {
     @NotBlank(message = "Gender can not empty")
     private String customerGender;
 
-    @NotBlank(message = "Phone can not empty")
+    @NotBlank(message = "customerIdCard can not empty")
     @Pattern(regexp = "^$|[0-9]{9}", message = "customerIdCard must have 9 numbers")
     private String customerIdCard;
 
@@ -155,8 +155,8 @@ public class CustomerDto implements Validator {
         }
     }
 
-
     public Boolean getDeleteFlag() {
+
         return deleteFlag;
     }
 

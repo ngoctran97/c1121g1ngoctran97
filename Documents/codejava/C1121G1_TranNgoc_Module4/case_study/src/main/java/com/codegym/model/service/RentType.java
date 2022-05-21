@@ -1,5 +1,7 @@
 package com.codegym.model.service;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class RentType {
     private String rentTypeName;
     private Double rentTypeCost;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "rentType", cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Facility> serviceSet;
 

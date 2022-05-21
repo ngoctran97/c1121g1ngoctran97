@@ -1,6 +1,7 @@
 package com.codegym.model.service;
 
 import com.codegym.model.contract.Contract;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,6 +31,7 @@ public class Facility {
     @JoinColumn(name = "service_type_id", referencedColumnName = "serviceTypeId")
     private ServiceType serviceType;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "facility")
     private Set<Contract> contractSet;
 

@@ -31,5 +31,10 @@ public class ContractService implements IContractService {
         contractRepository.save(contract);
     }
 
+    @Override
+    public List<Contract> fillAll() {
+        return this.contractRepository.findAll();
+    }
+
 
 }

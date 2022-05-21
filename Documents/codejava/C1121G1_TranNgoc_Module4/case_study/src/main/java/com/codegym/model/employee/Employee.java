@@ -2,6 +2,7 @@ package com.codegym.model.employee;
 
 import com.codegym.model.contract.Contract;
 import com.codegym.model.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -18,8 +19,7 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
-
-
+    private boolean deleteFlag;
 
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
@@ -38,10 +38,17 @@ public class Employee {
     @JoinColumn(name = "username",referencedColumnName = "username")
     private User user;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "employee")
     private Set<Contract> contractSet;
 
+
     public Employee() {
+        setDeleteFlag(false);
+    }
+
+    public void setDeleteFlag(boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     public Integer getEmployeeId() {
@@ -147,4 +154,6 @@ public class Employee {
     public void setContractSet(Set<Contract> contractSet) {
         this.contractSet = contractSet;
     }
+
+
 }

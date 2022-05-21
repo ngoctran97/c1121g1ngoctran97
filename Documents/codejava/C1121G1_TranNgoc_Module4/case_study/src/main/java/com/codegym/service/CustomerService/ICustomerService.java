@@ -1,6 +1,7 @@
 package com.codegym.service.CustomerService;
 
 import com.codegym.model.customer.Customer;
+import com.codegym.model.customer.ICustomerUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,4 +19,8 @@ public interface ICustomerService {
     Page<Customer> findAll(String customerName, Pageable pageable);
 
     Customer findByCode(String code);
+
+    Page<ICustomerUser> findAllCustomerUserPage(Pageable pageable);
+
+    List<Customer> fillAll();
 }

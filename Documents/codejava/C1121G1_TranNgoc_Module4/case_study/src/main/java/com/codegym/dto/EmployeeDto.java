@@ -37,6 +37,7 @@ public class EmployeeDto implements Validator {
     private EducationDegree educationDegree;
     private Division division;
     private User user;
+    private Boolean deleteFlag;
 
     public EmployeeDto() {
     }
@@ -137,6 +138,13 @@ public class EmployeeDto implements Validator {
         this.user = user;
     }
 
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {

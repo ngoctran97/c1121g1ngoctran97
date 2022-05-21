@@ -3,12 +3,15 @@ package com.codegym.controller;
 import com.codegym.dto.CustomerDto;
 import com.codegym.model.customer.Customer;
 import com.codegym.model.customer.CustomerType;
+import com.codegym.model.customer.ICustomerUser;
 import com.codegym.service.CustomerService.ICustomerService;
 import com.codegym.service.CustomerService.ICustomerTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,8 +33,6 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
 
-//    @Autowired
-//    private ICustomerUserService customerUserService;
 
     @GetMapping(value = {"", "/list"})
     public String index(Model model,
@@ -43,6 +44,12 @@ public class CustomerController {
         model.addAttribute("keywordValue", keywordValue);
 
         return "customer/index";
+    }
+
+    @RequestMapping("/user")
+    public ModelAndView ShowCustomerUser(@PageableDefault(value = 3) Pageable pageable){
+        Page<ICustomerUser> page = customerService.findAllCustomerUserPage(PageRequest.of(pageable.getPageNumber(), 3));
+        return new ModelAndView("customer/customer_user","customerUserList",page);
     }
 
     @GetMapping("/create")
@@ -62,7 +69,7 @@ public class CustomerController {
         customerDto.validate(customerDto, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             List<CustomerType> customerTypeList = customerTypeService.findAll();
-            model.addAttribute("customerType",customerTypeList);
+            model.addAttribute("customerTypeList",customerTypeList);
             model.addAttribute("customerDto", customerDto);
             return "customer/create";
         }
@@ -109,15 +116,7 @@ public class CustomerController {
         return "redirect:/customer/list";
     }
 
-//    @GetMapping(value = {"/customer_use_service_list"})
-//    public String customerUserServiceList(Model model,
-//                        @PageableDefault(value = 5) Pageable pageable,
-//                        @RequestParam Optional<String> keyword) {
-//        String keywordValue = keyword.orElse("");
-//        Page<CustomerUser> customerUserPage = customerUserService.findAllByCustomerNameContaining(keywordValue,pageable);
-//        model.addAttribute("customerUserPage", customerUserPage);
-//        model.addAttribute("keywordValue", keywordValue);
-//
-//        return "customer/customer_use_list";
-//    }
+
+
+
 }

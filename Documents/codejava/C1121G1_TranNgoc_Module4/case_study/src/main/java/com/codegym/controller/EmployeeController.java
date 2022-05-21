@@ -49,7 +49,7 @@ public class EmployeeController {
                         @PageableDefault(value = 5) Pageable pageable,
                         @RequestParam("name") Optional<String> keyword) {
         String keywordValue = keyword.orElse("");
-        Page<Employee> employeePage = this.employeeService.findAll(pageable);
+        Page<Employee> employeePage = employeeService.findAll(keywordValue, pageable);
         model.addAttribute("employeePage", employeePage);
         model.addAttribute("keywordValue", keywordValue);
         return "employee/index";
@@ -89,16 +89,57 @@ public class EmployeeController {
         return "redirect:/employee/list";
     }
 
-//    @GetMapping("/update/{id}")
-//    public  String updatefrom(@PathVariable Integer id, Model model){
-//        EmployeeDto employeeDto = new EmployeeDto();
-//        Employee employee = employeeService.findById(id);
-//        List<Division> divisionList = divisionService.findAll();
-//        model.addAttribute("divisionList",divisionList);
-//        List<EducationDegree> educationDegreeList = educationDegreeService.findAll();
-//        model.addAttribute("educationDegreeList",educationDegreeList);
-//
-//    }
+    @GetMapping("/edit/{id}")
+    public  String updatefrom(@PathVariable Integer id, Model model){
+        EmployeeDto employeeDto = new EmployeeDto();
 
+        Employee employee = employeeService.findById(id);
+        List<Division> divisionList = divisionService.findAll();
+        model.addAttribute("divisionList",divisionList);
+        List<EducationDegree> educationDegreeList = educationDegreeService.findAll();
+        model.addAttribute("educationDegreeList",educationDegreeList);
+        List<Position> positionList = positionService.findAll();
+        model.addAttribute("positionList",positionList);
+        List<User> userList = userService.findAll();
+        model.addAttribute("userList", userList);
+        BeanUtils.copyProperties(employee, employeeDto);
+        model.addAttribute("employeeDto",employeeDto);
+
+        return "employee/edit";
+    }
+
+
+    @PostMapping("/update")
+    public String update(@Valid @ModelAttribute EmployeeDto employeeDto,
+                         BindingResult bindingResult,
+                         Model model){
+        Employee employee = new Employee();
+        employeeDto.validate(employeeDto, bindingResult);
+        if(bindingResult.hasFieldErrors()){
+            List<Position> positionList = positionService.findAll();
+            model.addAttribute("positionList",positionList);
+            List<EducationDegree> educationDegreeList = educationDegreeService.findAll();
+            model.addAttribute("educationDegreeList",educationDegreeList);
+            List<Division> divisionList = divisionService.findAll();
+            model.addAttribute("divisionList",divisionList);
+            List<User> userList = userService.findAll();
+            model.addAttribute("userList",userList);
+            model.addAttribute("employeeDto",employeeDto);
+            return "employee/edit";
+        }
+        BeanUtils.copyProperties(employeeDto, employee);
+        employeeService.save(employee);
+        return "redirect:/employee/list";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id-employee") Integer id){
+        Employee employee = employeeService.findById(id);
+        if(employee != null){
+            employee.setDeleteFlag(true);
+            employeeService.save(employee);
+        }
+        return "redirect:/employee/list";
+    }
 
 }

@@ -2,30 +2,23 @@
 <html>
 <head>
     <title>$Title$</title>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="/static/bootstrap413/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/datatables/css/dataTables.bootstrap4.min.css">
     <style>
+
         #header {
             background: #b3d7ff;
-            width: 110%;
+            width: 100%;
             padding: 10px;
         }
-
-        #xiu {
-            background: #b1dfbb;
-            width: 30%;
-            padding: 10px;
-        }
-
-        #cao {
-            background: #a6b4cd;
-            width: 30%;
-            padding: 10px;
+        #header {
+            width: 100vw
         }
     </style>
 </head>
 <body>
-<form>
+
     <div class="container-fluid ">
         <div class="border border-3 row">
             <div class="col-lg-6">
@@ -35,7 +28,7 @@
                 <h2 class="nav-link float-lg-end">ứng Dụng Quan Lý Khu Nghỉ Dưỡng Furama</h2>
             </div>
         </div>
-        <div class="border border-3 row" id="header">
+        <div class="border border-3 row" id="header" style="max-width: 90%">
             <div class="col-lg-9 row float-lg-end">
                 <p class="col-lg-2"></p>
                 <button><a class="nav-link col-lg-2" href="#">Home</a></button>
@@ -44,37 +37,20 @@
                 <button><a class="nav-link col-lg-2" href="/service">Service</a></button>
                 <button><a class="nav-link col-lg-2" href="/contract">Contact</a></button>
                 <button><a class="nav-link col-lg-2" href="/contract_detail">ContactDetail</a></button>
-                <button><a class="nav-link col-lg-2" href="/contract_detail/customer_use_service_list">CustomerUse</a></button>
+                <button><a class="nav-link col-lg-2" href="/contract_detail/customer_use_service_list">CustomerUse</a>
+                </button>
 
             </div>
-            <div class="col-lg-3 pt-lg-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            <div class="col-lg-3 pt-lg-1" style="display: flex; justify-content: flex-end">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="15" height="16" class="bi bi-search "
                      viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
                 <input class="rounded-pill w-75" type="text" placeholder=" search">
             </div>
         </div>
-        <div class="border border-3 row h-75">
-            <div class="col-lg-3 border border-3" id="xiu">
-                <a class="nav-link " href="#">Item 1</a>
-                <a class="nav-link " href="#">Item 2</a>
-                <a class="nav-link " href="#">Item 3</a>
-            </div>
-            <div class="col-lg-9 text-center" id="cao">
-                <h1>Khu Nghỉ Dưỡng Furama</h1>
-                <img class="mb-4" src="https://bazantravel.com/cdn/medias/uploads/53/53114-furama-resort-da-nang-11.jpg" alt=" " width="1000" height="400">
-                <iframe width="760" height="515" src="https://www.youtube.com/embed/VzDrgGaXBjY"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="border border-3 row text-center">
-            <p>Footer</p>
-        </div>
     </div>
-</form>
+
 
 <script src="/static/jquery/jquery-3.5.1.min.js"></script>
 <script src="/static/bootstrap413/js/popper.min.js"></script>
@@ -82,6 +58,11 @@
 <script src="/static/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="/static/bootstrap413/js/bootstrap.min.js"></script>
 <script src="/static/bootstrap413/js/bootstrap.bundle.js"></script>
-
+<footer th:fragment="footer">
+    &copy; NgocTran C1121G1
+</footer>
 </body>
 </html>
+
+
+

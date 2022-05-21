@@ -1,5 +1,7 @@
 package com.codegym.model.employee;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 @Entity
@@ -9,6 +11,7 @@ public class EducationDegree {
     private Integer educationDegreeId;
     private String educationDegreeName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "educationDegree", cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Employee> employeeSet;
 

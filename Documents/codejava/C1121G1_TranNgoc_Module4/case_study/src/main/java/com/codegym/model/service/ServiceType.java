@@ -1,5 +1,7 @@
 package com.codegym.model.service;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,6 +12,7 @@ public class ServiceType {
     private Integer serviceTypeId;
     private String serviceTypeName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Facility> serviceSet;
 

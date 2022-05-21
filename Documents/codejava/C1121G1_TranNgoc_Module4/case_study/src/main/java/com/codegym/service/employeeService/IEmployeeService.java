@@ -16,4 +16,6 @@ public interface IEmployeeService {
     Employee findById(Integer id);
 
     List<Employee> findAll();
+
+    Page<Employee> findAll(String employeeName, Pageable pageable);
 }

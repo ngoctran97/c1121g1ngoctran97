@@ -1,6 +1,7 @@
 package com.codegym.service.CustomerService.Impl;
 
 import com.codegym.model.customer.Customer;
+import com.codegym.model.customer.ICustomerUser;
 import com.codegym.repository.CustomerRepository.ICustomerRepository;
 import com.codegym.service.CustomerService.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,16 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer findByCode(String code) {
         return customerRepository.findByCustomerCode(code);
+    }
+
+    @Override
+    public Page<ICustomerUser> findAllCustomerUserPage(Pageable pageable) {
+        return customerRepository.findAllCustomerUserPage(ICustomerUser.class, pageable);
+    }
+
+    @Override
+    public List<Customer> fillAll() {
+        return customerRepository.findAll();
     }
 
 

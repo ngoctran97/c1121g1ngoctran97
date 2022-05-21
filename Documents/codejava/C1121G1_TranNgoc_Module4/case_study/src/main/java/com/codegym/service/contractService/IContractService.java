@@ -12,4 +12,6 @@ public interface IContractService {
     List<Contract> findAll();
 
     void save(Contract contract);
+
+    List<Contract> fillAll();
 }

@@ -32,4 +32,9 @@ public class ServiceService implements IServiceService {
     public void save(Facility facility) {
         serviceRepository.save(facility);
     }
+
+    @Override
+    public List<Facility> fillAll() {
+        return serviceRepository.findAll();
+    }
 }

@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout/layout :: head">
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
+<!--<div th:replace="/layout/layout :: menu"></div>-->
 <h3>employee List</h3>
 <p>
     <a th:href="@{/employee/create}">
@@ -58,7 +59,7 @@
         </td>
         <td>
             <button>
-                <a onclick="deleteCustomer($(this))" type="button" th:data-id="${employee.employeeId}"
+                <a onclick="deleteEmployee($(this))" type="button" th:data-id="${employee.employeeId}"
                    th:data-name="${employee.employeeName}"
                    class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Delete
                 </a>
@@ -86,14 +87,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/customer/delete" method="post" >
-                <input type="hidden" id="id-customer">
+            <form th:action="@{/employee/delete}" method="get" >
+                <input type="hidden" id="id-employee" name="id-employee">
                 <div class="modal-body">
-                    Are you sure delete <span class="text-danger" id="name-customer"></span> ?
+                    Are you sure delete <span class="text-danger" id="name-employee"></span> ?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
                 </div>
             </form>
         </div>
@@ -108,11 +109,11 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
-    function deleteCustomer(a) {
+    function deleteEmployee(a) {
         let id = a.attr('data-id');
         let name = a.attr('data-name');
-        document.getElementById("id-customer").value = id;
-        document.getElementById("name-customer").innerText = name;
+        document.getElementById("id-employee").value = id;
+        document.getElementById("name-employee").innerText = name;
     }
 </script>
 

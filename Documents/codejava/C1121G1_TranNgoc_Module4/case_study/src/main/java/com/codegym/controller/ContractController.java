@@ -78,7 +78,6 @@ public class ContractController {
         if (bindingResult.hasFieldErrors()) {
             List<ContractDetail> contractDetailList = contractDetailService.findAll();
             model.addAttribute("contractDetail",contractDetailList);
-
             List<Customer> customerList = customerService.findAll();
             model.addAttribute("customer",customerList);
             List<Employee> employeeList = employeeService.findAll();

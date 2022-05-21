@@ -3,6 +3,7 @@ package com.codegym.model.contract;
 import com.codegym.model.customer.Customer;
 import com.codegym.model.employee.Employee;
 import com.codegym.model.service.Facility;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,6 +18,7 @@ public class Contract {
     private Double contractDeposit;
     private Double contractTotalMoney;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "contract")
     private Set<ContractDetail> contractDetailSet;
 
