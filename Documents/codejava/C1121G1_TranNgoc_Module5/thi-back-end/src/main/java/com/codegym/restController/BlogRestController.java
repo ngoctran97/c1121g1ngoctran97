@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin("*")
@@ -63,10 +64,7 @@ public class BlogRestController {
                             e -> e.getField(), e -> e.getDefaultMessage()));
             return new ResponseEntity<>(errorMap, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-//        Article article = new Article();
         Blog blog = new Blog();
-//        Category category = new Category();
-//        BeanUtils.copyProperties(articleDTO, article);
         DangTin dangTin = new DangTin();
         DanhMuc danhMuc = new DanhMuc();
         Huong huong = new Huong();
@@ -81,10 +79,52 @@ public class BlogRestController {
         blog.setHuong(huong);
         blog.setVungMien(vungMien);
         blogService.save(blog);
-//        BeanUtils.copyProperties(articleDTO.getCategoryDTO(), category);
-//        article.setCategory(category);
-//        iArticleService.save(article);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Blog> findBlogById(@PathVariable("id") Integer id) {
+        Optional<Blog> articleOptional = blogService.findById(id);
+        return articleOptional.map(article -> new ResponseEntity<>(article, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+
+    }
+
+    @PatchMapping(value = "update/{id}")
+    public ResponseEntity<Map<String, String>> updateArticle(@PathVariable("id") Integer id,
+                                                             @Valid @RequestBody BlogDto blogDto,
+                                                             BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errorMap = bindingResult.getFieldErrors()
+                    .stream().collect(Collectors.toMap(
+                            e -> e.getField(), e -> e.getDefaultMessage()));
+            return new ResponseEntity<>(errorMap, HttpStatus.OK);
+        }
+        Blog blog = new Blog();
+        DangTin dangTin = new DangTin();
+        DanhMuc danhMuc = new DanhMuc();
+        Huong huong = new Huong();
+        VungMien vungMien = new VungMien();
+        BeanUtils.copyProperties(blogDto, blog);
+        BeanUtils.copyProperties(blogDto.getDangTinDto(), dangTin);
+        BeanUtils.copyProperties(blogDto.getDanhMucDto(), danhMuc);
+        BeanUtils.copyProperties(blogDto.getHuongDto(), huong);
+        BeanUtils.copyProperties(blogDto.getVungMienDto(), vungMien);
+        blog.setId(id);
+        blog.setDangTin(dangTin);
+        blog.setDanhMuc(danhMuc);
+        blog.setHuong(huong);
+        blog.setVungMien(vungMien);
+        blogService.save(blog);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "delete")
+    public ResponseEntity<Void> deleteArticle(@RequestBody Blog blog) {
+        if (blog != null) {
+            blog.setDeleteFlag(true);
+            blogService.save(blog);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

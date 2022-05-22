@@ -36,6 +36,7 @@ public class Blog {
     private String gia;
     private String trangThai;
     private String ngayDang;
+    private Boolean deleteFlag;
 
     public Blog() {
     }
@@ -150,5 +151,13 @@ public class Blog {
 
     public void setHuong(Huong huong) {
         this.huong = huong;
+    }
+
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }
