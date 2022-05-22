@@ -1,0 +1,145 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="/layout/layout :: head">-->
+<!--    &lt;!&ndash;  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">&ndash;&gt;-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<h3>Danh sach blog</h3>-->
+<!--<p>-->
+<!--    <a th:href="@{/blog/create}">-->
+<!--        ADD NEW CUSTOMER-->
+<!--    </a>-->
+<!--</p>-->
+<!--&lt;!&ndash;<form action="/blog" method="get" align="left">&ndash;&gt;-->
+<!--&lt;!&ndash;    <button type="submit">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="name" placeholder="name customer" >&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--<table id="customers">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        private Integer id;-->
+<!--        private String DanhMuc;-->
+<!--        private String vungMien;-->
+<!--        private String banla;-->
+<!--        private String dangTin;-->
+<!--        private String diaChi;-->
+<!--        private String dienTich;-->
+<!--        private String huong;-->
+<!--        private String tuaDe;-->
+<!--        private String noiDunh;-->
+<!--        private String gia;-->
+<!--        private String trangThai;-->
+<!--        private String ngayDang;-->
+<!--        <th>STT</th>-->
+<!--        <th>Id</th>-->
+<!--        <th>Danh mục</th>-->
+<!--        <th>Vùng miền</th>-->
+<!--        <th>Bạn là</th>-->
+<!--        <th>Đăng tin</th>-->
+<!--        <th>Địa chỉ</th>-->
+<!--        <th>Diện tích</th>-->
+<!--        <th>Hướng</th>-->
+<!--        <th>Tựa đề</th>-->
+<!--        <th>Nội dung</th>-->
+<!--        <td>Giá</td>-->
+<!--        <td>Trạng Thái</td>-->
+<!--        <td>Ngày đăng</td>-->
+<!--        <th>Edit</th>-->
+<!--        <th>Delete</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="blog,loop :${blogPage}">-->
+<!--        <td th:text="${loop.count}"></td>-->
+<!--        <td th:text="${blog.}"></td>-->
+<!--        <td th:text="${blog.}"></td>-->
+<!--        <td th:text="${blog.customerName}"></td>-->
+<!--        <td th:text="${blog.customerBirthday}"></td>-->
+<!--        <td th:text="${blog.customerGender}"></td>-->
+<!--        <td th:text="${blog.customerIdCard}"></td>-->
+<!--        <td th:text="${blog.customerPhone}"></td>-->
+<!--        <td th:text="${blog.customerEmail}"></td>-->
+<!--        <td th:text="${blog.customerAddress}"></td>-->
+<!--        <td th:text="${blog.customerType.customerTypeName}"></td>-->
+<!--        <td>-->
+<!--            <button>-->
+<!--                <a th:href="@{/customer/edit/{id}(id=${blog.customerId})}"-->
+<!--                   class="btn btn-warning">edit</a>-->
+<!--            </button>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <button>-->
+<!--                <a onclick="deleteCustomer($(this))" type="button" th:data-id="${blog.customerId}"-->
+<!--                   th:data-name="${blog.customerName}"-->
+<!--                   class="btn btn-warning" data-toggle="modal" data-target="#customer-modal">Delete-->
+<!--                </a>-->
+<!--            </button>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--<div>-->
+<!--    <a th:if="${customerPage.hasPrevious()}"-->
+<!--       th:href="@{/customer/list(page=${customerPage.number -1}, keyword=${keywordValue})}">previous</a>-->
+<!--    <span th:text="${customerPage.number +1}"></span>/-->
+<!--    <span th:text="${customerPage.totalPages}"></span>-->
+<!--    <a th:if="${customerPage.hasNext()}"-->
+<!--       th:href="@{/customer/list(page=${customerPage.number +1}, keyword=${keywordValue})}">Next</a>-->
+<!--</div>-->
+
+<!--<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="customer-modal">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <form th:action="@{/customer/delete}" method="get" >-->
+<!--                <input type="hidden" id="id-customer" name="id-customer">-->
+<!--                <div class="modal-body">-->
+<!--                    Are you sure delete <span class="text-danger" id="name-customer"></span> ?-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>-->
+<!--                    <button type="submit" class="btn btn-primary" >Save changes</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<footer th:replace="/layout/layout :: footer"></footer>-->
+
+<!--&lt;!&ndash; Optional JavaScript &ndash;&gt;-->
+<!--&lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+<!--<script>-->
+<!--    function deleteCustomer(a) {-->
+<!--        let id = a.attr('data-id');-->
+<!--        let name = a.attr('data-name');-->
+<!--        document.getElementById("id-customer").value = id;-->
+<!--        document.getElementById("name-customer").innerText = name;-->
+<!--        console.log(id);-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>hello</p>
+</body>
+</html>

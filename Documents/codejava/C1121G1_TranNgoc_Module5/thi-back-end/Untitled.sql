@@ -1,0 +1,1 @@
+SELECT * FROM `thi-back-end`.blog;
