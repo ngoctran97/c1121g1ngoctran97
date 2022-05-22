@@ -33,4 +33,6 @@ export class BlogService {
   updateBlog(id: number, blog: Blog): Observable<Blog> {
     return this.http.put<Blog>(`${this.url}/${id}`, blog);
   }
+
+
 }

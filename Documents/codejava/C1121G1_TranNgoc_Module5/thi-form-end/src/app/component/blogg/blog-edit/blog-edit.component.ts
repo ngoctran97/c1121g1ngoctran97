@@ -9,8 +9,6 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
   styleUrls: ['./blog-edit.component.css']
 })
 export class BlogEditComponent implements OnInit {
-  blogForm: FormGroup;
-  id: number;
   constructor(private blogService: BlogService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -19,6 +17,10 @@ export class BlogEditComponent implements OnInit {
       this.getBlog(this.id);
     });
   }
+  blogForm: FormGroup;
+  id: number;
+  successBtn: HTMLButtonElement;
+  errorBtn: HTMLButtonElement;
 
   ngOnInit(): void {
   }
@@ -55,4 +57,11 @@ export class BlogEditComponent implements OnInit {
       }
     );
   }
+  // updateProduct(successBtn: HTMLButtonElement, errorBtn: HTMLButtonElement) {
+  //   this.blogService = this.blogForm.value;
+  //   this.blogService.updateBlog().subscribe(() => {
+  //       this.blogForm.reset();
+  //       console.log("update success!");
+  //       successBtn.click();
+  // }
 }
