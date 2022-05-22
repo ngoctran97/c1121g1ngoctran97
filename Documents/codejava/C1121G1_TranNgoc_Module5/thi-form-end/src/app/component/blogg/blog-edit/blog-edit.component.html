@@ -1,0 +1,104 @@
+<div class="text-center">
+  <p class="lead display-5">chinh sua blog</p>
+</div>
+<div class=" col-4 mx-auto" >
+  <form [formGroup]="blogForm" (ngSubmit)="updateProduct(id)" novalidate>
+
+    <div class="modal-body">
+
+      <div class="form-group mb-4" id="danhMuc">
+        <label class="form-label" for="danhMuc">Danh mục<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="danhMuc">
+          <option>Nhà đất</option>
+          <option>Nhà Ở</option>
+          <option>Chung Cư</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="vungMien">
+        <label class="form-label" for="vungMien">Vùng Miền<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="vungMien">
+          <option>Hà Nội</option>
+          <option>Đà Nẵng</option>
+          <option>TP HCM</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="banla">
+        <label class="form-label" for="banla">Bạn là<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="banla">
+          <option>Cá Nhân</option>
+          <option>Công ty</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="dangTin">
+        <label class="form-label" for="dangTin">Bạn đăng tin<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="dangTin">
+          <option>cần bán</option>
+          <option>Cần Mua</option>
+          <option>cần Thuê</option>
+          <option>Cho thuê</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="diaChi">
+        <label class="form-label" for="diaChi">Địa chỉ<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="diaChi"/>
+        <small class="text-danger"></small>
+      </div>
+
+      <div class="form-group mb-4" id="dienTich">
+        <label class="form-label" for="dienTich">Diện tích<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="dienTich"/>
+        <small class="text-danger"></small>
+      </div>
+
+      <div class="form-group mb-4" id="huong">
+        <label class="form-label" for="huong">Hướng<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="huong">
+          <option>Đông Nam</option>
+          <option>Tây Nam</option>
+          <option>Bắc Đông</option>
+          <option>Đông Bắc</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="tuaDe">
+        <label class="form-label" for="tuaDe">Tựa đề<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="tuaDe"/>
+        <small class="text-danger"></small>
+      </div>
+
+      <div class="form-group mb-4" id="noiDunh">
+        <label class="form-label" for="noiDunh">Nội dung<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="noiDunh"/>
+        <small class="text-danger"></small>
+      </div>
+
+      <div class="form-group mb-4" id="gia">
+        <label class="form-label" for="gia">Giá<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="gia"/>
+        <small class="text-danger"></small>
+
+      </div>
+      <div class="form-group mb-4" id="trangThai">
+        <label class="form-label" for="trangThai">Trạng Thái<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="trangThai"/>
+        <small class="text-danger"></small>
+
+      </div>
+
+      <div class="form-group mb-4" id="ngayDang">
+        <label class="form-label" for="ngayDang">Trạng Thái<span class="text-danger">(*)</span></label>
+        <input type="date"  class="form-control" formControlName="ngayDang"/>
+        <small class="text-danger"></small>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class="btn btn-success" value="Thêm mới"/>
+    </div>
+  </form>
+</div>
+

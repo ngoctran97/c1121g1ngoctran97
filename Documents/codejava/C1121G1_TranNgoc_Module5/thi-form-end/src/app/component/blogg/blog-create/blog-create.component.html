@@ -1,0 +1,114 @@
+<div class="text-center">
+  <p class="lead display-5">Thêm mới khách hàng</p>
+</div>
+<div class=" col-4 mx-auto" >
+  <form [formGroup]="blogForm" (ngSubmit)="submitblog(successBtn, errorBtn)" novalidate>
+    <div class="modal-body">
+      <div id="danhMuc">
+        <label class="form-label" for="danhMuc">Danh mục<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="danhMuc">
+          <option *ngFor="let danhMuc of danhMucList" [ngValue]="danhMuc" >{{danhMuc.tenDanhMuc}}</option>
+        </select>
+      </div>
+
+      <div id="vungMien">
+        <label class="form-label" for="vungMien">Vungf miền<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="vungMien">
+          <option *ngFor="let vungMien of vungMienList" [ngValue]="vungMien" >{{vungMien.tenVungMien}}</option>
+        </select>
+      </div>
+
+      <div id="banla">
+        <label class="form-label" for="banla">Bạn là<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="banla">
+          <option>Cá Nhân</option>
+          <option>Công ty</option>
+        </select>
+      </div>
+
+      <div id="dangTin">
+        <label class="form-label" for="dangTin">Bạn đăng tin<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="dangTin">
+          <option *ngFor="let dangTin of dangTinList" [ngValue]="dangTin" >{{dangTin.tenDangTin}}</option>
+        </select>
+      </div>
+
+      <div id="tinhTrang">
+        <label class="form-label" for="tinhTrang">Tình trạng<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="tinhTrang">
+          <option>Mới</option>
+          <option>Đã sử dụng</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="diaChi">
+        <label class="form-label" for="diaChi">Địa chỉ<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="diaChi"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.diaChi.hasError( 'required')&&
+(blogForm.controls.diaChi.touched|| blogForm.controls.diaChi.dirty))">không được để trống</p>
+      </div>
+
+      <div class="form-group mb-4" id="dienTich">
+        <label class="form-label" for="dienTich">Diện tích<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="price"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.dienTich.hasError( 'required')&&
+(blogForm.controls.dienTich.touched|| blogForm.controls.dienTich.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( blogForm.controls.dienTich.hasError( 'min')&&
+(blogForm.controls.dienTich.touched|| blogForm.controls.dienTich.dirty))">min = 0</p>
+      </div>
+
+      <div id="huong">
+        <label class="form-label" for="huong">Hướng<span class="text-danger">(*)</span></label>
+        <select class="form-control mb-4" formControlName="huong">
+          <option *ngFor="let huong of huongList" [ngValue]="huong" >{{huong.tenHuong}}</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-4" id="tuaDe">
+        <label class="form-label" for="tuaDe">Tựa để<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="tuaDe"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.tuaDe.hasError( 'required')&&
+(blogForm.controls.tuaDe.touched|| blogForm.controls.tuaDe.dirty))"> không được để trống</p>
+      </div>
+
+      <div class="form-group mb-4" id="noiDunh">
+        <label class="form-label" for="noiDunh">Nội dung<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="noiDunh"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.noiDunh.hasError( 'required')&&
+(blogForm.controls.noiDunh.touched|| blogForm.controls.noiDunh.dirty))"> không được để trống</p>
+      </div>
+
+      <div class="form-group mb-4" id="gia">
+        <label class="form-label" for="gia">Giá<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="gia"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.gia.hasError( 'required')&&
+(blogForm.controls.gia.touched|| blogForm.controls.gia.dirty))">không được để trống</p>
+        <p style="color: red" *ngIf="( blogForm.controls.gia.hasError( 'min')&&
+(blogForm.controls.gia.touched|| blogForm.controls.gia.dirty))">min = 100000000</p>
+      </div>
+      <div class="form-group mb-4" id="trangThai">
+        <label class="form-label" for="trangThai">Trạng Thái<span class="text-danger">(*)</span></label>
+        <input type="text"  class="form-control" formControlName="trangThai"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.trangThai.hasError( 'required')&&
+(blogForm.controls.trangThai.touched|| blogForm.controls.trangThai.dirty))"> không được để trống</p>
+      </div>
+
+      <div class="form-group mb-4" id="ngayDang">
+        <label class="form-label" for="ngayDang">Trạng Thái<span class="text-danger">(*)</span></label>
+        <input type="date"  class="form-control" formControlName="ngayDang"/>
+        <small class="text-danger"></small>
+        <p style="color: red" *ngIf="( blogForm.controls.ngayDang.hasError( 'required')&&
+(blogForm.controls.ngayDang.touched|| blogForm.controls.ngayDang.dirty))"> không được để trống</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class="btn btn-success" value="Đăng tin"/>
+    </div>
+  </form>
+</div>
